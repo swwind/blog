@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200;
+}
+
+::selection {
+  @apply bg-gray-300 dark:bg-gray-600;
+}
+
+.info {
+  @apply text-sm opacity-60 mx-6 my-2;
+}
+
+.info :not(:first-child)::before {
+  @apply px-1;
+  content: "\2022";
+}
