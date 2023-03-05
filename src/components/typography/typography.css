@@ -56,7 +56,7 @@
 }
 
 .typography pre {
-  @apply overflow-auto bg-slate-100 dark:bg-slate-900 rounded-md p-4 mx-6 mb-2;
+  @apply overflow-auto bg-slate-800 dark:bg-slate-900 rounded-md p-4 mx-6 mb-2;
 }
 
 .typography blockquote > pre,

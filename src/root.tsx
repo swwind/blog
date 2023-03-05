@@ -8,6 +8,7 @@ import { RouterHead } from "./components/router-head/router-head";
 
 import globalStyles from "./global.css?inline";
 import katexStyles from "katex/dist/katex.min.css?inline";
+import prismStyles from "prismjs/themes/prism-tomorrow.css?inline";
 
 export default component$(() => {
   /**
@@ -18,6 +19,7 @@ export default component$(() => {
    */
   useStyles$(globalStyles);
   useStyles$(katexStyles);
+  useStyles$(prismStyles);
 
   return (
     <QwikCityProvider>
