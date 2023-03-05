@@ -4,9 +4,7 @@ import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 import rehypeKatex from "rehype-katex";
-import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import remarkGemoji from "remark-gemoji";
 
 export default defineConfig(() => {
   return {

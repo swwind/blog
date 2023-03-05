@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "qwik-project-name",
-  "short_name": "Welcome to Qwik",
+  "name": "swwind-qwik-blog",
+  "short_name": "swwind's blog",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
