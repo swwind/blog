@@ -15,7 +15,7 @@ pre ::selection {
 }
 
 .info {
-  @apply text-sm opacity-60 mx-6 my-2;
+  @apply mx-6 my-2 text-sm opacity-60;
 }
 
 .info :not(:first-child)::before {

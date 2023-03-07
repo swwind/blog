@@ -2,8 +2,8 @@ import { component$ } from "@builder.io/qwik";
 
 export const Footer = component$(() => {
   return (
-    <footer class="mx-6 py-6 flex justify-end shrink-0">
-      <p class="text-xs opacity-60 text-right font-serif">
+    <footer class="mx-6 flex shrink-0 justify-end py-6">
+      <p class="text-right font-serif text-xs opacity-60">
         <span>Copyright © 2017-2023 swwind. All rights reserved</span>
         <br />
         <span>

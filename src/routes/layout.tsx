@@ -5,7 +5,7 @@ import { Typography } from "~/components/typography/typography";
 
 export default component$(() => {
   return (
-    <div class="max-w-3xl mx-auto flex flex-col min-h-screen">
+    <div class="mx-auto flex min-h-screen max-w-3xl flex-col">
       <Header />
       <main class="flex-1">
         <Typography>

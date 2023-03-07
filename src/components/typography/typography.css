@@ -1,17 +1,17 @@
 .typography h1 {
-  @apply text-4xl font-bold mx-6 mt-4 mb-2 font-serif;
+  @apply mx-6 mt-4 mb-2 font-serif text-4xl font-bold;
 }
 
 .typography h2 {
-  @apply text-3xl font-bold mx-6 mt-4 mb-2 font-serif;
+  @apply mx-6 mt-4 mb-2 font-serif text-3xl font-bold;
 }
 
 .typography h3 {
-  @apply text-2xl font-bold mx-6 mt-4 mb-2 font-serif;
+  @apply mx-6 mt-4 mb-2 font-serif text-2xl font-bold;
 }
 
 .typography h4 {
-  @apply text-xl font-bold mx-6 mt-4 mb-2 font-serif;
+  @apply mx-6 mt-4 mb-2 font-serif text-xl font-bold;
 }
 
 .typography p {
@@ -19,7 +19,7 @@
 }
 
 .typography blockquote {
-  @apply border-l-4 border-gray-800 dark:border-gray-200 px-6 py-2 italic my-2 font-serif text-lg;
+  @apply my-2 border-l-4 border-gray-800 px-6 py-2 font-serif text-lg italic dark:border-gray-200;
 }
 
 .typography blockquote > p,
@@ -36,11 +36,11 @@
 }
 
 .typography figcaption {
-  @apply text-center opacity-60 mt-2 text-sm;
+  @apply mt-2 text-center text-sm opacity-60;
 }
 
 .typography aside {
-  @apply text-center mx-6 my-4 text-xl font-serif italic opacity-80;
+  @apply mx-6 my-4 text-center font-serif text-xl italic opacity-80;
 }
 
 .typography a[href] {
@@ -48,15 +48,15 @@
 }
 
 .typography ul {
-  @apply list-disc mx-12 mb-2 [&>li]:mt-2 font-serif text-lg;
+  @apply mx-12 mb-2 list-disc font-serif text-lg [&>li]:mt-2;
 }
 
 .typography ol {
-  @apply list-decimal mx-12 mb-2 [&>li]:mt-2 font-serif text-lg;
+  @apply mx-12 mb-2 list-decimal font-serif text-lg [&>li]:mt-2;
 }
 
 .typography pre {
-  @apply overflow-auto bg-slate-800 dark:bg-slate-900 rounded-md p-4 mx-6 mb-2;
+  @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 p-4 dark:bg-slate-900;
 }
 
 .typography blockquote > pre,
@@ -91,6 +91,6 @@
 }
 
 .typography hr {
-  @apply appearance-none h-0.5 mx-6 mb-2 dark:bg-slate-700 bg-slate-800;
+  @apply mx-6 mb-2 h-0.5 appearance-none bg-slate-800 dark:bg-slate-700;
   width: calc(100% - 3rem);
 }
