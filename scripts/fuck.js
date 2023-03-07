@@ -5,7 +5,7 @@ for (const post of posts
   .sort(
     (b, a) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
   )
-  .filter((post) => new Date(post.createdAt).getFullYear() === 2021)) {
+  .filter((post) => new Date(post.createdAt).getFullYear() === 2020)) {
   const time = new Date(post.createdAt)
     .toLocaleString("zh-CN-u-ca-chinese", { dateStyle: "full" })
     .replace("十一月", "冬月")
@@ -14,14 +14,14 @@ for (const post of posts
   console.log(`### [${post.title}](/post/${post.slot})\n\n发表于${time}。\n`);
 
   // console.log(post.title, time);
-  /*
-  console.log(post.tags);
-  mkdirSync(`./src/routes/(black-history)/post/(2021)/${post.slot}`, {
+
+  // console.log(post.tags);
+  mkdirSync(`./src/routes/(black-history)/post/(2020)/${post.slot}`, {
     recursive: true,
   });
   writeFileSync(
-    `./src/routes/(black-history)/post/(2021)/${post.slot}/index.mdx`,
-    
+    `./src/routes/(black-history)/post/(2020)/${post.slot}/index.mdx`,
+
     `---
 title: ${post.title}
 ---
@@ -30,10 +30,11 @@ title: ${post.title}
 
 <div class="info">
   <span>swwind</span>
-  <time>${time}</time>${post.tags.map((tag) => `\n  <span>#${tag}</span>`).join('')}
+  <time>${time}</time>${post.tags
+      .map((tag) => `\n  <span>#${tag}</span>`)
+      .join("")}
 </div>
 
-${post.content.replace('<!-- more -->', '')}`
+${post.content.replace("<!-- more -->", "")}`
   );
-  */
 }

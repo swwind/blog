@@ -48,11 +48,11 @@
 }
 
 .typography ul {
-  @apply list-disc mx-8 mb-2 [&>li]:mt-2 font-serif text-lg;
+  @apply list-disc mx-12 mb-2 [&>li]:mt-2 font-serif text-lg;
 }
 
 .typography ol {
-  @apply list-decimal mx-8 mb-2 [&>li]:mt-2 font-serif text-lg;
+  @apply list-decimal mx-12 mb-2 [&>li]:mt-2 font-serif text-lg;
 }
 
 .typography pre {
@@ -86,6 +86,11 @@
   }
 }
 
-th {
+.typography th {
   @apply font-bold;
+}
+
+.typography hr {
+  @apply appearance-none h-0.5 mx-6 mb-2 dark:bg-slate-700 bg-slate-800;
+  width: calc(100% - 3rem);
 }
