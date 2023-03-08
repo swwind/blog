@@ -5,7 +5,7 @@ import { header } from "~/metadata.json";
 
 export const Header = component$(() => {
   return (
-    <header class="mx-6 flex shrink-0 justify-between pt-6">
+    <header class="mx-6 mb-4 flex shrink-0 justify-between pt-6">
       <span>
         <Link href="/" class="font-serif hover:underline">
           {header}
