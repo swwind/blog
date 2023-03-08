@@ -5,7 +5,7 @@ for (const post of posts
   .sort(
     (b, a) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
   )
-  .filter((post) => new Date(post.createdAt).getFullYear() === 2020)) {
+  .filter((post) => new Date(post.createdAt).getFullYear() === 2017)) {
   const time = new Date(post.createdAt)
     .toLocaleString("zh-CN-u-ca-chinese", { dateStyle: "full" })
     .replace("十一月", "冬月")
@@ -16,11 +16,11 @@ for (const post of posts
   // console.log(post.title, time);
 
   // console.log(post.tags);
-  mkdirSync(`./src/routes/(black-history)/post/(2020)/${post.slot}`, {
+  mkdirSync(`./src/routes/(black-history)/post/(2017)/${post.slot}`, {
     recursive: true,
   });
   writeFileSync(
-    `./src/routes/(black-history)/post/(2020)/${post.slot}/index.mdx`,
+    `./src/routes/(black-history)/post/(2017)/${post.slot}/index.mdx`,
 
     `---
 title: ${post.title}
