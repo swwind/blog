@@ -47,11 +47,6 @@ export default defineConfig(() => {
   return {
     plugins: [
       qwikCity({
-        mdxPlugins: {
-          remarkGfm: true,
-          rehypeAutolinkHeadings: true,
-          rehypeSyntaxHighlight: true,
-        },
         mdx: {
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
