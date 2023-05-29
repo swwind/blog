@@ -1,13 +1,13 @@
 .typography h1 {
-  @apply mx-6 mt-4 mb-2 font-serif text-4xl font-bold;
+  @apply mx-6 mt-12 mb-2 font-serif text-4xl font-bold;
 }
 
 .typography h2 {
-  @apply mx-6 mt-4 mb-2 font-serif text-3xl font-bold;
+  @apply mx-6 mt-8 mb-2 font-serif text-3xl font-bold;
 }
 
 .typography h3 {
-  @apply mx-6 mt-4 mb-2 font-serif text-2xl font-bold;
+  @apply mx-6 mt-6 mb-2 font-serif text-2xl font-bold;
 }
 
 .typography h4 {
@@ -15,7 +15,7 @@
 }
 
 .typography p {
-  @apply mx-6 mb-2 font-serif text-lg;
+  @apply mx-6 my-4 font-serif text-lg;
 }
 
 .typography blockquote {
