@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200;
+  @apply bg-white text-slate-800 dark:bg-slate-800 dark:text-slate-200;
 }
 
 ::selection {
