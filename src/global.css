@@ -26,3 +26,7 @@ pre ::selection {
 .truth {
   @apply bg-slate-800 text-slate-800 hover:text-slate-200 dark:bg-slate-200 dark:text-slate-200 dark:hover:text-slate-800;
 }
+
+rt {
+  font-size: 0.75em;
+}

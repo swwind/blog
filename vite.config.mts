@@ -5,6 +5,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import remarkRuby from "remark-ruby";
 
 export default defineConfig(() => {
   return {
@@ -16,7 +17,7 @@ export default defineConfig(() => {
           rehypeSyntaxHighlight: true,
         },
         mdx: {
-          remarkPlugins: [remarkMath],
+          remarkPlugins: [remarkMath, remarkRuby],
           rehypePlugins: [rehypeKatex],
         },
       }),
