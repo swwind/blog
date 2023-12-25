@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Noto+Serif+SC&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 body {
-  @apply bg-white text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:[color-scheme:dark];
+  @apply bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:[color-scheme:dark];
 }
 
 ::selection {
@@ -29,4 +32,9 @@ pre ::selection {
 
 rt {
   font-size: 0.75em;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: 'Fira Code', monospace !important;
 }
