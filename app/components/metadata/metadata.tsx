@@ -1,7 +1,4 @@
-import {
-  toChineseCalendar,
-  toYangliCalendar,
-} from "~/utils/chinese-calendar.ts";
+import { toYangliCalendar } from "~/utils/chinese-calendar.ts";
 
 interface MetadataProps {
   author: string;
@@ -15,7 +12,7 @@ export const Metadata = (props: MetadataProps) => {
   return (
     <div class="info">
       <span>{props.author}</span>
-      <time title={toYangliCalendar(time)}>{toChineseCalendar(time)}</time>
+      <time>{toYangliCalendar(time)}</time>
       {props.tags?.split(",").map((x, i) => <span key={i}>#{x}</span>)}
     </div>
   );

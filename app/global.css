@@ -32,8 +32,3 @@ pre ::selection {
 rt {
   font-size: 0.75em;
 }
-
-code[class*="language-"],
-pre[class*="language-"] {
-  font-family: "Fira Code", monospace !important;
-}

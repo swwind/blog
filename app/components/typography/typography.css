@@ -62,7 +62,7 @@
   @apply mx-12 mb-2 list-decimal [&>li]:mt-2;
 }
 
-.typography pre {
+.typography pre:not(.language-math) {
   @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 p-4 dark:bg-slate-900;
 }
 
