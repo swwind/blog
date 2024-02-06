@@ -1,0 +1,142 @@
+---
+title: 如何写一个简单的文字冒险游戏
+---
+
+# 如何写一个简单的文字冒险游戏
+
+import { Metadata } from "~/components/metadata/metadata.tsx";
+
+<Metadata author="swwind" time="2018-3-28" />
+
+最近很多人在问我这个问题。于是我就写篇教程冷静一下。
+
+## 准备工作
+
+- nodejs
+- npm
+- bash
+
+我们要用到的项目是 [avgjs/avg-core](https://github.com/avgjs/avg-core)。
+
+官方声明这个项目还处在 Alpha 阶段，但是我们自己玩玩还是 OK 的。
+
+## 初始化
+
+```bash
+$ npm install -g avg-cli
+$ avg create mygame
+```
+
+**注意：** 一定要用 bash 来跑。
+
+## RTFM
+
+在 install 的过程中可以读一读文档，找寻有用的信息。
+
+[文档地址](https://avgjs.github.io/docs/#/zh/)
+
+我建议大家先来读一读作者写的「[设计思想](https://avgjs.github.io/docs/#/zh/inspiration)」。
+
+从文档中可以看出，avgjs 使用的是 React + StoryScript 的开发模式。
+
+- 关于 React，可以参考 [这篇文章](http://www.ruanyifeng.com/blog/2015/03/react.html)（虽然有点过时了，但是简单看一看有个基本了解就行）
+- 关于 StoryScript，可以阅读 [文档](https://avgjs.github.io/docs/#/zh/storyscript) 了解一下语法。
+
+> StoryScript 在语法上，与 BKEngine 的脚本系统颇为类似。
+> 关于其在 sublime 中的高亮，我自己写了一个。[地址](https://github.com/swwind/code/blob/master/StoryScript.sublime-syntax)
+
+## 测试
+
+我们假设这时候你已经下载好了，并且已经知道了 React 的基本知识和 StoryScript 的语法。
+
+现在我们打开一个本地端口
+
+```bash
+$ cd demogame
+$ npm run dev
+```
+
+然后程序应该会自动打开一个网页，刷新一会之后就会出现一个有四个按钮的灰色的页面。
+
+这样说明已经安装好了。
+
+## 解读模板
+
+然后我们打开 `assets/scripts/1.bks`，这个就是我们所要用到的故事脚本的入口文件。
+这个脚本在 URL 上显示为 `/story/1`。
+如果我们要改故事脚本的入口文件该怎么办呢。
+
+首先打开 `src/game.jsx`，找到第 43 行。
+
+```jsx
+<Redirect from="story" to="story/1" />
+```
+
+这里的 `Redirect` 控件是重定向用的，也就是说它将入口文件指向 `1.bks`。
+那么我们将 `story/1` 改成 `story/start` 就可以用 `start.bks` 文件来开始故事了。
+
+```jsx
+<Redirect from="story" to="story/start" />
+```
+
+下面讲几个这个使用这个模板可以使用的 StoryScript 指令。
+
+### 直接跳转剧情
+
+```storyscript
+[router push path='/story/xxx']
+```
+
+这句话的作用就是直接跳转到 `xxx.bks` 分支剧情。
+
+### 选择跳转剧情
+
+```storyscript
+[selection FL=[['way1','起床'],['way2','继续睡']]]
+```
+
+这时候画面上会出现两个按钮。
+点击「起床」会跳转到 `/story/way1` 页面，
+点击「继续睡」会跳转到 `/story/way2` 页面。
+
+> 如果你对按钮的样式不爽，可以到 `src/components/Selection.jsx` 中更改第 6 至 11 行。
+
+## 导出
+
+```bash
+$ avg publish
+```
+
+然后导出的文件全部放在 `dist/` 里面，你可以将其放到任何地方。
+
+### 放到 hexo 博客里
+
+把 `dist/` 文件夹里面的文件全部复制到 `blog/source/game/` 文件夹内。
+然后在博客配置文件里面找到 `skip_render` 这一项。
+然后这么写：
+
+```yaml
+skip_render:
+  - game/**/*.*
+```
+
+然后直接 `hexo clean && hexo d -g` 就行啦。
+~~但是我怀疑你服务商的网速可能不行~~
+
+### 导出 exe 文件
+
+这你可能需要使用一个叫做 [eletronjs](https://electronjs.org/) 的项目。
+
+具体自己折腾吧。
+
+<p>
+  <span class="truth">其实这是个馊主意</span>
+</p>
+<p>
+  <span class="truth">因为这玩意生成的 exe 文件贼 JB 大</span>
+</p>
+<p>
+  <span class="truth">
+    <s>我怀疑他们是直接扔了一个 chromium 进去</s>
+  </span>
+</p>

@@ -1,3 +1,4 @@
-module.exports = {
-  plugins: [require("prettier-plugin-tailwindcss")],
+/** @type {import("prettier").Config} */
+export default {
+  plugins: ["prettier-plugin-tailwindcss"],
 };

@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap");
+
+.typography {
+  font-family: "Noto Serif SC", serif;
+  @apply text-lg;
+}
+
+.typography h1 {
+  @apply mx-6 mb-2 mt-12 text-4xl font-bold;
+}
+
+.typography h2 {
+  @apply mx-6 mb-2 mt-8 text-3xl font-bold;
+}
+
+.typography h3 {
+  @apply mx-6 mb-2 mt-6 text-2xl font-bold;
+}
+
+.typography h4 {
+  @apply mx-6 mb-2 mt-4 text-xl font-bold;
+}
+
+.typography p {
+  @apply mx-6 my-4;
+}
+
+.typography blockquote {
+  @apply my-2 border-l-4 border-gray-800 px-6 py-2 italic dark:border-gray-200;
+}
+
+.typography blockquote > p,
+.typography li > p {
+  @apply mx-0;
+}
+
+.typography figure {
+  @apply mx-6 my-2;
+}
+
+.typography figure img {
+  @apply mx-auto;
+}
+
+.typography figcaption {
+  @apply mt-2 text-center text-sm opacity-60;
+}
+
+.typography aside {
+  @apply mx-6 my-4 text-center text-xl italic opacity-80;
+}
+
+.typography a[href] {
+  @apply border-b border-gray-800 dark:border-gray-200;
+}
+
+.typography ul {
+  @apply mx-12 mb-2 list-disc [&>li]:mt-2;
+}
+
+.typography ol {
+  @apply mx-12 mb-2 list-decimal [&>li]:mt-2;
+}
+
+.typography pre {
+  @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 p-4 dark:bg-slate-900;
+}
+
+.typography blockquote > pre,
+.typography li > pre {
+  @apply mx-0;
+}
+
+.typography table {
+  @apply mx-6 my-4;
+  width: calc(100% - 3rem);
+}
+
+.typography tr {
+  @apply m-0 border-b border-slate-300 p-0 dark:border-slate-700;
+}
+
+.typography th,
+.typography td {
+  @apply border border-slate-800 px-4 py-2 text-left dark:border-slate-700;
+
+  &[align="center"] {
+    @apply text-center;
+  }
+
+  &[align="right"] {
+    @apply text-right;
+  }
+}
+
+.typography th {
+  @apply font-bold;
+}
+
+.typography hr {
+  @apply mx-6 mb-2 h-0.5 appearance-none bg-slate-800 dark:bg-slate-700;
+  width: calc(100% - 3rem);
+}
+
+.typography code:not(pre code) {
+  @apply px-1;
+}

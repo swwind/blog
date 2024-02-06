@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Noto+Serif+SC&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:[color-scheme:dark];
+}
+
+::selection {
+  @apply bg-slate-300 dark:bg-slate-600;
+}
+
+pre ::selection {
+  @apply bg-slate-600;
+}
+
+.info {
+  @apply mx-6 my-2 mb-8 text-sm opacity-60;
+}
+
+.info :not(:first-child)::before {
+  @apply px-1;
+  content: "\2022";
+}
+
+.truth {
+  @apply bg-slate-800 text-slate-800 hover:text-slate-200 dark:bg-slate-200 dark:text-slate-200 dark:hover:text-slate-800;
+}
+
+rt {
+  font-size: 0.75em;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "Fira Code", monospace !important;
+}

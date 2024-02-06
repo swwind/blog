@@ -1,26 +1,28 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "target": "ES2017",
-    "module": "ES2020",
-    "lib": ["es2020", "DOM", "WebWorker", "DOM.Iterable"],
-    "jsx": "react-jsx",
-    "jsxImportSource": "@builder.io/qwik",
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "incremental": true,
-    "isolatedModules": true,
-    "outDir": "tmp",
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ESNext"],
     "noEmit": true,
-    "types": ["node", "vite/client"],
+    "strict": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "allowImportingTsExtensions": true,
+    "types": ["node", "vite/client", "@biliblitz/blitz/env"],
+    "resolveJsonModule": true,
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./app/*"]
     }
   },
-  "files": ["./.eslintrc.cjs"],
-  "include": ["src"]
+  "include": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "app/**/*.md",
+    "app/**/*.mdx",
+    "adapters/**/*.ts",
+    "vite.config.ts",
+    "server.js"
+  ]
 }

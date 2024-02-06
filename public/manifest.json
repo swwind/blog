@@ -1,9 +1,16 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "swwind-qwik-blog",
+  "name": "swwind's blog",
   "short_name": "swwind's blog",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "A Qwik project app."
+  "description": "swwind's personal blog",
+  "icons": [
+    {
+      "src": "/momoi.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
 }
