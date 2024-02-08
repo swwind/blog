@@ -15,7 +15,7 @@ pre[class*="language-"]:not(.language-math) {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  line-height: 1.5;
+  line-height: 1.5rem;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -25,25 +25,6 @@ pre[class*="language-"]:not(.language-math) {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"]:not(.language-math) {
-  padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
-}
-
-:not(pre) > code[class*="language-"]:not(.language-math),
-pre[class*="language-"]:not(.language-math) {
-  background: #2d2d2d;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"]:not(.language-math) {
-  padding: 0.1em;
-  border-radius: 0.3em;
-  white-space: normal;
 }
 
 .token.comment,

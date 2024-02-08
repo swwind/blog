@@ -5,8 +5,7 @@ import { blitz, blitzMdx } from "@biliblitz/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 import rehypeKatex from "rehype-katex";
-// @ts-ignore
-import rehypePrism from "@mapbox/rehype-prism";
+import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkRuby from "remark-ruby";

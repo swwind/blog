@@ -63,7 +63,23 @@
 }
 
 .typography pre:not(.language-math) {
-  @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 p-4 dark:bg-slate-900;
+  @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 py-4 dark:bg-slate-900;
+
+  code {
+    @apply grid;
+  }
+
+  .code-line {
+    @apply block border-l-4 border-transparent px-4;
+
+    &.highlight-line {
+      @apply border-blue-400 bg-blue-400/25;
+    }
+
+    &.line-number {
+      @apply before:inline-block before:w-8 before:pr-4 before:opacity-60 before:content-[attr(line)];
+    }
+  }
 }
 
 .typography blockquote > pre,

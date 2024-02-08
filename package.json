@@ -18,12 +18,12 @@
     "@biliblitz/blitz": "^0.0.3",
     "@biliblitz/node-server": "^0.0.3",
     "@hono/node-server": "^1.5.0",
-    "@mapbox/rehype-prism": "^0.9.0",
     "@mdx-js/preact": "^3.0.0",
     "@preact/signals": "^1.2.2",
     "preact": "^10.19.3",
     "preact-render-to-string": "^6.3.1",
     "rehype-katex": "^6.0.2",
+    "rehype-prism-plus": "^2.0.0",
     "remark-math": "^6.0.0",
     "remark-ruby": "^0.4.0"
   },
