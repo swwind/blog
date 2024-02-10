@@ -2,7 +2,9 @@ import { BlitzCityProvider, RouterHead, RouterOutlet } from "@biliblitz/blitz";
 
 import "./global.css";
 import "./prism-tomorrow.css";
-import "katex/dist/katex.min.css";
+
+import { MDXProvider } from "@mdx-js/preact";
+import { Katex } from "./components/katex/katex.tsx";
 
 export default function () {
   return (
@@ -15,7 +17,9 @@ export default function () {
         <RouterHead />
       </head>
       <body>
-        <RouterOutlet />
+        <MDXProvider components={{ katex: Katex }}>
+          <RouterOutlet />
+        </MDXProvider>
       </body>
     </BlitzCityProvider>
   );

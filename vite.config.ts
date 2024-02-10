@@ -4,7 +4,7 @@ import { blitz, blitzMdx } from "@biliblitz/vite";
 
 import tsconfigPaths from "vite-tsconfig-paths";
 
-import rehypeKatex from "rehype-katex";
+import rehypeKatex from "rehype-katex-browser";
 import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -16,11 +16,7 @@ export default defineConfig({
     preact(),
     blitzMdx({
       remarkPlugins: [remarkGfm, remarkMath, remarkRuby],
-      rehypePlugins: [
-        // @ts-ignore
-        rehypeKatex,
-        [rehypePrism, { ignoreMissing: true }],
-      ],
+      rehypePlugins: [[rehypePrism, { ignoreMissing: true }], rehypeKatex],
       jsxImportSource: "preact",
       providerImportSource: "@mdx-js/preact",
     }),

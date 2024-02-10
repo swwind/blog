@@ -20,28 +20,26 @@
     "@hono/node-server": "^1.5.0",
     "@mdx-js/preact": "^3.0.0",
     "@preact/signals": "^1.2.2",
+    "katex": "^0.16.9",
     "preact": "^10.19.3",
-    "preact-render-to-string": "^6.3.1",
-    "rehype-katex": "^6.0.2",
-    "rehype-prism-plus": "^2.0.0",
-    "remark-math": "^6.0.0",
-    "remark-ruby": "^0.4.0"
+    "preact-render-to-string": "^6.3.1"
   },
   "devDependencies": {
     "@biliblitz/vite": "^0.0.3",
     "@preact/preset-vite": "^2.8.1",
+    "@types/katex": "^0.16.7",
     "@types/node": "^20.9.0",
     "autoprefixer": "^10.4.17",
-    "katex": "^0.16.9",
     "postcss": "^8.4.34",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "rehype-katex-browser": "^1.0.0",
+    "rehype-prism-plus": "^2.0.0",
     "remark-gfm": "^4.0.0",
+    "remark-math": "^6.0.0",
+    "remark-ruby": "^0.4.0",
     "tailwindcss": "^3.4.1",
     "vite": "^5.0.12",
     "vite-tsconfig-paths": "^4.3.1"
-  },
-  "resolutions": {
-    "katex": "0.15.6"
   }
 }

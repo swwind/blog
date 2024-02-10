@@ -62,7 +62,7 @@
   @apply mx-12 mb-2 list-decimal [&>li]:mt-2;
 }
 
-.typography pre:not(.language-math) {
+.typography pre[class^="language-"] {
   @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 py-4 dark:bg-slate-900;
 
   code {
@@ -70,10 +70,10 @@
   }
 
   .code-line {
-    @apply block border-l-4 border-transparent px-4;
+    @apply block border-l-2 border-transparent px-4;
 
     &.highlight-line {
-      @apply border-blue-400 bg-blue-400/25;
+      @apply border-green-400 bg-green-400/25 dark:border-blue-400 dark:bg-blue-400/25;
     }
 
     &.line-number {
