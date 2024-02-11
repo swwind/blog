@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@biliblitz/blitz':
-    specifier: ^0.0.4
-    version: 0.0.4(@preact/signals@1.2.2)(preact-render-to-string@6.3.1)(preact@10.19.3)
+    specifier: ^0.0.5
+    version: 0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3)
   '@biliblitz/node-server':
-    specifier: ^0.0.4
-    version: 0.0.4
+    specifier: ^0.0.5
+    version: 0.0.5
   '@hono/node-server':
     specifier: ^1.5.0
     version: 1.7.0
@@ -32,8 +32,8 @@ dependencies:
 
 devDependencies:
   '@biliblitz/vite':
-    specifier: ^0.0.4
-    version: 0.0.4(@preact/signals@1.2.2)(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12)
+    specifier: ^0.0.5
+    version: 0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12)
   '@preact/preset-vite':
     specifier: ^2.8.1
     version: 2.8.1(@babel/core@7.23.9)(preact@10.19.3)(vite@5.0.12)
@@ -79,12 +79,15 @@ devDependencies:
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
+  typescript:
+    specifier: ^5.3.3
+    version: 5.3.3
   vite:
     specifier: ^5.0.12
     version: 5.0.12(@types/node@20.11.16)
   vite-tsconfig-paths:
     specifier: ^4.3.1
-    version: 4.3.1(vite@5.0.12)
+    version: 4.3.1(typescript@5.3.3)(vite@5.0.12)
 
 packages:
 
@@ -338,25 +341,23 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@biliblitz/blitz@0.0.4(@preact/signals@1.2.2)(preact-render-to-string@6.3.1)(preact@10.19.3):
-    resolution: {integrity: sha512-ELXgTWTtXaGbccFx1PZY78IC/YVz0aj9K6WFF8c8M2VjzZFCM++gWatQPCqPS+Kii3rnG+/C3aONW+PGsdvJ0A==}
+  /@biliblitz/blitz@0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3):
+    resolution: {integrity: sha512-930QF9i/FKr2bv46xck3MN92cOcItOFSfnBkjsO63cxPHog7fXsx/sDjLtSnsDG3QcSDEzsm6hhU63K9wvV81w==}
     peerDependencies:
-      '@preact/signals': ^1
       preact: ^10
       preact-render-to-string: ^6
     dependencies:
-      '@preact/signals': 1.2.2(preact@10.19.3)
       preact: 10.19.3
       preact-render-to-string: 6.3.1(preact@10.19.3)
 
-  /@biliblitz/node-server@0.0.4:
-    resolution: {integrity: sha512-4u3tQlwU6lnAoLKzNto/acC7dE7QfxuWWkIt7Fut95J+nGy71qoZt9v53ih2pC1D9xcxofVfyJOpdRFiAO9ovg==}
+  /@biliblitz/node-server@0.0.5:
+    resolution: {integrity: sha512-hVM4AQ00U5erG1w0ZK5bfT8xqLP8DqYw2C2CTCq9Y2zmdEZ47u6CDVkxUr8Yro5oMTn2xqPUC1ViNcVaHAag+A==}
     dependencies:
       hono: 3.12.11
     dev: false
 
-  /@biliblitz/vite@0.0.4(@preact/signals@1.2.2)(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12):
-    resolution: {integrity: sha512-T/2H77vaFfaEAoYifpFrQNarUnp+CwMo6FrEIfKSXUJ/GT0atAC7dV+9ZSZv8sVVdhafGfBilUbyTag2AreGKQ==}
+  /@biliblitz/vite@0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12):
+    resolution: {integrity: sha512-GCv2AMkBeaj5f8GB1un5VRPZwnSL9qi/+UcofQ36z2Iwp/oqjzdHTk9epxjP57wiugtEWWqxhHG90uiotGpxKQ==}
     peerDependencies:
       vite: '>=5'
     dependencies:
@@ -365,7 +366,7 @@ packages:
       '@babel/parser': 7.23.9
       '@babel/traverse': 7.23.9
       '@babel/types': 7.23.9
-      '@biliblitz/blitz': 0.0.4(@preact/signals@1.2.2)(preact-render-to-string@6.3.1)(preact@10.19.3)
+      '@biliblitz/blitz': 0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3)
       '@hono/node-server': 1.7.0
       '@mdx-js/mdx': 3.0.0
       chalk: 5.3.0
@@ -373,7 +374,6 @@ packages:
       vfile-matter: 5.0.0
       vite: 5.0.12(@types/node@20.11.16)
     transitivePeerDependencies:
-      - '@preact/signals'
       - preact
       - preact-render-to-string
       - supports-color
@@ -724,6 +724,7 @@ packages:
 
   /@preact/signals-core@1.5.1:
     resolution: {integrity: sha512-dE6f+WCX5ZUDwXzUIWNMhhglmuLpqJhuy3X3xHrhZYI0Hm2LyQwOu0l9mdPiWrVNsE+Q7txOnJPgtIqHCYoBVA==}
+    dev: false
 
   /@preact/signals@1.2.2(preact@10.19.3):
     resolution: {integrity: sha512-ColCqdo4cRP18bAuIR4Oik5rDpiyFtPIJIygaYPMEAwTnl4buWkBOflGBSzhYyPyJfKpkwlekrvK+1pzQ2ldWw==}
@@ -732,6 +733,7 @@ packages:
     dependencies:
       '@preact/signals-core': 1.5.1
       preact: 10.19.3
+    dev: false
 
   /@prefresh/babel-plugin@0.5.1:
     resolution: {integrity: sha512-uG3jGEAysxWoyG3XkYfjYHgaySFrSsaEb4GagLzYaxlydbuREtaX+FTxuIidp241RaLl85XoHg9Ej6E4+V1pcg==}
@@ -3110,7 +3112,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsconfck@3.0.1:
+  /tsconfck@3.0.1(typescript@5.3.3):
     resolution: {integrity: sha512-7ppiBlF3UEddCLeI1JRx5m2Ryq+xk4JrZuq4EuYXykipebaq1dV0Fhgr1hb7CkmHt32QSgOZlcqVLEtHBG4/mg==}
     engines: {node: ^18 || >=20}
     hasBin: true
@@ -3119,6 +3121,14 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+    dependencies:
+      typescript: 5.3.3
+    dev: true
+
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
     dev: true
 
   /undici-types@5.26.5:
@@ -3269,7 +3279,7 @@ packages:
       vfile-message: 4.0.2
     dev: true
 
-  /vite-tsconfig-paths@4.3.1(vite@5.0.12):
+  /vite-tsconfig-paths@4.3.1(typescript@5.3.3)(vite@5.0.12):
     resolution: {integrity: sha512-cfgJwcGOsIxXOLU/nELPny2/LUD/lcf1IbfyeKTv2bsupVbTH/xpFtdQlBmIP1GEK2CjjLxYhFfB+QODFAx5aw==}
     peerDependencies:
       vite: '*'
@@ -3279,7 +3289,7 @@ packages:
     dependencies:
       debug: 4.3.4
       globrex: 0.1.2
-      tsconfck: 3.0.1
+      tsconfck: 3.0.1(typescript@5.3.3)
       vite: 5.0.12(@types/node@20.11.16)
     transitivePeerDependencies:
       - supports-color

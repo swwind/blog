@@ -11,18 +11,12 @@
     "jsxImportSource": "preact",
     "allowImportingTsExtensions": true,
     "types": ["node", "vite/client", "@biliblitz/blitz/env"],
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     "paths": {
       "~/*": ["./app/*"]
     }
   },
-  "include": [
-    "app/**/*.ts",
-    "app/**/*.tsx",
-    "app/**/*.md",
-    "app/**/*.mdx",
-    "adapters/**/*.ts",
-    "vite.config.ts",
-    "server.js"
-  ]
+  "include": ["app", "adapters", "vite.config.ts", "server.js"]
 }
