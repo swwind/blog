@@ -13,7 +13,7 @@ import { Katex } from "./components/katex/katex.tsx";
 
 export default function () {
   return (
-    <BlitzCityProvider lang="en">
+    <BlitzCityProvider lang="zh-CN">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
