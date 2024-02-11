@@ -1,7 +1,10 @@
-import { useEffect, useRef } from "preact/hooks";
 import katex from "katex";
 
-import "katex/dist/katex.css";
+// import { Fragment, jsx, jsxs } from "preact/jsx-runtime";
+// import { fromHtml } from "hast-util-from-html";
+// import { toJsxRuntime } from "hast-util-to-jsx-runtime";
+
+import "katex/dist/katex.min.css";
 
 type Props = {
   mode: "inline" | "display";
@@ -9,14 +12,21 @@ type Props = {
 };
 
 export function Katex(props: Props) {
-  const ref = useRef<HTMLSpanElement>(null);
+  const html = katex.renderToString(props.content, {
+    displayMode: props.mode === "display",
+    throwOnError: false,
+  });
 
-  useEffect(() => {
-    katex.render(props.content, ref.current!, {
-      displayMode: props.mode === "display",
-      throwOnError: false,
-    });
-  }, [props.mode, props.content]);
+  // const hast = fromHtml(html, { fragment: true });
 
-  return <span ref={ref} data-katex={props.content}></span>;
+  // return toJsxRuntime(hast, {
+  //   Fragment,
+  //   // @ts-ignore
+  //   jsx,
+  //   // @ts-ignore
+  //   jsxs,
+  //   elementAttributeNameCase: "html",
+  // });
+
+  return <span dangerouslySetInnerHTML={{ __html: html }}></span>;
 }
