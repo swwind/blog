@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://blog.sww.moe/sitemap.xml
