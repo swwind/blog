@@ -62,6 +62,8 @@
   @apply mx-12 mb-2 list-decimal [&>li]:mt-2;
 }
 
+/* rehype-prism-plus */
+
 .typography pre[class^="language-"] {
   @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 py-4 dark:bg-slate-900;
 

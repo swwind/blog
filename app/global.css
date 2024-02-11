@@ -32,3 +32,30 @@ pre ::selection {
 rt {
   font-size: 0.75em;
 }
+
+/* rehype-autolink-headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  a[aria-hidden] {
+    @apply relative opacity-0;
+    transition: opacity 0.3s;
+
+    .icon.icon-link {
+      @apply absolute right-0 px-2;
+
+      &::before {
+        content: "#";
+        @apply h-full text-slate-500;
+      }
+    }
+  }
+
+  &:hover a[aria-hidden] {
+    @apply opacity-100;
+  }
+}
