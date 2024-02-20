@@ -9,7 +9,9 @@
     "build:server": "vite build --outDir dist/server --ssr app/entry.server.tsx",
     "build:static": "vite build --outDir dist/static --ssr -c adapters/static/vite.config.ts",
     "fmt": "prettier --write .",
-    "fmt.check": "prettier --check ."
+    "fmt.check": "prettier --check .",
+    "start": "node server.js",
+    "start:static": "node server-static.js"
   },
   "keywords": [],
   "author": "",

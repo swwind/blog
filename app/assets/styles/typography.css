@@ -70,7 +70,7 @@
   }
 
   .code-line {
-    @apply block border-l-2 border-transparent px-4;
+    @apply block border-l-4 border-transparent px-4;
 
     &.highlight-line {
       @apply border-green-400 bg-green-400/25 dark:border-blue-400 dark:bg-blue-400/25;
