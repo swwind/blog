@@ -7,7 +7,7 @@
     "build": "pnpm run build:client && pnpm run build:server && pnpm run build:static",
     "build:client": "vite build --outDir dist/client --manifest",
     "build:server": "vite build --outDir dist/server --ssr app/entry.server.tsx",
-    "build:static": "vite build --outDir dist/static --ssr -c adapters/static/vite.config.ts && cp -r public/* dist/static && cp -r dist/client/build dist/static",
+    "build:static": "vite build --outDir dist/static --ssr -c adapters/static/vite.config.ts",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check ."
   },

@@ -4,12 +4,14 @@
   "short_name": "swwind's blog",
   "start_url": ".",
   "display": "standalone",
+  "theme_color": "#fff",
   "background_color": "#fff",
   "description": "swwind's personal blog",
   "icons": [
     {
       "src": "/momoi.png",
       "sizes": "any",
+      "purpose": "any",
       "type": "image/png"
     }
   ]

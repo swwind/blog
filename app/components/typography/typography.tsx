@@ -1,4 +1,3 @@
-import "./typography.css";
 import { ComponentChildren } from "preact";
 
 export const Typography = (props: { children?: ComponentChildren }) => {

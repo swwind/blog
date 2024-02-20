@@ -4,8 +4,6 @@ import katex from "katex";
 // import { fromHtml } from "hast-util-from-html";
 // import { toJsxRuntime } from "hast-util-to-jsx-runtime";
 
-import "katex/dist/katex.min.css";
-
 type Props = {
   mode: "inline" | "display";
   content: string;

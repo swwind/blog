@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Noto+Serif+SC&display=swap");
+@import "./assets/styles/prism-tomorrow.css";
+@import "./assets/styles/google-fonts.css";
+@import "./assets/styles/typography.css";
+@import "katex/dist/katex.min.css";
 
 @tailwind base;
 @tailwind components;
