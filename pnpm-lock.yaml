@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@biliblitz/blitz':
-    specifier: ^0.0.5
-    version: 0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3)
+    specifier: ^0.0.6
+    version: 0.0.6(preact-render-to-string@6.3.1)(preact@10.19.3)
   '@biliblitz/node-server':
-    specifier: ^0.0.5
-    version: 0.0.5
+    specifier: ^0.0.6
+    version: 0.0.6
   '@hono/node-server':
     specifier: ^1.5.0
     version: 1.7.0
@@ -32,8 +32,8 @@ dependencies:
 
 devDependencies:
   '@biliblitz/vite':
-    specifier: ^0.0.5
-    version: 0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12)
+    specifier: ^0.0.6
+    version: 0.0.6(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12)
   '@preact/preset-vite':
     specifier: ^2.8.1
     version: 2.8.1(@babel/core@7.23.9)(preact@10.19.3)(vite@5.0.12)
@@ -341,8 +341,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@biliblitz/blitz@0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3):
-    resolution: {integrity: sha512-930QF9i/FKr2bv46xck3MN92cOcItOFSfnBkjsO63cxPHog7fXsx/sDjLtSnsDG3QcSDEzsm6hhU63K9wvV81w==}
+  /@biliblitz/blitz@0.0.6(preact-render-to-string@6.3.1)(preact@10.19.3):
+    resolution: {integrity: sha512-3OluuAHkJTrxQt4ap7flKgT7FTBQRI2zhzQN6KsDwDKeHq0aL3ftP4oHfDxoAYNFsyP810ukcaAgMUg3PJom+w==}
     peerDependencies:
       preact: ^10
       preact-render-to-string: ^6
@@ -350,14 +350,14 @@ packages:
       preact: 10.19.3
       preact-render-to-string: 6.3.1(preact@10.19.3)
 
-  /@biliblitz/node-server@0.0.5:
-    resolution: {integrity: sha512-hVM4AQ00U5erG1w0ZK5bfT8xqLP8DqYw2C2CTCq9Y2zmdEZ47u6CDVkxUr8Yro5oMTn2xqPUC1ViNcVaHAag+A==}
+  /@biliblitz/node-server@0.0.6:
+    resolution: {integrity: sha512-9yzaGuLM1AzQA27EAhvxK3gK7o6OwG2yBAiF2ZaLTcC6wqbs7BqcsTUmecUc0tEfv69bHZGpIkXSE6rrIpQDWA==}
     dependencies:
       hono: 3.12.11
     dev: false
 
-  /@biliblitz/vite@0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12):
-    resolution: {integrity: sha512-GCv2AMkBeaj5f8GB1un5VRPZwnSL9qi/+UcofQ36z2Iwp/oqjzdHTk9epxjP57wiugtEWWqxhHG90uiotGpxKQ==}
+  /@biliblitz/vite@0.0.6(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12):
+    resolution: {integrity: sha512-mOkBkYdzk1hwl6dJigRIpjiLUYPfSMFmOZmovAHbxOXzlh1pt39sX6YU4qkCwSwqZ0cuGplc6oLA1gl0bQCOwA==}
     peerDependencies:
       vite: '>=5'
     dependencies:
@@ -366,7 +366,7 @@ packages:
       '@babel/parser': 7.23.9
       '@babel/traverse': 7.23.9
       '@babel/types': 7.23.9
-      '@biliblitz/blitz': 0.0.5(preact-render-to-string@6.3.1)(preact@10.19.3)
+      '@biliblitz/blitz': 0.0.6(preact-render-to-string@6.3.1)(preact@10.19.3)
       '@hono/node-server': 1.7.0
       '@mdx-js/mdx': 3.0.0
       chalk: 5.3.0
