@@ -20,6 +20,11 @@ export default function () {
         <link rel="manifest" href="/manifest.json" />
         <link rel="shortcut icon" href="/momoi.webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin=""
+        />
         <RouterHead />
       </head>
       <body>
