@@ -1,5 +1,10 @@
+import { meta$ } from "@biliblitz/blitz/server";
 import { useSignal } from "@preact/signals";
 import { useRef } from "preact/hooks";
+
+export const meta = meta$(() => {
+  return { title: "生成炫酷的 ECDH 密钥对" };
+});
 
 export default () => {
   const logs = useSignal("");

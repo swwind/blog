@@ -18,11 +18,6 @@ export default function () {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="shortcut icon" href="/momoi.webp" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin=""
-        />
         <RouterHead />
       </head>
       <body>
