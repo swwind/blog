@@ -7,7 +7,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkRuby from "remark-ruby";
-import rehypeKatex from "rehype-katex-browser";
+import rehypeKatex from "rehype-katex";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -25,7 +25,6 @@ export default defineConfig({
         rehypeAutolinkHeadings,
       ],
       jsxImportSource: "preact",
-      providerImportSource: "@mdx-js/preact",
     }),
     tsconfigPaths(),
   ],

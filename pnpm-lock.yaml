@@ -14,9 +14,6 @@ dependencies:
   '@hono/node-server':
     specifier: ^1.5.0
     version: 1.7.0
-  '@mdx-js/preact':
-    specifier: ^3.0.0
-    version: 3.0.0(preact@10.19.3)
   '@preact/signals':
     specifier: ^1.2.2
     version: 1.2.2(preact@10.19.3)
@@ -61,9 +58,9 @@ devDependencies:
   rehype-autolink-headings:
     specifier: ^7.1.0
     version: 7.1.0
-  rehype-katex-browser:
-    specifier: ^1.0.0
-    version: 1.0.0
+  rehype-katex:
+    specifier: ^6.0.0
+    version: 6.0.3
   rehype-prism-plus:
     specifier: ^2.0.0
     version: 2.0.0
@@ -665,15 +662,6 @@ packages:
       - supports-color
     dev: true
 
-  /@mdx-js/preact@3.0.0(preact@10.19.3):
-    resolution: {integrity: sha512-0r7Txv5IBBNdX88muCei4nwbjJ409RHrR8mzMwPWdQHTeDyqp/mGGmy5C0Ssse3ZKYYXiKVofm58EroDChyWNw==}
-    peerDependencies:
-      preact: '>=10.0.0'
-    dependencies:
-      '@types/mdx': 2.0.11
-      preact: 10.19.3
-    dev: false
-
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -917,6 +905,10 @@ packages:
       '@types/unist': 3.0.2
     dev: true
 
+  /@types/katex@0.14.0:
+    resolution: {integrity: sha512-+2FW2CcT0K3P+JMR8YG846bmDwplKUTsWgT2ENwdQ1UdVfRk3GQrh6Mi4sTopy30gI8Uau5CEqHTDZ6YvWIUPA==}
+    dev: true
+
   /@types/katex@0.16.7:
     resolution: {integrity: sha512-HMwFiRujE5PjrgwHQ25+bsLJgowjGjm5Z8FVSf0N6PwgJrwxH0QxzHYDcKsTfV3wva0vzrpqMTJS2jXPr5BMEQ==}
     dev: true
@@ -935,6 +927,7 @@ packages:
 
   /@types/mdx@2.0.11:
     resolution: {integrity: sha512-HM5bwOaIQJIQbAYfax35HCKxx7a3KrK3nBtIqJgSOitivTD1y3oW9P3rxY9RkXYPUk7y/AjAohfHKmFpGE79zw==}
+    dev: true
 
   /@types/ms@0.7.34:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
@@ -1524,6 +1517,32 @@ packages:
       function-bind: 1.1.2
     dev: true
 
+  /hast-util-from-dom@4.2.0:
+    resolution: {integrity: sha512-t1RJW/OpJbCAJQeKi3Qrj1cAOLA0+av/iPFori112+0X7R3wng+jxLA+kXec8K4szqPRGI8vPxbbpEYvvpwaeQ==}
+    dependencies:
+      hastscript: 7.2.0
+      web-namespaces: 2.0.1
+    dev: true
+
+  /hast-util-from-html-isomorphic@1.0.0:
+    resolution: {integrity: sha512-Yu480AKeOEN/+l5LA674a+7BmIvtDj24GvOt7MtQWuhzUwlaaRWdEPXAh3Qm5vhuthpAipFb2vTetKXWOjmTvw==}
+    dependencies:
+      '@types/hast': 2.3.10
+      hast-util-from-dom: 4.2.0
+      hast-util-from-html: 1.0.2
+      unist-util-remove-position: 4.0.2
+    dev: true
+
+  /hast-util-from-html@1.0.2:
+    resolution: {integrity: sha512-LhrTA2gfCbLOGJq2u/asp4kwuG0y6NhWTXiPKP+n0qNukKy7hc10whqqCFfyvIA1Q5U5d0sp9HhNim9gglEH4A==}
+    dependencies:
+      '@types/hast': 2.3.10
+      hast-util-from-parse5: 7.1.2
+      parse5: 7.1.2
+      vfile: 5.3.7
+      vfile-message: 3.1.4
+    dev: true
+
   /hast-util-from-html@2.0.1:
     resolution: {integrity: sha512-RXQBLMl9kjKVNkJTIO6bZyb2n+cUH8LFaSSzo82jiLT6Tfc+Pt7VQCS+/h3YwG4jaNE2TA2sdJisGWR+aJrp0g==}
     dependencies:
@@ -1533,6 +1552,18 @@ packages:
       parse5: 7.1.2
       vfile: 6.0.1
       vfile-message: 4.0.2
+    dev: true
+
+  /hast-util-from-parse5@7.1.2:
+    resolution: {integrity: sha512-Nz7FfPBuljzsN3tCQ4kCBKqdNhQE2l0Tn+X1ubgKBPRoiDIu1mL08Cfw4k7q71+Duyaw7DXDN+VTAp4Vh3oCOw==}
+    dependencies:
+      '@types/hast': 2.3.10
+      '@types/unist': 2.0.10
+      hastscript: 7.2.0
+      property-information: 6.4.1
+      vfile: 5.3.7
+      vfile-location: 4.1.0
+      web-namespaces: 2.0.1
     dev: true
 
   /hast-util-from-parse5@8.0.1:
@@ -1710,6 +1741,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       binary-extensions: 2.2.0
+    dev: true
+
+  /is-buffer@2.0.5:
+    resolution: {integrity: sha512-i2R6zNFDwgEHJyQUtJEk0XFi1i0dPFn/oqjK3/vPCcDeJvW5NQ83V8QbicfF1SupOaB0h8ntgBC2YiE7dfyctQ==}
+    engines: {node: '>=4'}
     dev: true
 
   /is-core-module@2.13.1:
@@ -2777,10 +2813,14 @@ packages:
       unist-util-visit: 5.0.0
     dev: true
 
-  /rehype-katex-browser@1.0.0:
-    resolution: {integrity: sha512-BOZupdBSxDTKdAX6l+iWgu7BM1OEcka3xREegF2cigJ7nGn+qilF0hY0Io4oPiSpuWDaWOdCai0Mr7vDI8cwfA==}
+  /rehype-katex@6.0.3:
+    resolution: {integrity: sha512-ByZlRwRUcWegNbF70CVRm2h/7xy7jQ3R9LaY4VVSvjnoVWwWVhNL60DiZsBpC5tSzYQOCvDbzncIpIjPZWodZA==}
     dependencies:
+      '@types/hast': 2.3.10
+      '@types/katex': 0.14.0
+      hast-util-from-html-isomorphic: 1.0.0
       hast-util-to-text: 3.1.2
+      katex: 0.16.9
       unist-util-visit: 4.1.2
     dev: true
 
@@ -3193,6 +3233,13 @@ packages:
       '@types/unist': 3.0.2
     dev: true
 
+  /unist-util-remove-position@4.0.2:
+    resolution: {integrity: sha512-TkBb0HABNmxzAcfLf4qsIbFbaPDvMO6wa3b3j4VcEzFVaw1LBKwnW4/sRJ/atSLSzoIg41JWEdnE7N6DIhGDGQ==}
+    dependencies:
+      '@types/unist': 2.0.10
+      unist-util-visit: 4.1.2
+    dev: true
+
   /unist-util-remove-position@5.0.0:
     resolution: {integrity: sha512-Hp5Kh3wLxv0PHj9m2yZhhLt58KzPtEYKQQ4yxfYFEO7EvHwzyDYnduhHnY1mDxoqr7VUwVuHXk9RXKIiYS1N8Q==}
     dependencies:
@@ -3202,6 +3249,12 @@ packages:
 
   /unist-util-stringify-position@2.0.3:
     resolution: {integrity: sha512-3faScn5I+hy9VleOq/qNbAd6pAx7iH5jYBMS9I1HgQVijz/4mv5Bvw5iw1sC/90CODiKo81G/ps8AJrISn687g==}
+    dependencies:
+      '@types/unist': 2.0.10
+    dev: true
+
+  /unist-util-stringify-position@3.0.3:
+    resolution: {integrity: sha512-k5GzIBZ/QatR8N5X2y+drfpWG8IDBzdnVj6OInRNWm1oXrzydiaAT2OQiA8DPRRZyAKb9b6I2a6PxYklZD0gKg==}
     dependencies:
       '@types/unist': 2.0.10
     dev: true
@@ -3257,6 +3310,13 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
+  /vfile-location@4.1.0:
+    resolution: {integrity: sha512-YF23YMyASIIJXpktBa4vIGLJ5Gs88UB/XePgqPmTa7cDA+JeO3yclbpheQYCHjVHBn/yePzrXuygIL+xbvRYHw==}
+    dependencies:
+      '@types/unist': 2.0.10
+      vfile: 5.3.7
+    dev: true
+
   /vfile-location@5.0.2:
     resolution: {integrity: sha512-NXPYyxyBSH7zB5U6+3uDdd6Nybz6o6/od9rk8bp9H8GR3L+cm/fC0uUTbqBmUTnMCUDslAGBOIKNfvvb+gGlDg==}
     dependencies:
@@ -3271,11 +3331,27 @@ packages:
       yaml: 2.3.4
     dev: true
 
+  /vfile-message@3.1.4:
+    resolution: {integrity: sha512-fa0Z6P8HUrQN4BZaX05SIVXic+7kE3b05PWAtPuYP9QLHsLKYR7/AlLW3NtOrpXRLeawpDLMsVkmk5DG0NXgWw==}
+    dependencies:
+      '@types/unist': 2.0.10
+      unist-util-stringify-position: 3.0.3
+    dev: true
+
   /vfile-message@4.0.2:
     resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
     dependencies:
       '@types/unist': 3.0.2
       unist-util-stringify-position: 4.0.0
+    dev: true
+
+  /vfile@5.3.7:
+    resolution: {integrity: sha512-r7qlzkgErKjobAmyNIkkSpizsFPYiUPuJb5pNW1RB4JcYVZhs4lIbVqk8XPk033CV/1z8ss5pkax8SuhGpcG8g==}
+    dependencies:
+      '@types/unist': 2.0.10
+      is-buffer: 2.0.5
+      unist-util-stringify-position: 3.0.3
+      vfile-message: 3.1.4
     dev: true
 
   /vfile@6.0.1:
