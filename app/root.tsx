@@ -1,4 +1,10 @@
-import { BlitzCityProvider, RouterHead, RouterOutlet } from "@biliblitz/blitz";
+import {
+  BlitzCityProvider,
+  Link,
+  RouterHead,
+  RouterOutlet,
+} from "@biliblitz/blitz";
+import { MDXProvider } from "@mdx-js/preact";
 
 import "./global.css";
 
@@ -13,7 +19,9 @@ export default function () {
         <RouterHead />
       </head>
       <body>
-        <RouterOutlet />
+        <MDXProvider components={{ a: Link }}>
+          <RouterOutlet />
+        </MDXProvider>
       </body>
     </BlitzCityProvider>
   );

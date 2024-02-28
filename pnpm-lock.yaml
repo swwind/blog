@@ -34,6 +34,9 @@ devDependencies:
   '@biliblitz/vite':
     specifier: ^0.0.7
     version: 0.0.7(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12)
+  '@mdx-js/preact':
+    specifier: ^3.0.1
+    version: 3.0.1(preact@10.19.3)
   '@preact/preset-vite':
     specifier: ^2.8.1
     version: 2.8.1(@babel/core@7.23.9)(preact@10.19.3)(vite@5.0.12)
@@ -660,6 +663,15 @@ packages:
       vfile: 6.0.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@mdx-js/preact@3.0.1(preact@10.19.3):
+    resolution: {integrity: sha512-YBCFnhdlYC8Gef1qrC3WZeeMU3ghSyjhgjLYO1JpS4PzcLcz5Q7iNy2/jFWdAUrja1vNAR1b/sQDa6bDbTTpvw==}
+    peerDependencies:
+      preact: '>=10.0.0'
+    dependencies:
+      '@types/mdx': 2.0.11
+      preact: 10.19.3
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:

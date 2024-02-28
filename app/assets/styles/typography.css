@@ -62,7 +62,8 @@
 
 /* rehype-prism-plus */
 
-.typography pre[class^="language-"] {
+.typography pre[class^="language-"],
+.typography pre:has(code:not(.language-math)) {
   @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 py-4 dark:bg-slate-900;
 
   code {

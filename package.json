@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@biliblitz/vite": "^0.0.7",
+    "@mdx-js/preact": "^3.0.1",
     "@preact/preset-vite": "^2.8.1",
     "@types/katex": "^0.16.7",
     "@types/node": "^20.9.0",

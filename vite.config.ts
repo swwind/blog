@@ -20,11 +20,13 @@ export default defineConfig({
       remarkPlugins: [remarkGfm, remarkMath, remarkRuby],
       rehypePlugins: [
         [rehypePrism, { ignoreMissing: true }],
+        // @ts-ignore
         rehypeKatex,
         rehypeSlug,
         rehypeAutolinkHeadings,
       ],
       jsxImportSource: "preact",
+      providerImportSource: "@mdx-js/preact",
     }),
     tsconfigPaths(),
   ],
