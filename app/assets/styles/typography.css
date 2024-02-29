@@ -122,3 +122,7 @@
 .typography code:not(pre code) {
   @apply px-1;
 }
+
+.typography b {
+  @apply font-bold;
+}

@@ -40,12 +40,18 @@ devDependencies:
   '@preact/preset-vite':
     specifier: ^2.8.1
     version: 2.8.1(@babel/core@7.23.9)(preact@10.19.3)(vite@5.0.12)
+  '@types/blueimp-md5':
+    specifier: ^2.18.2
+    version: 2.18.2
   '@types/katex':
     specifier: ^0.16.7
     version: 0.16.7
   '@types/node':
     specifier: ^20.9.0
     version: 20.11.16
+  '@types/ua-parser-js':
+    specifier: ^0.7.39
+    version: 0.7.39
   autoprefixer:
     specifier: ^10.4.17
     version: 10.4.17(postcss@8.4.34)
@@ -82,9 +88,15 @@ devDependencies:
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
+  turnstile-types:
+    specifier: ^1.2.0
+    version: 1.2.0
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
+  ua-parser-js:
+    specifier: '1'
+    version: 1.0.37
   vite:
     specifier: ^5.0.12
     version: 5.0.12(@types/node@20.11.16)
@@ -889,6 +901,10 @@ packages:
       '@types/estree': 1.0.5
     dev: true
 
+  /@types/blueimp-md5@2.18.2:
+    resolution: {integrity: sha512-dJ9yRry9Olt5GAWlgCtE5dK9d/Dfhn/V7hna86eEO2Pn76+E8Y0S0n61iEUEGhWXXgtKtHxtZLVNwL8X+vLHzg==}
+    dev: true
+
   /@types/debug@4.1.12:
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
     dependencies:
@@ -953,6 +969,10 @@ packages:
 
   /@types/prismjs@1.26.3:
     resolution: {integrity: sha512-A0D0aTXvjlqJ5ZILMz3rNfDBOx9hHxLZYv2by47Sm/pqW35zzjusrZTryatjN/Rf8Us2gZrJD+KeHbUSTux1Cw==}
+    dev: true
+
+  /@types/ua-parser-js@0.7.39:
+    resolution: {integrity: sha512-P/oDfpofrdtF5xw433SPALpdSchtJmY7nsJItf8h3KXqOslkbySh8zq4dSWXH2oTjRvJ5PczVEoCZPow6GicLg==}
     dev: true
 
   /@types/unist@2.0.10:
@@ -3184,10 +3204,18 @@ packages:
       typescript: 5.3.3
     dev: true
 
+  /turnstile-types@1.2.0:
+    resolution: {integrity: sha512-cTtNEtCYpcXeXR5AOD0YR0xZpXk1iZeTOuXT5vAGNowGGdgapC+k6m/lOVSkmDOUopZmPtmu311XeULIro4gUA==}
+    dev: true
+
   /typescript@5.3.3:
     resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: true
+
+  /ua-parser-js@1.0.37:
+    resolution: {integrity: sha512-bhTyI94tZofjo+Dn8SN6Zv8nBDvyXTymAdM3LDI/0IboIUwTu1rEhW7v2TfiVsoYWgkQ4kOVqnI8APUFbIQIFQ==}
     dev: true
 
   /undici-types@5.26.5:

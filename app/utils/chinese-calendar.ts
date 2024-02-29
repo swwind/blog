@@ -12,3 +12,10 @@ export function toChineseCalendar(date: number | Date) {
 export function toYangliCalendar(date: number | Date) {
   return new Intl.DateTimeFormat("zh-CN", { dateStyle: "long" }).format(date);
 }
+
+export function formatDate(date: number | Date) {
+  return new Intl.DateTimeFormat("zh-CN", {
+    dateStyle: "long",
+    // timeStyle: "medium",
+  }).format(date);
+}

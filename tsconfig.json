@@ -10,7 +10,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "allowImportingTsExtensions": true,
-    "types": ["node", "vite/client", "@biliblitz/blitz/env"],
+    "types": ["node", "vite/client", "@biliblitz/blitz/env", "turnstile-types"],
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,

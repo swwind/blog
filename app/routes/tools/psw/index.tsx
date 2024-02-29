@@ -1,15 +1,7 @@
 import { meta$ } from "@biliblitz/blitz/server";
-import {
-  Signal,
-  useComputed,
-  useSignal,
-  useSignalEffect,
-} from "@preact/signals";
+import { Signal, useComputed, useSignal } from "@preact/signals";
 import { JSX } from "preact/jsx-runtime";
-
-// @ts-ignore
 import md5 from "blueimp-md5";
-import { useEffect } from "preact/hooks";
 
 export const meta = meta$(() => {
   return { title: "鸡肋的哈希密码生成器" };
