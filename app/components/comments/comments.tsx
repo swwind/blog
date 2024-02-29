@@ -19,7 +19,9 @@ type Comment = {
   userAgent: string;
 };
 
-const origin = manifest["comment-api-origin"];
+const origin = import.meta.env.DEV
+  ? "http://localhost:8787"
+  : manifest["comment-api-origin"];
 
 const github = (id: string) => `https://github.com/${id}.png`;
 const qq = (id: string) => `https://q1.qlogo.cn/g?b=qq&nk=${id}&s=100`;
