@@ -35,7 +35,7 @@ export const Christmas = () => {
 
     const ctx = cvs.getContext("2d");
     if (!ctx) {
-      throw new Error("You are using IE");
+      throw new Error("Hello IE user!");
     }
     ctx.imageSmoothingEnabled = false;
 
