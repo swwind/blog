@@ -5,13 +5,11 @@ import md5 from "blueimp-md5";
 import { formatDate } from "~/utils/chinese-calendar.ts";
 import { UAParser } from "ua-parser-js";
 import {
-  arrayBufferToBase64,
   exportPrivateKey,
   exportPublicKey,
   generateKeys,
   importPrivateKey,
   importPublicKey,
-  sign,
 } from "~/utils/crypto.ts";
 import { signAddComment, signDeleteComment } from "~/utils/comment.ts";
 
