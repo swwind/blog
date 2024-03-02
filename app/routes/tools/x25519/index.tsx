@@ -1,6 +1,7 @@
 import { meta$ } from "@biliblitz/blitz/server";
 import { useSignal } from "@preact/signals";
 import { useRef } from "preact/hooks";
+import { arrayBufferToBase64 } from "~/utils/crypto.ts";
 
 export const meta = meta$(() => {
   return { title: "生成炫酷的 ECDH 密钥对" };
@@ -26,20 +27,6 @@ export default () => {
     const include = includeRef.current?.value || "";
     const end = endRef.current?.value || "";
     const curve = curveRef.current?.value || "P-256";
-
-    async function arrayBufferToBase64(array: ArrayBuffer) {
-      return new Promise<string>((resolve) => {
-        const blob = new Blob([array]);
-        const reader = new FileReader();
-
-        reader.onload = (event) => {
-          const dataUrl = event.target!.result as string;
-          resolve(dataUrl.split(",")[1]);
-        };
-
-        reader.readAsDataURL(blob);
-      });
-    }
 
     async function generateKeys() {
       const keyPair = await crypto.subtle.generateKey(

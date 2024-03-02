@@ -1,9 +1,19 @@
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import manifest from "../../metadata.json";
 import { Turnstile } from "./turnstile.tsx";
 import md5 from "blueimp-md5";
 import { formatDate } from "~/utils/chinese-calendar.ts";
 import { UAParser } from "ua-parser-js";
+import {
+  arrayBufferToBase64,
+  exportPrivateKey,
+  exportPublicKey,
+  generateKeys,
+  importPrivateKey,
+  importPublicKey,
+  sign,
+} from "~/utils/crypto.ts";
+import { signAddComment, signDeleteComment } from "~/utils/comment.ts";
 
 type Props = {
   path: string;
@@ -17,11 +27,16 @@ type Comment = {
   content: string;
   time: number;
   userAgent: string;
+  pubkey: string;
 };
 
 const origin = import.meta.env.DEV
   ? "http://localhost:8787"
   : manifest["comment-api-origin"];
+
+const sitekey = import.meta.env.DEV
+  ? "1x00000000000000000000BB"
+  : manifest["cf-sitekey"];
 
 const github = (id: string) => `https://github.com/${id}.png`;
 const qq = (id: string) => `https://q1.qlogo.cn/g?b=qq&nk=${id}&s=100`;
@@ -48,7 +63,11 @@ function getString(something: {
   return null;
 }
 
-function Comment(props: { comment: Comment }) {
+function Comment(props: {
+  comment: Comment;
+  identity: string;
+  onDelete: (uuid: string) => void;
+}) {
   const name = props.comment.name.trim() || "匿名用户";
   const site = props.comment.site.trim();
   const avatarURL = getAvatarURL(props.comment.avatar.trim());
@@ -70,6 +89,14 @@ function Comment(props: { comment: Comment }) {
       <span class="ml-3 text-sm">{time}</span>
       {browser && <span class="ml-3 text-sm">{browser}</span>}
       {os && <span class="ml-3 text-sm">{os}</span>}
+      {props.identity === props.comment.pubkey && (
+        <span
+          class="ml-3 cursor-pointer text-sm underline"
+          onClick={() => props.onDelete(props.comment.id)}
+        >
+          删除
+        </span>
+      )}
       <br />
       {content || (
         <span class="italic">
@@ -81,9 +108,6 @@ function Comment(props: { comment: Comment }) {
 }
 
 export function Comments(props: Props) {
-  const sitekey = import.meta.env.DEV
-    ? "1x00000000000000000000AA"
-    : manifest["cf-sitekey"];
   const action = `${origin}/comment`;
 
   const [comments, setComments] = useState<Comment[] | null>(null);
@@ -118,6 +142,46 @@ export function Comments(props: Props) {
     localStorage.setItem("comments-metadata", JSON.stringify(meta));
   }, [meta]);
 
+  const [pubkey, setPubkey] = useState<CryptoKey | null>(null);
+  const [seckey, setSeckey] = useState<CryptoKey | null>(null);
+  const [identity, setIdentity] = useState("nobody");
+
+  const [invisible, setInvisible] = useState<string[]>([]);
+  const visibleComments = useMemo(
+    () => comments && comments.filter(({ id }) => !invisible.includes(id)),
+    [comments, invisible],
+  );
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const pubkey = localStorage.getItem("blog.pubkey");
+        const seckey = localStorage.getItem("blog.seckey");
+        if (!pubkey || !seckey) throw new Error();
+        const publicKey = await importPublicKey(pubkey);
+        const privateKey = await importPrivateKey(seckey);
+        setPubkey(publicKey);
+        setSeckey(privateKey);
+        setIdentity(pubkey);
+      } catch {
+        const keypair = await generateKeys();
+        const pubkey = await exportPublicKey(keypair.publicKey);
+        setPubkey(keypair.publicKey);
+        setSeckey(keypair.privateKey);
+        setIdentity(pubkey);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      if (pubkey)
+        localStorage.setItem("blog.pubkey", await exportPublicKey(pubkey));
+      if (seckey)
+        localStorage.setItem("blog.seckey", await exportPrivateKey(seckey));
+    })();
+  }, [pubkey, seckey]);
+
   return (
     <>
       <p>
@@ -136,6 +200,7 @@ export function Comments(props: Props) {
             action={action}
             onSubmit={(event) => {
               event.preventDefault();
+
               const formData = new FormData(
                 event.currentTarget,
                 event.submitter,
@@ -144,6 +209,12 @@ export function Comments(props: Props) {
 
               (async () => {
                 try {
+                  if (!seckey || !pubkey) {
+                    return alert("KeyPair is missing");
+                  }
+
+                  await signAddComment(formData, pubkey, seckey);
+
                   const response = await fetch(action, {
                     method: "POST",
                     body: formData,
@@ -218,13 +289,34 @@ export function Comments(props: Props) {
         </p>
       )}
 
-      {comments === null ? (
+      {visibleComments === null ? (
         <p class="italic opacity-60">少女祈祷中...</p>
-      ) : comments.length === 0 ? (
+      ) : visibleComments.length === 0 ? (
         <p class="italic opacity-60">暂时没有评论</p>
       ) : (
-        comments.map((comment) => (
-          <Comment comment={comment} key={comment.id} />
+        visibleComments.map((comment) => (
+          <Comment
+            comment={comment}
+            identity={identity}
+            key={comment.id}
+            onDelete={async (uuid) => {
+              if (!pubkey || !seckey) {
+                return alert("keypair missing");
+              }
+              const formData = new FormData();
+              formData.append("path", props.path);
+              formData.append("uuid", uuid);
+              await signDeleteComment(formData, pubkey, seckey);
+              const response = await fetch(`${origin}/delete`, {
+                method: "POST",
+                body: formData,
+              });
+              const json = (await response.json()) as { ok: true };
+              if (json.ok) {
+                setInvisible((invisible) => [...invisible, uuid]);
+              }
+            }}
+          />
         ))
       )}
     </>
