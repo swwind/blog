@@ -55,7 +55,7 @@ function getString(something: {
   version: string | undefined;
 }) {
   if (something.name) {
-    if (something.version) return `${something.name} ${something.version}`;
+    if (something.version) return `${something.name}/${something.version}`;
     return something.name;
   }
   return null;
