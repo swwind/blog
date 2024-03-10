@@ -7,15 +7,15 @@ export async function signAddComment(
 ) {
   const path = formData.get("path") as string;
   const name = formData.get("name") as string;
-  const site = formData.get("site") as string;
-  const avatar = formData.get("avatar") as string;
+  // const site = formData.get("site") as string;
+  // const avatar = formData.get("avatar") as string;
   const content = formData.get("content") as string;
 
   const data = JSON.stringify({
     path,
     name,
-    site,
-    avatar,
+    // site,
+    // avatar,
     content,
   });
   formData.append("pubkey", await exportPublicKey(pubkey));

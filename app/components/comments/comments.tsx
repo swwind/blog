@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "preact/hooks";
+import {
+  StateUpdater,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "preact/hooks";
 import manifest from "../../metadata.json";
 import { Turnstile } from "./turnstile.tsx";
 import md5 from "blueimp-md5";
@@ -20,8 +26,8 @@ type Props = {
 type Comment = {
   id: string;
   name: string;
-  site: string;
-  avatar: string;
+  // site: string;
+  // avatar: string;
   content: string;
   time: number;
   userAgent: string;
@@ -33,7 +39,7 @@ const origin = import.meta.env.DEV
   : manifest["comment-api-origin"];
 
 const sitekey = import.meta.env.DEV
-  ? "1x00000000000000000000BB"
+  ? "1x00000000000000000000AA"
   : manifest["cf-sitekey"];
 
 const github = (id: string) => `https://github.com/${id}.png`;
@@ -67,23 +73,19 @@ function Comment(props: {
   onDelete: (uuid: string) => void;
 }) {
   const name = props.comment.name.trim() || "匿名用户";
-  const site = props.comment.site.trim();
-  const avatarURL = getAvatarURL(props.comment.avatar.trim());
+  // const site = props.comment.site.trim();
+  // const avatarURL = getAvatarURL(props.comment.avatar.trim());
   const content = props.comment.content.trim();
   const time = formatDate(props.comment.time);
   const parser = new UAParser(props.comment.userAgent.trim());
   const browser = getString(parser.getBrowser());
   const os = getString(parser.getOS());
+  // const hash = useMemo(() => md5(props.comment.pubkey), [props.comment.pubkey]);
 
   return (
     <p>
-      {site ? (
-        <a href={site} target="_blank" rel="noreferrer">
-          <b>{name}</b>
-        </a>
-      ) : (
-        <b>{name}</b>
-      )}
+      <b>{name}</b>
+      {/* <span class="text-sm">#{hash.slice(0, 6)}</span> */}
       <span class="ml-3 text-sm">{time}</span>
       {browser && <span class="ml-3 text-sm">{browser}</span>}
       {os && <span class="ml-3 text-sm">{os}</span>}
@@ -105,31 +107,23 @@ function Comment(props: {
   );
 }
 
-export function Comments(props: Props) {
-  const action = `${origin}/comment`;
+type CreateCommentProps = {
+  path: string;
+  seckey: CryptoKey;
+  pubkey: CryptoKey;
+  // setComments: StateUpdater<Comment[] | null>;
+  // setShow: StateUpdater<boolean>;
+  prependComment: (comment: Comment) => void;
+  onSuccess: () => void;
+};
 
-  const [comments, setComments] = useState<Comment[] | null>(null);
+function CreateComment(props: CreateCommentProps) {
+  const action = `${origin}/comment`;
   const textarea = useRef<HTMLTextAreaElement>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [show, setShow] = useState(false);
+  const [finish, setFinish] = useState(false);
 
-  useEffect(() => {
-    const abort = new AbortController();
-    const url = `${origin}/comments?path=${props.path}`;
-    fetch(url, { signal: abort.signal })
-      .then((resp) => resp.json())
-      .then((data: { count: number; path: string; comments: Comment[] }) => {
-        const comments = data.comments;
-        comments.sort((a, b) => b.time - a.time);
-        setComments(comments);
-      });
-
-    return () => {
-      abort.abort();
-    };
-  }, []);
-
-  const [meta, setMeta] = useState({ name: "", site: "", mail: "" });
+  const [meta, setMeta] = useState({ name: "" });
   // load
   useEffect(() => {
     const cache = localStorage.getItem("comments-metadata");
@@ -140,15 +134,90 @@ export function Comments(props: Props) {
     localStorage.setItem("comments-metadata", JSON.stringify(meta));
   }, [meta]);
 
+  return (
+    <p>
+      <form
+        method="POST"
+        action={action}
+        onSubmit={(event) => {
+          event.preventDefault();
+
+          const formData = new FormData(event.currentTarget, event.submitter);
+          setSubmitting(true);
+
+          (async () => {
+            try {
+              if (!props.seckey || !props.pubkey) {
+                return alert("KeyPair is missing");
+              }
+
+              await signAddComment(formData, props.pubkey, props.seckey);
+
+              const response = await fetch(action, {
+                method: "POST",
+                body: formData,
+              });
+              if (response.status !== 200) {
+                const message = await response.text();
+                alert(`Error: ${message}`);
+                return;
+              }
+              const data = (await response.json()) as {
+                ok: true;
+                comment: Comment;
+              };
+              props.prependComment(data.comment);
+              if (textarea.current) {
+                textarea.current.value = "";
+              }
+            } finally {
+              setSubmitting(false);
+              props.onSuccess();
+            }
+          })();
+        }}
+      >
+        <input type="hidden" name="path" value={props.path} />
+        <div class="grid grid-cols-3 gap-2">
+          <input
+            type="text"
+            name="name"
+            class="col-span-3"
+            placeholder="尊姓大名"
+            value={meta.name}
+            onInput={(e) =>
+              setMeta((meta) => ({ ...meta, name: e.currentTarget.value }))
+            }
+          />
+          <textarea
+            name="content"
+            class="col-span-3 h-24 min-h-24"
+            ref={textarea}
+            required
+            placeholder="不支持 Markdown"
+          />
+          <div class="col-span-3">
+            <Turnstile sitekey={sitekey} onSuccess={() => setFinish(true)} />
+          </div>
+          <button
+            disabled={submitting || !finish}
+            class="col-span-3 border-2 border-slate-800 disabled:pointer-events-none disabled:opacity-60 dark:border-slate-100"
+          >
+            {submitting ? "提交中..." : "提交评论"}
+          </button>
+        </div>
+      </form>
+    </p>
+  );
+}
+
+export function Comments(props: Props) {
+  const [comments, setComments] = useState<Comment[] | null>(null);
+  const [show, setShow] = useState(false);
+
   const [pubkey, setPubkey] = useState<CryptoKey | null>(null);
   const [seckey, setSeckey] = useState<CryptoKey | null>(null);
   const [identity, setIdentity] = useState("nobody");
-
-  const [invisible, setInvisible] = useState<string[]>([]);
-  const visibleComments = useMemo(
-    () => comments && comments.filter(({ id }) => !invisible.includes(id)),
-    [comments, invisible],
-  );
 
   useEffect(() => {
     (async () => {
@@ -180,11 +249,33 @@ export function Comments(props: Props) {
     })();
   }, [pubkey, seckey]);
 
+  useEffect(() => {
+    const abort = new AbortController();
+    const url = `${origin}/comments?path=${props.path}`;
+    fetch(url, { signal: abort.signal })
+      .then((resp) => resp.json())
+      .then((data: { count: number; path: string; comments: Comment[] }) => {
+        const comments = data.comments;
+        comments.sort((a, b) => b.time - a.time);
+        setComments(comments);
+      });
+
+    return () => {
+      abort.abort();
+    };
+  }, []);
+
+  const [invisible, setInvisible] = useState<string[]>([]);
+  const visibleComments = useMemo(
+    () => comments && comments.filter(({ id }) => !invisible.includes(id)),
+    [comments, invisible],
+  );
+
   return (
     <>
       <p>
         <button
-          class="col-span-3 border-2 px-8"
+          class="col-span-3 border-2 border-slate-800 px-8 dark:border-slate-100"
           onClick={() => setShow((show) => !show)}
         >
           {show ? "关闭" : "添加评论"}
@@ -192,99 +283,15 @@ export function Comments(props: Props) {
       </p>
 
       {show && (
-        <p>
-          <form
-            method="POST"
-            action={action}
-            onSubmit={(event) => {
-              event.preventDefault();
-
-              const formData = new FormData(
-                event.currentTarget,
-                event.submitter,
-              );
-              setSubmitting(true);
-
-              (async () => {
-                try {
-                  if (!seckey || !pubkey) {
-                    return alert("KeyPair is missing");
-                  }
-
-                  await signAddComment(formData, pubkey, seckey);
-
-                  const response = await fetch(action, {
-                    method: "POST",
-                    body: formData,
-                  });
-                  if (response.status !== 200) {
-                    const message = await response.text();
-                    alert(`Error: ${message}`);
-                    return;
-                  }
-                  const data = (await response.json()) as {
-                    ok: true;
-                    comment: Comment;
-                  };
-                  setComments((comments) => [
-                    data.comment,
-                    ...(comments || []),
-                  ]);
-                  if (textarea.current) {
-                    textarea.current.value = "";
-                  }
-                } finally {
-                  setSubmitting(false);
-                  setShow(false);
-                }
-              })();
-            }}
-          >
-            <input type="hidden" name="path" value={props.path} />
-            <div class="grid grid-cols-3 gap-2">
-              <input
-                type="text"
-                name="name"
-                placeholder="匿名用户"
-                value={meta.name}
-                onInput={(e) =>
-                  setMeta((meta) => ({ ...meta, name: e.currentTarget.value }))
-                }
-              />
-              <input
-                type="text"
-                name="site"
-                placeholder="https://..."
-                value={meta.site}
-                onInput={(e) =>
-                  setMeta((meta) => ({ ...meta, site: e.currentTarget.value }))
-                }
-              />
-              <input
-                type="text"
-                name="avatar"
-                placeholder="<email> / gh:<id> / qq:<id>"
-                value={meta.mail}
-                onInput={(e) =>
-                  setMeta((meta) => ({ ...meta, mail: e.currentTarget.value }))
-                }
-              />
-              <textarea
-                name="content"
-                class="col-span-3 h-24 min-h-24"
-                ref={textarea}
-                required
-                placeholder="不支持 Markdown"
-              />
-              <div class="col-span-3">
-                <Turnstile sitekey={sitekey} />
-              </div>
-              <button disabled={submitting} class="col-span-3 border-2">
-                {submitting ? "提交中..." : "提交评论"}
-              </button>
-            </div>
-          </form>
-        </p>
+        <CreateComment
+          path={props.path}
+          seckey={seckey!}
+          pubkey={pubkey!}
+          prependComment={(comment) => {
+            setComments((comments) => [comment, ...(comments || [])]);
+          }}
+          onSuccess={() => setShow(false)}
+        />
       )}
 
       {visibleComments === null ? (

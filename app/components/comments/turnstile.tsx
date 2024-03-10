@@ -52,6 +52,7 @@ export function ensureTurnstile() {
 
 type Props = {
   sitekey: string;
+  onSuccess?: (token: string) => void;
 };
 
 export function Turnstile(props: Props) {
@@ -66,6 +67,7 @@ export function Turnstile(props: Props) {
       turnstile.render(div, {
         sitekey: props.sitekey,
         language: "zh",
+        callback: props.onSuccess,
       });
     })(ref.current);
   }, []);
