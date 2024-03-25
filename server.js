@@ -1,13 +1,15 @@
-import { serveStatic } from "@biliblitz/node-server";
-import { chain, when, startsWith } from "@biliblitz/node-server/tools";
+import { Hono } from "hono";
 import { serve } from "@hono/node-server";
+import { serveStatic } from "@hono/node-server/serve-static";
 
 import server from "./dist/server/entry.server.js";
 
-const pubast = serveStatic({ root: "./public/" });
-const assets = serveStatic({ root: "./dist/client/" });
-const fetch = chain(pubast, when(startsWith("/build/"), assets), server);
+const app = new Hono();
 
-serve({ fetch }, (info) => {
+app.use(serveStatic({ root: "./public/" }));
+app.use("/build/*", serveStatic({ root: "./dist/client/" }));
+app.route("/", server);
+
+serve(app, (info) => {
   console.log(`Listening on http://localhost:${info.port}/`);
 });

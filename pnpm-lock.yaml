@@ -6,11 +6,8 @@ settings:
 
 dependencies:
   '@biliblitz/blitz':
-    specifier: ^0.0.7
-    version: 0.0.7(preact-render-to-string@6.3.1)(preact@10.19.3)
-  '@biliblitz/node-server':
-    specifier: ^0.0.7
-    version: 0.0.7
+    specifier: ^0.1.1
+    version: 0.1.1(hono@4.1.3)(preact-render-to-string@6.3.1)(preact@10.19.3)
   '@hono/node-server':
     specifier: ^1.5.0
     version: 1.7.0
@@ -20,6 +17,9 @@ dependencies:
   blueimp-md5:
     specifier: ^2.19.0
     version: 2.19.0
+  hono:
+    specifier: ^4.1.3
+    version: 4.1.3
   katex:
     specifier: ^0.16.9
     version: 0.16.9
@@ -32,8 +32,8 @@ dependencies:
 
 devDependencies:
   '@biliblitz/vite':
-    specifier: ^0.0.7
-    version: 0.0.7(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12)
+    specifier: ^0.1.1
+    version: 0.1.1(hono@4.1.3)(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12)
   '@mdx-js/preact':
     specifier: ^3.0.1
     version: 3.0.1(preact@10.19.3)
@@ -356,24 +356,21 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@biliblitz/blitz@0.0.7(preact-render-to-string@6.3.1)(preact@10.19.3):
-    resolution: {integrity: sha512-1pFo4QopXDl97Wbr7gP6EF9TdA4FSXSDjH/LUU3gO1cNSzBu+aoUA1Q60tSrbbGJyH/Hi5lNDPjpmtGLdCKwqA==}
+  /@biliblitz/blitz@0.1.1(hono@4.1.3)(preact-render-to-string@6.3.1)(preact@10.19.3):
+    resolution: {integrity: sha512-bTvz+B91zG1hyHFEHVQNTMPKj3+SUaKwV4ld+013pY+t9NuumarlXgf1USSt/mtS7tPE80eAM/vaNadTk/kE7g==}
     peerDependencies:
+      hono: ^4
       preact: ^10
       preact-render-to-string: ^6
     dependencies:
+      hono: 4.1.3
       preact: 10.19.3
       preact-render-to-string: 6.3.1(preact@10.19.3)
 
-  /@biliblitz/node-server@0.0.7:
-    resolution: {integrity: sha512-oVFd/JzTINwTOT8D8XLLC1i5lIxRmDVWvAmAtXS02pd1Vq1oWeIEQSHMUnTzhQBcSXU9Yc1yEDymmoB827689w==}
-    dependencies:
-      hono: 3.12.11
-    dev: false
-
-  /@biliblitz/vite@0.0.7(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12):
-    resolution: {integrity: sha512-12vcsGTgN5R+IlPOQmSTJBu3CnLeAS8V84wpuxhuLvixgem93XvMX+yJB5CKupLs/70QIOwDWPunQ1o5Cf3zBw==}
+  /@biliblitz/vite@0.1.1(hono@4.1.3)(preact-render-to-string@6.3.1)(preact@10.19.3)(vite@5.0.12):
+    resolution: {integrity: sha512-X+8KxI7PpcPDzMm7hpHGCP33bngUIxnFwYzxdL6hyK57Qj+tZS6VVyQv9BoqfuhQYMSYjSPTtsJHfIMCdrR6uQ==}
     peerDependencies:
+      hono: ^4
       vite: '>=5'
     dependencies:
       '@babel/core': 7.23.9
@@ -381,10 +378,11 @@ packages:
       '@babel/parser': 7.23.9
       '@babel/traverse': 7.23.9
       '@babel/types': 7.23.9
-      '@biliblitz/blitz': 0.0.7(preact-render-to-string@6.3.1)(preact@10.19.3)
+      '@biliblitz/blitz': 0.1.1(hono@4.1.3)(preact-render-to-string@6.3.1)(preact@10.19.3)
       '@hono/node-server': 1.7.0
       '@mdx-js/mdx': 3.0.0
       chalk: 5.3.0
+      hono: 4.1.3
       vfile: 6.0.1
       vfile-matter: 5.0.0
       vite: 5.0.12(@types/node@20.11.16)
@@ -1733,10 +1731,9 @@ packages:
     hasBin: true
     dev: true
 
-  /hono@3.12.11:
-    resolution: {integrity: sha512-LSpxVgIMR3UzyFiXZaPvqBUGqyOKG0LMZqgMn2RXz9f+YAdkHSfFQQX0dtU72fPm5GnEMh5AYXs0ek5NYgMOmA==}
+  /hono@4.1.3:
+    resolution: {integrity: sha512-V0I6qCw0gn2MA4LLtyXe6oD3/7ToeQf5Zv98o7uSuLuViQgWHJeYoYrZ4NbXhOtg4SaZjNJJm1+XuFB3LN+j6A==}
     engines: {node: '>=16.0.0'}
-    dev: false
 
   /inline-style-parser@0.1.1:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
