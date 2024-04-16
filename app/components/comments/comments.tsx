@@ -34,7 +34,7 @@ type Comment = {
   pubkey: string;
 };
 
-const origin = import.meta.env.DEV
+export const origin = import.meta.env.DEV
   ? "http://localhost:8787"
   : manifest["comment-api-origin"];
 

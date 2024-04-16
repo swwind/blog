@@ -23,6 +23,7 @@
     "blueimp-md5": "^2.19.0",
     "hono": "^4.2.3",
     "katex": "^0.16.10",
+    "lucide-preact": "^0.368.0",
     "preact": "^10.20.2",
     "preact-render-to-string": "^6.4.2"
   },

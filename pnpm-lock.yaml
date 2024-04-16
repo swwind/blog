@@ -23,6 +23,9 @@ dependencies:
   katex:
     specifier: ^0.16.10
     version: 0.16.10
+  lucide-preact:
+    specifier: ^0.368.0
+    version: 0.368.0(preact@10.20.2)
   preact:
     specifier: ^10.20.2
     version: 10.20.2
@@ -1928,6 +1931,14 @@ packages:
     dependencies:
       yallist: 3.1.1
     dev: true
+
+  /lucide-preact@0.368.0(preact@10.20.2):
+    resolution: {integrity: sha512-yV/Mba6XHjD08x7n2VAkpWOfPBlqv1BbzSIIQvGLBjvZV1pqs0N08RgSq7OBWlnDNfSkZ2kbh/FBvCQAB1TZOQ==}
+    peerDependencies:
+      preact: ^10.5.13
+    dependencies:
+      preact: 10.20.2
+    dev: false
 
   /magic-string@0.30.5:
     resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==}
