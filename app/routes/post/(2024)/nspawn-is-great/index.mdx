@@ -65,12 +65,11 @@ sudo ip link set nat0 up
 
 ### 配置 iptables 路由
 
-首先检查系统是否开启 IPv4 转发功能。
+首先开启系统的 IPv4 转发功能。
 
 ```sh
-sysctl net.ipv4.ip_forward # 应该输出 1
-# 不然用这个打开
-sudo sysctl -w net.ipv4.ip_forward=1
+sudo sysctl -w net.ipv4.conf.all.forwarding=1
+sudo sysctl -w net.ipv4.conf.default.forwarding=1
 ```
 
 然后写入 iptables 规则。
@@ -154,7 +153,6 @@ sudo machinectl login <container-name>
 
 ```sh
 sudo systemctl enable --now systemd-networkd.service
-sudo systemctl enable --now systemd-resolved.service
 ```
 
 DNS 服务器可能需要手动配置，直接编辑 `/etc/resolv.conf` 并添加 `nameserver 192.168.26.1` 即可。或者直接覆盖该文件。
