@@ -1,0 +1,182 @@
+---
+title: 基于 systemd-nspawn 的轻量化容器搭建
+---
+
+# 基于 systemd-nspawn 的轻量化容器搭建
+
+import { Metadata } from "~/components/metadata/metadata.tsx";
+import { Comments } from "~/components/comments/comments.tsx";
+
+<Metadata author="swwind" time="2024-4-16" />
+
+有时候需要搞一个 Ubuntu 的环境来做一些实验，或者需要一个沙箱来跑毒瘤程序，相比于搬出 VirtualBox 等大家伙，使用基于 systemd-nspawn 的轻量化的容器在性能上会优秀不少。
+
+## 创建容器
+
+可以参考 [Arch Wiki](https://wiki.archlinux.org/title/systemd-nspawn#Examples) 上的样例，在 `/var/lib/machines/` 中创建容器。
+
+如果你不想创建在 `/var/lib/machines/` 里面也没事，但是后面的程序会默认在这个地方找文件，所以在别的地方创建完了之后必须软链接到这里。下文均以在 `/var/lib/machines/` 中创建 `<container-name>` 容器为例，请将 `<container-name>` 替换为自定义名称。
+
+### Arch
+
+需要先安装 `arch-install-scripts`。
+
+```sh
+cd /var/lib/machines/
+sudo pacstrap -K -c <container-name> base
+```
+
+### Debian / Ubuntu
+
+需要先安装 `debootstrap` 和 `debian-archive-keyring`（或者 `ubuntu-keyring`）。
+
+```sh
+cd /var/lib/machines
+sudo debootstrap \
+  --include=dbus-broker,systemd-container \
+  --components=main,universe \
+  <codename> <container-name> <repository-url>
+```
+
+其中 `codename` 是发行版代号，可以在其他地方找到。
+
+`repository-url` 可以设置为 tuna 的镜像地址（去掉最后的 `/`）。
+
+```
+https://mirrors.tuna.tsinghua.edu.cn/debian/
+https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
+```
+
+## 配置网络
+
+网络配置是一个很复杂的事情，很多时候我也不知道发生了什么，不过事情看起来都可以正常工作。
+
+我的目标配置如下：主机上创建一个虚拟网卡，掌管 `192.168.26.0/24` 的 NAT 网络，所有容器通过该网卡进行上网和与其他容器通信。
+
+### 主机创建虚拟网卡
+
+使用 `ip` 工具创建一个 `nat0` 虚拟网卡并给予地址。
+
+```sh
+sudo ip link add nat0 type bridge
+sudo ip addr add 192.168.26.1/24 dev nat0
+sudo ip link set nat0 up
+```
+
+### 配置 iptables 路由
+
+首先检查系统是否开启 IPv4 转发功能。
+
+```sh
+sysctl net.ipv4.ip_forward # 应该输出 1
+# 不然用这个打开
+sudo sysctl -w net.ipv4.ip_forward=1
+```
+
+然后写入 iptables 规则。
+
+```sh
+# 允许 DHCP 和 DNS 数据包进入本机（不过好像默认都是开的）
+sudo iptables -I INPUT -i nat0 -p udp --dport 67 -j ACCEPT
+sudo iptables -I INPUT -i nat0 -p tcp --dport 67 -j ACCEPT
+sudo iptables -I INPUT -i nat0 -p udp --dport 53 -j ACCEPT
+sudo iptables -I INPUT -i nat0 -p tcp --dport 53 -j ACCEPT
+# 允许转发
+sudo iptables -I FORWARD -i nat0 -j ACCEPT
+sudo iptables -I FORWARD -o nat0 -j ACCEPT
+# 设置网络地址转换
+sudo iptables -t nat -A POSTROUTING -s 192.168.26.0/24 -j MASQUERADE
+```
+
+### 开启 DHCP & DNS 服务器
+
+首先需要安装 `dnsmasq`。
+
+```sh
+DNSMASQ_PID=/var/run/nat0-dnsmasq.pid
+
+# 如果之前的还在运行就杀死
+if [ -f $DNSMASQ_PID ]; then
+  kill -9 $(cat $DNSMASQ_PID) || true
+  rm -rf $DNSMASQ_PID
+fi
+
+# 开启 DHCP & DNS 服务
+sudo dnsmasq --interface=nat0 --except-interface=lo \
+  --dhcp-range=192.168.26.20,192.168.26.100,12h \
+  --listen-address=192.168.26.1 --port=53 \
+  --pid-file=$DNSMASQ_PID
+```
+
+`dnsmasq` 会自动读取 `/etc/resolv.conf` 并将 DNS 请求转发到上游的 DNS 服务器。
+
+### 配置 nspawn 容器
+
+编辑 `/etc/systemd/nspawn/<container-name>.nspawn` 文件，添加以下内容。
+
+```conf
+[Network]
+Bridge=nat0
+```
+
+## 启动
+
+我们默认 root 是没有设置密码的，所以可能登不进去，所以一开始要用如下方式设置 root 密码。
+
+```sh
+# 进入容器但不启动（类似 chroot）
+sudo systemd-nspawn -D /var/lib/machines/<container-name>
+
+# 设置 root 密码
+passwd
+```
+
+完成之后可以连按三次 `Ctrl` + `]` 退出。
+
+### 管理工具
+
+可以使用 `machinectl` 来管理所有的容器。
+
+```sh
+# 启动
+sudo machinectl start <container-name>
+# 停止
+sudo machinectl stop <container-name>
+# 打开终端
+sudo machinectl login <container-name>
+```
+
+### 容器内网络配置
+
+使用 `ip a` 来查看容器内的所有网络设备，如果没有任何问题，你将可以看到 `lo` 和另外一个 `host0@if5` 的设备（数字可能不太一样）。
+
+一般来说，直接启动 `systemd-networkd.service` 就可以直接获取一个 ip 地址。
+
+```sh
+sudo systemctl enable --now systemd-networkd.service
+sudo systemctl enable --now systemd-resolved.service
+```
+
+DNS 服务器可能需要手动配置，直接编辑 `/etc/resolv.conf` 并添加 `nameserver 192.168.26.1` 即可。或者直接覆盖该文件。
+
+```sh
+sudo rm -rf /etc/resolv.conf
+echo "nameserver 192.168.26.1" | sudo tee /etc/resolv.conf
+sudo chmod 444 /etc/resolv.conf
+```
+
+最后的 `chmod` 可以用来防止别的程序乱动该文件。
+
+最后直接使用 `ping www.bilibili.com`，应该可以正常 DNS 解析与路由数据包。
+
+## 其他问题
+
+### IPv6
+
+可能有点危险，回头研究透彻了来这里补上。
+
+## 留言
+
+如果过程中有遇到任何问题，可以留言讨论。
+
+<Comments path="nspawn-is-great" />
