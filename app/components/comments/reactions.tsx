@@ -2,18 +2,6 @@ import { ThumbsDown, ThumbsUp } from "lucide-preact";
 import { useEffect, useState } from "preact/hooks";
 import { origin } from "./comments.tsx";
 
-type ReactionsProps = {
-  path: string;
-};
-
-const selected =
-  "dark:bg-slate-600 dark:text-slate-200 bg-slate-800 text-slate-100";
-const unselected = "border border-slate-600";
-
-const button = "flex items-center gap-2 rounded-full px-3 py-1";
-const hidden = "cursor-default pointer-events-none opacity-0";
-const block = "cursor-default";
-
 let count = 0;
 const mygo = [
   "要不要再思考一下？",
@@ -60,6 +48,16 @@ function readLocalReactions(path: string) {
 function writeLocalReactions(path: string, reactions: string[]) {
   localStorage.setItem(`reactions:${path}`, reactions.join(","));
 }
+
+type ReactionsProps = {
+  path: string;
+};
+
+const selected =
+  "dark:bg-slate-600 dark:text-slate-200 bg-slate-800 text-slate-100";
+const unselected = "border border-slate-600";
+
+const button = "flex items-center gap-2 rounded-full px-3 py-1";
 
 export function Reactions(props: ReactionsProps) {
   const [first, setFirst] = useState(false);
@@ -112,29 +110,10 @@ export function Reactions(props: ReactionsProps) {
         class={[
           button,
           reacted.includes("down") ? selected : unselected,
-          first ? hidden : block,
+          "cursor-default",
+          first ? "ml-20" : "",
         ].join(" ")}
-        onMouseEnter={() => setFirst(true)}
-        onClick={() =>
-          onThumbDown(async () => {
-            if (!reacted.includes("down")) {
-              const { updated } = await addReaction(props.path, "down");
-              setReacted((reacted) => [...reacted, "down"]);
-              setReactions((reactions) => ({ ...reactions, down: updated }));
-            }
-          })
-        }
-      >
-        <ThumbsDown class="h-4 w-4" />
-        <span class="text-sm">{loading ? "…" : down}</span>
-      </button>
-      <button
-        class={[
-          button,
-          reacted.includes("down") ? selected : unselected,
-          first ? block : hidden,
-        ].join(" ")}
-        onMouseEnter={() => setFirst(false)}
+        onMouseEnter={() => setFirst((x) => !x)}
         onClick={() =>
           onThumbDown(async () => {
             if (!reacted.includes("down")) {
