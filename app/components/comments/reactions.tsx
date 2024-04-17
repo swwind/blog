@@ -1,6 +1,6 @@
 import { ThumbsDown, ThumbsUp } from "lucide-preact";
 import { useEffect, useState } from "preact/hooks";
-import { origin } from "./comments.tsx";
+import { origin } from "./utils.ts";
 
 let count = 0;
 const mygo = [

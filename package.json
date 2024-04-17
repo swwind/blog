@@ -11,7 +11,8 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "start": "node server.js",
-    "start:static": "node server-static.js"
+    "start:static": "node server-static.js",
+    "dev": "vite"
   },
   "keywords": [],
   "author": "",

@@ -1,15 +1,14 @@
-import {
-  StateUpdater,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "preact/hooks";
-import manifest from "../../metadata.json";
+import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { Turnstile } from "./turnstile.tsx";
-import md5 from "blueimp-md5";
 import { formatDate } from "~/utils/chinese-calendar.ts";
 import { UAParser } from "ua-parser-js";
+import {
+  signAddComment,
+  signDeleteComment,
+  Comment,
+  sitekey,
+  origin,
+} from "./utils.ts";
 import {
   exportPrivateKey,
   exportPublicKey,
@@ -17,44 +16,10 @@ import {
   importPrivateKey,
   importPublicKey,
 } from "~/utils/crypto.ts";
-import { signAddComment, signDeleteComment } from "~/utils/comment.ts";
 
 type Props = {
   path: string;
 };
-
-type Comment = {
-  id: string;
-  name: string;
-  // site: string;
-  // avatar: string;
-  content: string;
-  time: number;
-  userAgent: string;
-  pubkey: string;
-};
-
-export const origin = import.meta.env.DEV
-  ? "http://localhost:8787"
-  : manifest["comment-api-origin"];
-
-const sitekey = import.meta.env.DEV
-  ? "1x00000000000000000000AA"
-  : manifest["cf-sitekey"];
-
-const github = (id: string) => `https://github.com/${id}.png`;
-const qq = (id: string) => `https://q1.qlogo.cn/g?b=qq&nk=${id}&s=100`;
-const gravatar = (hash: string) =>
-  `https://gravatar.com/avatar/${hash}.jpg?s=100`;
-
-function getAvatarURL(avatar: string) {
-  if (!avatar) return null;
-  if (avatar.startsWith("gh:")) return github(avatar.slice(3));
-  if (avatar.startsWith("qq:")) return qq(avatar.slice(3));
-  return gravatar(
-    avatar.length === 32 && /^[a-z0-9]$/.test(avatar) ? avatar : md5(avatar),
-  );
-}
 
 function getString(something: {
   name: string | undefined;
@@ -67,7 +32,7 @@ function getString(something: {
   return null;
 }
 
-function Comment(props: {
+function CommentComponent(props: {
   comment: Comment;
   identity: string;
   onDelete: (uuid: string) => void;
@@ -300,7 +265,7 @@ export function Comments(props: Props) {
         <p class="italic opacity-60">暂时没有评论</p>
       ) : (
         visibleComments.map((comment) => (
-          <Comment
+          <CommentComponent
             comment={comment}
             identity={identity}
             key={comment.id}
