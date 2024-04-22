@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@biliblitz/blitz':
-    specifier: ^0.1.3
-    version: 0.1.3(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2)
+    specifier: ^0.1.4
+    version: 0.1.4(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2)
   '@hono/node-server':
-    specifier: ^1.9.1
-    version: 1.9.1
+    specifier: ^1.10.1
+    version: 1.11.0
   '@preact/signals':
     specifier: ^1.2.3
     version: 1.2.3(preact@10.20.2)
@@ -35,8 +35,8 @@ dependencies:
 
 devDependencies:
   '@biliblitz/vite':
-    specifier: ^0.1.3
-    version: 0.1.3(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2)(vite@5.2.8)
+    specifier: ^0.1.4
+    version: 0.1.4(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2)(vite@5.2.8)
   '@mdx-js/preact':
     specifier: ^3.0.1
     version: 3.0.1(preact@10.20.2)
@@ -360,8 +360,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@biliblitz/blitz@0.1.3(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2):
-    resolution: {integrity: sha512-Bw1jyUziPzcqdWOajR/3BxnW72qwxU8TqVaWHV34VH5eToVJkyyeE156Pg6R0PBv8GXrDS8BIH57xWy9yVJckw==}
+  /@biliblitz/blitz@0.1.4(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2):
+    resolution: {integrity: sha512-OU3pt4HUSaR8mE1yalQuOvS1HuPcFMwx5tc+yxZFRgHgaP3+BRpqWMePrJZ1GaOdnmQcQHzzAzomH8x1A+q4gQ==}
     peerDependencies:
       hono: ^4
       preact: ^10
@@ -371,21 +371,17 @@ packages:
       preact: 10.20.2
       preact-render-to-string: 6.4.2(preact@10.20.2)
 
-  /@biliblitz/vite@0.1.3(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2)(vite@5.2.8):
-    resolution: {integrity: sha512-mwCkrSGzCz5Z/9RG40Kyxy0OOJCb13fcFfLAaSMfy+dX4xY9HtpHiixJcm4sKNWyooay/M50N9lNU/HBvmq0jg==}
+  /@biliblitz/vite@0.1.4(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2)(vite@5.2.8):
+    resolution: {integrity: sha512-YfoizOq25vfzzZ84uyBBYItZog1QSvVtSRiP84oeH3Ly+lwxPrjAG8Qas6Lj5tk7EjZBh72SSs4w1a0gYs+GcA==}
     peerDependencies:
       hono: ^4
       vite: '>=5'
     dependencies:
-      '@babel/core': 7.24.4
-      '@babel/generator': 7.24.4
-      '@babel/parser': 7.24.4
-      '@babel/traverse': 7.24.1
-      '@babel/types': 7.24.0
-      '@biliblitz/blitz': 0.1.3(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2)
-      '@hono/node-server': 1.9.1
+      '@biliblitz/blitz': 0.1.4(hono@4.2.3)(preact-render-to-string@6.4.2)(preact@10.20.2)
+      '@hono/node-server': 1.11.0
       '@mdx-js/mdx': 3.0.1
-      '@swwind/find-exports': 1.0.1
+      '@swwind/find-exports': 1.0.2
+      '@swwind/remove-exports': 1.0.0
       chalk: 5.3.0
       hono: 4.2.3
       vfile: 6.0.1
@@ -604,8 +600,8 @@ packages:
     dev: true
     optional: true
 
-  /@hono/node-server@1.9.1:
-    resolution: {integrity: sha512-XBru0xbtRlTZJyAiFJLn7XDKbCVXBaRhVQAQhB9TwND2gwj8jf9SDWIj/7VxVtNAjURJf7Ofcz58DRA6DPYiWA==}
+  /@hono/node-server@1.11.0:
+    resolution: {integrity: sha512-TLIJq9TMtD1NEG1mVoqNUn1Ita0qSaB5XboZErjFBcO/GJYXwWY4dVdTi9G0lbxtu0x+hJXDItcLaFHb7rlFTw==}
     engines: {node: '>=18.14.1'}
 
   /@isaacs/cliui@8.0.2:
@@ -916,8 +912,12 @@ packages:
     dev: true
     optional: true
 
-  /@swwind/find-exports@1.0.1:
-    resolution: {integrity: sha512-pqlBif4zoAKH2wIbvRliUFs4vF0N1ajEEj5ckvVm6KZnWc0mKaOpFGllUQrmIi1oUjg/9B5//y8kuBbsgvDIag==}
+  /@swwind/find-exports@1.0.2:
+    resolution: {integrity: sha512-Up+QsOlTL0lJGQp8AHLuuoGhmtvfK4N/uj3aidgIKWMTTiUKKuKRYAyeG6uuJgPgfAkrnmByUQ7lXfY3HaT2ew==}
+    dev: true
+
+  /@swwind/remove-exports@1.0.0:
+    resolution: {integrity: sha512-Cwa1Ldu+lSgnDitzJokKfnA6ekriSopza5kxv3h/egphacXTzm4fBnVkCVDL4mZY/oDc1Hyq+i8Mr+jZRSJJ7w==}
     dev: true
 
   /@types/acorn@4.0.6:
