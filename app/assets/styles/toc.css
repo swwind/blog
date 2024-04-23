@@ -1,0 +1,12 @@
+nav.toc {
+  @apply sticky top-12 underline;
+  font-family: "Noto Serif SC", serif;
+
+  ol {
+    @apply ml-4;
+
+    li {
+      @apply list-decimal;
+    }
+  }
+}

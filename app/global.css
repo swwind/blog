@@ -1,6 +1,7 @@
 @import "./assets/styles/prism-tomorrow.css";
 @import "./assets/styles/google-fonts.css";
 @import "./assets/styles/typography.css";
+@import "./assets/styles/toc.css";
 @import "katex/dist/katex.min.css";
 
 @tailwind base;
@@ -49,9 +50,9 @@ h6 {
     transition: opacity 0.3s;
 
     .icon.icon-link {
-      @apply absolute right-0 px-2;
+      @apply absolute left-0 px-2;
 
-      &::before {
+      &::after {
         content: "#";
         @apply h-full text-slate-500;
       }

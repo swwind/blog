@@ -1,6 +1,6 @@
 .typography {
   font-family: "Noto Serif SC", serif;
-  @apply text-lg;
+  @apply relative text-lg;
 }
 
 .typography h1 {

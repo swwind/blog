@@ -14,7 +14,7 @@ export const meta = meta$((_ctx, meta) => {
 
 export default () => {
   return (
-    <div class="mx-auto flex min-h-screen max-w-3xl flex-col">
+    <div class="mx-auto flex min-h-screen max-w-3xl flex-col md:max-w-4xl xl:translate-x-24">
       <Header />
       <main class="flex-1">
         <Typography>
