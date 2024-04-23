@@ -8,7 +8,7 @@ import { Metadata } from "~/components/metadata/metadata.tsx";
 import { Comments } from "~/components/comments/comments.tsx";
 import { Reactions } from "~/components/comments/reactions.tsx";
 
-<Metadata author="swwind" time="2024-4-16" />
+<Metadata author="swwind" time="2024-4-16" updated="2024-4-23" />
 
 有时候需要搞一个 Ubuntu 的环境来做一些实验，或者需要一个沙箱来跑毒瘤程序，相比于搬出 VirtualBox 等大家伙，使用基于 systemd-nspawn 的轻量化的容器在性能上会优秀不少。
 
@@ -23,8 +23,8 @@ import { Reactions } from "~/components/comments/reactions.tsx";
 需要先安装 `arch-install-scripts`。
 
 ```sh
-cd /var/lib/machines/
-sudo pacstrap -K -c <container-name> base
+sudo mkdir /var/lib/machines/<container-name>
+sudo pacstrap -K -c /var/lib/machines/<container-name> base
 ```
 
 ### Debian / Ubuntu
@@ -113,7 +113,7 @@ Bridge=nat0
 
 ## 启动
 
-我们默认 root 是没有设置密码的，所以可能登不进去，所以一开始要用如下方式设置 root 密码。
+我们默认 root 是没有设置密码的，如果想要设置 root 密码可以如下操作：
 
 ```sh
 # 进入容器但不启动（类似 chroot）
@@ -134,29 +134,27 @@ passwd
 sudo machinectl start <container-name>
 # 停止
 sudo machinectl stop <container-name>
-# 打开终端
+# 打开终端（类似 TTY）
 sudo machinectl login <container-name>
+# 免密码打开 shell（root 就是可以为所欲为）
+sudo machinectl shell <user>@<container-name>
 ```
 
 ### 容器内网络配置
 
 使用 `ip a` 来查看容器内的所有网络设备，如果没有任何问题，你将可以看到 `lo` 和另外一个 `host0@if5` 的设备（数字可能不太一样）。
 
-一般来说，直接启动 `systemd-networkd.service` 就可以直接获取一个 ip 地址。
+一般来说，直接启动 `systemd-networkd.service` 就可以自动配置 ip 地址。
 
 ```sh
 sudo systemctl enable --now systemd-networkd.service
 ```
 
-DNS 服务器可能需要手动配置，直接编辑 `/etc/resolv.conf` 并添加 `nameserver 192.168.26.1` 即可。或者直接覆盖该文件。
+DNS 服务器可能需要手动配置，直接编辑 `/etc/resolv.conf` 并添加 `nameserver 192.168.26.1` 即可。
 
 ```sh
-sudo rm -rf /etc/resolv.conf
-echo "nameserver 192.168.26.1" | sudo tee /etc/resolv.conf
-sudo chmod 444 /etc/resolv.conf
+echo "nameserver 192.168.26.1" > /etc/resolv.conf
 ```
-
-最后的 `chmod` 可以用来防止别的程序乱动该文件。
 
 最后直接使用 `ping www.bilibili.com`，应该可以正常 DNS 解析与路由数据包。
 
@@ -196,6 +194,8 @@ ping -I 2001:db8:1234:5678::1 www.bilibili.com
 
 如果能够返回，则说明分配给本机的是整个网段，否则说明分配给本机的只是单独的一个地址。
 
+~~当然你也可以直接假定是第二种情况，除非你在路由器上面跑 nspawn。~~
+
 #### 可以用整个网段
 
 针对第一种情况，我们直接在 `dnsmasq` 中启用 RA 功能分发本网段的地址即可。
@@ -204,9 +204,17 @@ ping -I 2001:db8:1234:5678::1 www.bilibili.com
 
 当然，如果你不想给容器分配公网地址，你也可以用下面的方式。
 
+#### 桥接到路由器
+
+新建一个虚拟网卡，直接桥接到上层的路由器，然后给容器用。
+
+这样容器就可以像主机一样直接向路由器申请和使用 IPv6 地址了，不过要实现数据包过滤会比较麻烦。
+
+但是，我们校园网是根据 MAC 地址认识用户的，所以如果桥接过去路由器就会当作是两台设备，还要重新认证一遍校园网，所以我直接放弃这个方案。
+
 #### 只能用一个地址
 
-针对第二种情况，有很多解决办法，这里给出一种基于 NAT6 的地址分配方式。
+针对这种情况也有很多解决办法，这里给出一种基于 NAT6 的地址分配方式。
 
 首先开启系统的 IPv6 转发功能。
 
@@ -231,13 +239,31 @@ sudo ip6tables -I FORWARD -o nat0 -j ACCEPT
 sudo ip6tables -t nat -A POSTROUTING -s fd23::/64 -j MASQUERADE
 ```
 
-最后启动 `dnsmasq` 的时候加入以下参数来自动分配地址。
+最后启动 `dnsmasq` 的时候加入以下参数来自动分配 IPv6 地址。
 
 ```
 --dhcp-range=fd23::/64,ra-stateless,ra-names
 ```
 
-之后使用 `machinectl` 重启容器，就可以看到容器被自动分配了 `fd23::/64` 的地址，并且可以通过网络地址转换功能接入 IPv6 网络。
+之后重启容器，就可以看到容器被自动分配了 `fd23::/64` 的地址，并且可以通过网络地址转换功能接入 IPv6 网络。
+
+当然，你可以删除上文中的 IPv4 相关内容，就可以获得一个 IPv6 Only 的容器。<span class="truth" title="你知道的太多了">但是没有什么用</span>
+
+### ping 不能用
+
+Arch Linux 下的 `ping` 工具貌似有些小问题，可能会像这样报错：
+
+```
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+```
+
+可以使用 `setcap` 给 `/usr/bin/ping` 添加缺少的 capability。
+
+```sh
+sudo setcap 'cap_net_raw+p' /usr/bin/ping
+```
 
 ## 留言
 
