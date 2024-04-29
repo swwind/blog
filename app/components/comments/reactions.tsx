@@ -1,10 +1,8 @@
-import { ThumbsDown, ThumbsUp } from "lucide-preact";
-import { useEffect, useState } from "preact/hooks";
+import { useCallback, useEffect, useMemo, useState } from "preact/hooks";
 import { origin } from "./utils.ts";
 
-let count = 0;
 const mygo = [
-  "要不要再思考一下？",
+  "您是不是点错了？",
   "真的要点踩吗？",
   "真的不能再给我一次机会了吗？",
   "您真的要这么残忍吗？",
@@ -18,11 +16,14 @@ const mygo = [
 ];
 
 function onThumbDown(callback: () => void) {
-  const now = count++;
-  if (now < mygo.length) {
-    return alert(mygo[now]);
-  }
-  callback();
+  let count = 0;
+  return () => {
+    if (count < mygo.length) {
+      alert(mygo[count++]);
+    } else {
+      callback();
+    }
+  };
 }
 
 async function addReaction(path: string, name: string) {
@@ -59,22 +60,50 @@ const unselected = "border border-slate-600";
 
 const button = "flex items-center gap-2 rounded-full px-3 py-1";
 
+type ReactionButtonProps = {
+  reacted: boolean;
+  onClick: () => void;
+  icon: string;
+  label: string | number;
+  prevention: boolean;
+};
+
+function ReactionButton(props: ReactionButtonProps) {
+  const callback = useMemo(() => {
+    return props.prevention ? onThumbDown(props.onClick) : props.onClick;
+  }, [props.prevention, props.onClick]);
+
+  return (
+    <button
+      class={[button, props.reacted ? selected : unselected].join(" ")}
+      onClick={() => callback()}
+    >
+      <span class="text-sm">{props.icon}</span>
+      <span class="text-sm">{props.label}</span>
+    </button>
+  );
+}
+
+const reactionTypes = [
+  { name: "up", icon: "👍" },
+  { name: "down", icon: "👎" },
+  { name: "clown", icon: "🤡" },
+  { name: "grinning", icon: "😅" },
+];
+
 export function Reactions(props: ReactionsProps) {
-  const [first, setFirst] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [reacted, setReacted] = useState<string[]>([]);
   const [reactions, setReactions] = useState<Reactions>({});
 
   useEffect(() => {
     const ctrl = new AbortController();
-    (async () => {
-      const reactions = await getReactions(props.path, ctrl.signal);
+    getReactions(props.path, ctrl.signal).then((reactions) => {
       setReactions(reactions);
       setLoading(false);
-    })();
+    });
     return () => ctrl.abort();
   }, []);
-
-  const [reacted, setReacted] = useState<string[]>([]);
 
   useEffect(() => {
     setReacted(readLocalReactions(props.path));
@@ -86,47 +115,27 @@ export function Reactions(props: ReactionsProps) {
     }
   }, [reacted]);
 
-  const up = reactions["up"] ?? 0;
-  const down = reactions["down"] ?? 0;
-
   return (
     <div class="mx-6 my-3 flex gap-2">
-      <button
-        class={[button, reacted.includes("up") ? selected : unselected].join(
-          " ",
-        )}
-        onClick={async () => {
-          if (!reacted.includes("up")) {
-            const { updated } = await addReaction(props.path, "up");
-            setReacted((reacted) => [...reacted, "up"]);
-            setReactions((reactions) => ({ ...reactions, up: updated }));
-          }
-        }}
-      >
-        <ThumbsUp class="h-4 w-4" />
-        <span class="text-sm">{loading ? "…" : up}</span>
-      </button>
-      <button
-        class={[
-          button,
-          reacted.includes("down") ? selected : unselected,
-          "cursor-default",
-          first ? "ml-20" : "",
-        ].join(" ")}
-        onMouseEnter={() => setFirst((x) => !x)}
-        onClick={() =>
-          onThumbDown(async () => {
-            if (!reacted.includes("down")) {
-              const { updated } = await addReaction(props.path, "down");
-              setReacted((reacted) => [...reacted, "down"]);
-              setReactions((reactions) => ({ ...reactions, down: updated }));
+      {reactionTypes.map(({ name, icon }) => (
+        <ReactionButton
+          label={loading ? "…" : reactions[name] || 0}
+          reacted={reacted.includes(name)}
+          icon={icon}
+          onClick={() => {
+            if (!reacted.includes(name)) {
+              addReaction(props.path, name).then(({ updated }) => {
+                setReacted((reacted) => [...reacted, name]);
+                setReactions((reactions) => ({
+                  ...reactions,
+                  [name]: updated,
+                }));
+              });
             }
-          })
-        }
-      >
-        <ThumbsDown class="h-4 w-4" />
-        <span class="text-sm">{loading ? "…" : down}</span>
-      </button>
+          }}
+          prevention={name === "down"}
+        />
+      ))}
     </div>
   );
 }
