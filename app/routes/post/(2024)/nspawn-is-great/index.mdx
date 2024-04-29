@@ -8,7 +8,7 @@ import { Metadata } from "~/components/metadata/metadata.tsx";
 import { Comments } from "~/components/comments/comments.tsx";
 import { Reactions } from "~/components/comments/reactions.tsx";
 
-<Metadata author="swwind" time="2024-4-16" updated="2024-4-23" />
+<Metadata author="swwind" time="2024-4-16" updated="2024-4-29" />
 
 有时候需要搞一个 Ubuntu 的环境来做一些实验，或者需要一个沙箱来跑毒瘤程序，相比于搬出 VirtualBox 等大家伙，使用基于 systemd-nspawn 的轻量化的容器在性能上会优秀不少。
 
@@ -203,14 +203,6 @@ ping -I 2001:db8:1234:5678::1 www.bilibili.com
 我没有折腾过，你可能需要自己查阅文档。
 
 当然，如果你不想给容器分配公网地址，你也可以用下面的方式。
-
-#### 桥接到路由器
-
-新建一个虚拟网卡，直接桥接到上层的路由器，然后给容器用。
-
-这样容器就可以像主机一样直接向路由器申请和使用 IPv6 地址了，不过要实现数据包过滤会比较麻烦。
-
-但是，我们校园网是根据 MAC 地址认识用户的，所以如果桥接过去路由器就会当作是两台设备，还要重新认证一遍校园网，所以我直接放弃这个方案。
 
 #### 只能用一个地址
 
