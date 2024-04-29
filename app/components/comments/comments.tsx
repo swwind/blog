@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "preact/hooks";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "preact/hooks";
 import { Turnstile } from "./turnstile.tsx";
 import { formatDate } from "~/utils/chinese-calendar.ts";
 import { UAParser } from "ua-parser-js";
@@ -16,6 +22,8 @@ import {
   importPrivateKey,
   importPublicKey,
 } from "~/utils/crypto.ts";
+import { ArknightsAvatar } from "./arknights.tsx";
+import md5 from "blueimp-md5";
 
 type Props = {
   path: string;
@@ -45,30 +53,48 @@ function CommentComponent(props: {
   const parser = new UAParser(props.comment.userAgent.trim());
   const browser = getString(parser.getBrowser());
   const os = getString(parser.getOS());
-  // const hash = useMemo(() => md5(props.comment.pubkey), [props.comment.pubkey]);
+  const hash = useMemo(
+    () =>
+      (parseInt(md5(props.comment.pubkey).toLowerCase(), 16) % 10000)
+        .toString()
+        .padStart(4, "0"),
+    [props.comment.pubkey],
+  );
 
   return (
-    <p>
-      <b>{name}</b>
-      {/* <span class="text-sm">#{hash.slice(0, 6)}</span> */}
-      <span class="ml-3 text-sm">{time}</span>
-      {browser && <span class="ml-3 text-sm">{browser}</span>}
-      {os && <span class="ml-3 text-sm">{os}</span>}
-      {props.identity === props.comment.pubkey && (
-        <span
-          class="ml-3 cursor-pointer text-sm underline"
-          onClick={() => props.onDelete(props.comment.id)}
-        >
-          删除
-        </span>
-      )}
-      <br />
-      {content || (
-        <span class="italic">
-          他居然钻了空子发了一条空评论！但是事实上他还是什么也做不到。
-        </span>
-      )}
-    </p>
+    <div class="clear-both mx-6 my-4">
+      <span class="float-right select-none">
+        <ArknightsAvatar
+          id={props.comment.pubkey}
+          class="h-20 w-20 object-cover"
+        />
+      </span>
+
+      <div>
+        <b>
+          {name}#{hash}
+        </b>
+        <span class="ml-3 text-sm">{time}</span>
+        {browser && <span class="ml-3 text-sm">{browser}</span>}
+        {os && <span class="ml-3 text-sm">{os}</span>}
+        {props.identity === props.comment.pubkey && (
+          <span
+            class="ml-3 cursor-pointer text-sm underline"
+            onClick={() => props.onDelete(props.comment.id)}
+          >
+            删除
+          </span>
+        )}
+      </div>
+
+      <div class="m-4">
+        {content || (
+          <span class="italic">
+            他居然钻了空子发了一条空评论！但是事实上他还是什么也做不到。
+          </span>
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -76,10 +102,12 @@ type CreateCommentProps = {
   path: string;
   seckey: CryptoKey;
   pubkey: CryptoKey;
+  identity: string;
   // setComments: StateUpdater<Comment[] | null>;
   // setShow: StateUpdater<boolean>;
   prependComment: (comment: Comment) => void;
   onSuccess: () => void;
+  onChangeIdentity: () => void;
 };
 
 function CreateComment(props: CreateCommentProps) {
@@ -162,7 +190,15 @@ function CreateComment(props: CreateCommentProps) {
             placeholder="不支持 Markdown"
           />
           <div class="col-span-3">
-            <Turnstile sitekey={sitekey} onSuccess={() => setFinish(true)} />
+            <div class="flex items-center justify-between">
+              <div onClick={() => props.onChangeIdentity()}>
+                <ArknightsAvatar
+                  id={props.identity}
+                  class="h-20 w-20 object-cover"
+                />
+              </div>
+              <Turnstile sitekey={sitekey} onSuccess={() => setFinish(true)} />
+            </div>
           </div>
           <button
             disabled={submitting || !finish}
@@ -184,6 +220,14 @@ export function Comments(props: Props) {
   const [seckey, setSeckey] = useState<CryptoKey | null>(null);
   const [identity, setIdentity] = useState("nobody");
 
+  const refreshKeys = useCallback(async () => {
+    const keypair = await generateKeys();
+    const pubkey = await exportPublicKey(keypair.publicKey);
+    setPubkey(keypair.publicKey);
+    setSeckey(keypair.privateKey);
+    setIdentity(pubkey);
+  }, []);
+
   useEffect(() => {
     (async () => {
       try {
@@ -196,11 +240,7 @@ export function Comments(props: Props) {
         setSeckey(privateKey);
         setIdentity(pubkey);
       } catch {
-        const keypair = await generateKeys();
-        const pubkey = await exportPublicKey(keypair.publicKey);
-        setPubkey(keypair.publicKey);
-        setSeckey(keypair.privateKey);
-        setIdentity(pubkey);
+        await refreshKeys();
       }
     })();
   }, []);
@@ -252,10 +292,14 @@ export function Comments(props: Props) {
           path={props.path}
           seckey={seckey!}
           pubkey={pubkey!}
+          identity={identity}
           prependComment={(comment) => {
             setComments((comments) => [comment, ...(comments || [])]);
           }}
           onSuccess={() => setShow(false)}
+          onChangeIdentity={() => {
+            refreshKeys();
+          }}
         />
       )}
 

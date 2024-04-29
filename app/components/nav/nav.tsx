@@ -47,7 +47,6 @@ export function NavPortal(props: { toc: string }) {
 
   useEffect(() => {
     const toc = JSON.parse(props.toc) as Toc;
-    console.log(toc);
     setter(toc);
   }, [props.toc]);
 
