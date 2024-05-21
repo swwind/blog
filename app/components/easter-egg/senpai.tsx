@@ -16,14 +16,16 @@ export function Senpai(props: SenpaiProps) {
   };
 
   return (
-    <p
-      className="cursor-not-allowed"
-      onClick={shoutOut}
-      style={{
-        cursor: `url(${poop}) 12 12, pointer`,
-      }}
-    >
-      {props.children}
+    <p>
+      <span
+        className="cursor-not-allowed"
+        onClick={shoutOut}
+        style={{
+          cursor: `url(${poop}) 12 12, pointer`,
+        }}
+      >
+        {props.children}
+      </span>
     </p>
   );
 }
