@@ -3,8 +3,8 @@ import { Signal, useComputed, useSignal } from "@preact/signals";
 import { JSX } from "preact/jsx-runtime";
 import md5 from "blueimp-md5";
 
-export const meta = meta$(() => {
-  return { title: "鸡肋的哈希密码生成器" };
+export const meta = meta$((_c, prev) => {
+  prev.title = "鸡肋的哈希密码生成器";
 });
 
 function Input(

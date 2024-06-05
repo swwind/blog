@@ -3,8 +3,8 @@ import { useSignal } from "@preact/signals";
 import { useRef } from "preact/hooks";
 import { arrayBufferToBase64 } from "~/utils/crypto.ts";
 
-export const meta = meta$(() => {
-  return { title: "生成炫酷的 ECDH 密钥对" };
+export const meta = meta$((_c, prev) => {
+  prev.title = "生成炫酷的 ECDH 密钥对";
 });
 
 export default () => {
