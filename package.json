@@ -18,7 +18,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@biliblitz/blitz": "^0.1.4",
+    "@biliblitz/blitz": "^0.1.5",
     "@hono/node-server": "^1.10.1",
     "@preact/signals": "^1.2.3",
     "blueimp-md5": "^2.19.0",
@@ -29,7 +29,7 @@
     "preact-render-to-string": "^6.4.2"
   },
   "devDependencies": {
-    "@biliblitz/vite": "^0.1.4",
+    "@biliblitz/vite": "^0.1.5",
     "@mdx-js/preact": "^3.0.1",
     "@preact/preset-vite": "^2.8.2",
     "@types/blueimp-md5": "^2.18.2",
