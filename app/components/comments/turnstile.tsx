@@ -7,7 +7,7 @@ const TURNSTILE_URL = `https://challenges.cloudflare.com/turnstile/v0/api.js?onl
 declare global {
   interface Window {
     [TURNSTILE_CALLBACK]?: () => void;
-    turnstile?: TurnstileObject;
+    turnstile: TurnstileObject;
   }
 }
 
