@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@biliblitz/blitz':
-        specifier: ^0.1.5
+        specifier: ^0.1.4
         version: 0.1.5(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)
       '@hono/node-server':
         specifier: ^1.10.1
@@ -37,7 +37,7 @@ importers:
         version: 6.4.2(preact@10.20.2)
     devDependencies:
       '@biliblitz/vite':
-        specifier: ^0.1.5
+        specifier: ^0.1.4
         version: 0.1.5(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)(vite@5.2.8(@types/node@20.12.7))
       '@mdx-js/preact':
         specifier: ^3.0.1
