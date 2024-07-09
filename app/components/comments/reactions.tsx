@@ -124,13 +124,12 @@ export function Reactions(props: ReactionsProps) {
           icon={icon}
           onClick={() => {
             if (!reacted.includes(name)) {
-              addReaction(props.path, name).then(({ updated }) => {
-                setReacted((reacted) => [...reacted, name]);
-                setReactions((reactions) => ({
-                  ...reactions,
-                  [name]: updated,
-                }));
-              });
+              setReacted((reacted) => [...reacted, name]);
+              setReactions((reactions) => ({
+                ...reactions,
+                [name]: (reactions[name] ?? 0) + 1,
+              }));
+              addReaction(props.path, name);
             }
           }}
           prevention={name === "down"}
