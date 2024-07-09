@@ -104,3 +104,7 @@ code.code-highlight {
 .token.inserted {
   color: green;
 }
+
+.token {
+  display: inline !important;
+}
