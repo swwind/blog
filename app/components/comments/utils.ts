@@ -1,41 +1,5 @@
-import { exportPublicKey, sign } from "~/utils/crypto.ts";
 import manifest from "../../metadata.json";
 import md5 from "blueimp-md5";
-
-export async function signAddComment(
-  formData: FormData,
-  pubkey: CryptoKey,
-  seckey: CryptoKey,
-) {
-  const path = formData.get("path") as string;
-  const name = formData.get("name") as string;
-  // const site = formData.get("site") as string;
-  // const avatar = formData.get("avatar") as string;
-  const content = formData.get("content") as string;
-
-  const data = JSON.stringify({
-    path,
-    name,
-    // site,
-    // avatar,
-    content,
-  });
-  formData.append("pubkey", await exportPublicKey(pubkey));
-  formData.append("sign", await sign(seckey, data));
-}
-
-export async function signDeleteComment(
-  formData: FormData,
-  pubkey: CryptoKey,
-  seckey: CryptoKey,
-) {
-  const path = formData.get("path") as string;
-  const uuid = formData.get("uuid") as string;
-
-  const data = JSON.stringify({ path, uuid });
-  formData.append("pubkey", await exportPublicKey(pubkey));
-  formData.append("sign", await sign(seckey, data));
-}
 
 export type Comment = {
   id: string;
@@ -46,6 +10,7 @@ export type Comment = {
   time: number;
   userAgent: string;
   pubkey: string;
+  hash: string;
 };
 
 export const origin = import.meta.env.DEV
@@ -68,4 +33,20 @@ export function getAvatarURL(avatar: string) {
   return gravatar(
     avatar.length === 32 && /^[a-z0-9]$/.test(avatar) ? avatar : md5(avatar),
   );
+}
+
+export function generateUserHash(pubkey: string) {
+  return (parseInt(md5(pubkey).toLowerCase(), 16) % 10000)
+    .toString()
+    .padStart(4, "0");
+}
+
+export function weakRandomString() {
+  let x = "";
+  for (let i = 0; i < 24; ++i) {
+    x += Math.floor(Math.random() * 256)
+      .toString(16)
+      .padStart(2, "0");
+  }
+  return x;
 }

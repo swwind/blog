@@ -9,21 +9,13 @@ import { Turnstile } from "./turnstile.tsx";
 import { formatDate } from "~/utils/chinese-calendar.ts";
 import { UAParser } from "ua-parser-js";
 import {
-  signAddComment,
-  signDeleteComment,
   Comment,
   sitekey,
   origin,
+  generateUserHash,
+  weakRandomString,
 } from "./utils.ts";
-import {
-  exportPrivateKey,
-  exportPublicKey,
-  generateKeys,
-  importPrivateKey,
-  importPublicKey,
-} from "~/utils/crypto.ts";
 import { ArknightsAvatar } from "./arknights.tsx";
-import md5 from "blueimp-md5";
 
 type Props = {
   path: string;
@@ -42,24 +34,21 @@ function getString(something: {
 
 function CommentComponent(props: {
   comment: Comment;
-  identity: string;
-  onDelete: (uuid: string) => void;
+  onDelete?: (uuid: string) => void;
 }) {
-  const name = props.comment.name.trim() || "匿名用户";
-  // const site = props.comment.site.trim();
-  // const avatarURL = getAvatarURL(props.comment.avatar.trim());
-  const content = props.comment.content.trim();
-  const time = formatDate(props.comment.time);
-  const parser = new UAParser(props.comment.userAgent.trim());
-  const browser = getString(parser.getBrowser());
-  const os = getString(parser.getOS());
-  const hash = useMemo(
-    () =>
-      (parseInt(md5(props.comment.pubkey).toLowerCase(), 16) % 10000)
-        .toString()
-        .padStart(4, "0"),
-    [props.comment.pubkey],
-  );
+  const { name, content, time, browser, os, hash } = useMemo(() => {
+    const parser = new UAParser(props.comment.userAgent.trim());
+    return {
+      name: props.comment.name.trim() || "匿名用户",
+      content: props.comment.content.trim(),
+      time: formatDate(props.comment.time),
+      browser: getString(parser.getBrowser()),
+      os: getString(parser.getOS()),
+      hash: generateUserHash(props.comment.pubkey),
+    };
+  }, [props.comment]);
+
+  const onDelete = props.onDelete;
 
   return (
     <div class="clear-both mx-6 my-4">
@@ -77,10 +66,10 @@ function CommentComponent(props: {
         <span class="ml-3 text-sm">{time}</span>
         {browser && <span class="ml-3 text-sm">{browser}</span>}
         {os && <span class="ml-3 text-sm">{os}</span>}
-        {props.identity === props.comment.pubkey && (
+        {onDelete && (
           <span
             class="ml-3 cursor-pointer text-sm underline"
-            onClick={() => props.onDelete(props.comment.id)}
+            onClick={() => onDelete(props.comment.id)}
           >
             删除
           </span>
@@ -100,14 +89,14 @@ function CommentComponent(props: {
 
 type CreateCommentProps = {
   path: string;
-  seckey: CryptoKey;
-  pubkey: CryptoKey;
-  identity: string;
+  // seckey: CryptoKey;
+  // pubkey: CryptoKey;
+  // identity: string;
   // setComments: StateUpdater<Comment[] | null>;
   // setShow: StateUpdater<boolean>;
-  prependComment: (comment: Comment) => void;
+  prependComment: (comment: Comment, key: string) => void;
   onSuccess: () => void;
-  onChangeIdentity: () => void;
+  // onChangeIdentity: () => void;
 };
 
 function CreateComment(props: CreateCommentProps) {
@@ -116,7 +105,7 @@ function CreateComment(props: CreateCommentProps) {
   const [submitting, setSubmitting] = useState(false);
   const [finish, setFinish] = useState(false);
 
-  const [meta, setMeta] = useState({ name: "" });
+  const [meta, setMeta] = useState({ name: "", pubkey: weakRandomString() });
   // load
   useEffect(() => {
     const cache = localStorage.getItem("comments-metadata");
@@ -140,12 +129,6 @@ function CreateComment(props: CreateCommentProps) {
 
           (async () => {
             try {
-              if (!props.seckey || !props.pubkey) {
-                return alert("KeyPair is missing");
-              }
-
-              await signAddComment(formData, props.pubkey, props.seckey);
-
               const response = await fetch(action, {
                 method: "POST",
                 body: formData,
@@ -158,8 +141,9 @@ function CreateComment(props: CreateCommentProps) {
               const data = (await response.json()) as {
                 ok: true;
                 comment: Comment;
+                key: string;
               };
-              props.prependComment(data.comment);
+              props.prependComment(data.comment, data.key);
               if (textarea.current) {
                 textarea.current.value = "";
               }
@@ -171,6 +155,7 @@ function CreateComment(props: CreateCommentProps) {
         }}
       >
         <input type="hidden" name="path" value={props.path} />
+        <input type="hidden" name="pubkey" value={meta.pubkey} />
         <div class="grid grid-cols-3 gap-2">
           <input
             type="text"
@@ -191,9 +176,13 @@ function CreateComment(props: CreateCommentProps) {
           />
           <div class="col-span-3">
             <div class="flex items-center justify-between">
-              <div onClick={() => props.onChangeIdentity()}>
+              <div
+                onClick={() =>
+                  setMeta((meta) => ({ ...meta, pubkey: weakRandomString() }))
+                }
+              >
                 <ArknightsAvatar
-                  id={props.identity}
+                  id={meta.pubkey}
                   class="h-20 w-20 object-cover"
                 />
               </div>
@@ -204,7 +193,11 @@ function CreateComment(props: CreateCommentProps) {
             disabled={submitting || !finish}
             class="col-span-3 border-2 border-slate-800 disabled:pointer-events-none disabled:opacity-60 dark:border-slate-100"
           >
-            {submitting ? "提交中..." : "提交评论"}
+            {finish
+              ? submitting
+                ? "提交中..."
+                : "提交评论"
+              : "等待验证通过..."}
           </button>
         </div>
       </form>
@@ -212,47 +205,43 @@ function CreateComment(props: CreateCommentProps) {
   );
 }
 
+interface Storage {
+  keys: [string, string][];
+}
+
+const storageKey = "sww.moe:keys";
+
+function loadStorage(): Storage {
+  const keys = localStorage.getItem(storageKey);
+  return keys ? JSON.parse(keys) : { keys: [] };
+}
+
+function addStorage(uuid: string, key: string) {
+  const storage = loadStorage();
+  const keys = new Map(storage.keys);
+  keys.set(uuid, key);
+  storage.keys = [...keys];
+  localStorage.setItem(storageKey, JSON.stringify(storage));
+}
+
+function removeStorage(uuid: string) {
+  const storage = loadStorage();
+  const keys = new Map(storage.keys);
+  keys.delete(uuid);
+  storage.keys = [...keys];
+  localStorage.setItem(storageKey, JSON.stringify(storage));
+}
+
 export function Comments(props: Props) {
   const [comments, setComments] = useState<Comment[] | null>(null);
   const [show, setShow] = useState(false);
+  const [storage, setStorage] = useState<Map<string, string>>(new Map());
 
-  const [pubkey, setPubkey] = useState<CryptoKey | null>(null);
-  const [seckey, setSeckey] = useState<CryptoKey | null>(null);
-  const [identity, setIdentity] = useState("nobody");
+  const refreshStorage = () => {
+    setStorage(new Map(loadStorage().keys));
+  };
 
-  const refreshKeys = useCallback(async () => {
-    const keypair = await generateKeys();
-    const pubkey = await exportPublicKey(keypair.publicKey);
-    setPubkey(keypair.publicKey);
-    setSeckey(keypair.privateKey);
-    setIdentity(pubkey);
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const pubkey = localStorage.getItem("blog.pubkey");
-        const seckey = localStorage.getItem("blog.seckey");
-        if (!pubkey || !seckey) throw new Error();
-        const publicKey = await importPublicKey(pubkey);
-        const privateKey = await importPrivateKey(seckey);
-        setPubkey(publicKey);
-        setSeckey(privateKey);
-        setIdentity(pubkey);
-      } catch {
-        await refreshKeys();
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      if (pubkey)
-        localStorage.setItem("blog.pubkey", await exportPublicKey(pubkey));
-      if (seckey)
-        localStorage.setItem("blog.seckey", await exportPrivateKey(seckey));
-    })();
-  }, [pubkey, seckey]);
+  useEffect(refreshStorage, []);
 
   useEffect(() => {
     const abort = new AbortController();
@@ -290,16 +279,12 @@ export function Comments(props: Props) {
       {show && (
         <CreateComment
           path={props.path}
-          seckey={seckey!}
-          pubkey={pubkey!}
-          identity={identity}
-          prependComment={(comment) => {
+          prependComment={(comment, key) => {
             setComments((comments) => [comment, ...(comments || [])]);
+            addStorage(comment.id, key);
+            refreshStorage();
           }}
           onSuccess={() => setShow(false)}
-          onChangeIdentity={() => {
-            refreshKeys();
-          }}
         />
       )}
 
@@ -308,30 +293,32 @@ export function Comments(props: Props) {
       ) : visibleComments.length === 0 ? (
         <p class="italic opacity-60">暂时没有评论</p>
       ) : (
-        visibleComments.map((comment) => (
-          <CommentComponent
-            comment={comment}
-            identity={identity}
-            key={comment.id}
-            onDelete={async (uuid) => {
-              if (!pubkey || !seckey) {
-                return alert("keypair missing");
-              }
-              const formData = new FormData();
-              formData.append("path", props.path);
-              formData.append("uuid", uuid);
-              await signDeleteComment(formData, pubkey, seckey);
-              const response = await fetch(`${origin}/delete`, {
-                method: "POST",
-                body: formData,
-              });
-              const json = (await response.json()) as { ok: true };
-              if (json.ok) {
-                setInvisible((invisible) => [...invisible, uuid]);
-              }
-            }}
-          />
-        ))
+        visibleComments.map((comment) =>
+          storage.has(comment.id) ? (
+            <CommentComponent
+              key={comment.id}
+              comment={comment}
+              onDelete={async () => {
+                const formData = new FormData();
+                formData.append("path", props.path);
+                formData.append("uuid", comment.id);
+                formData.append("key", storage.get(comment.id)!);
+                const response = await fetch(`${origin}/delete`, {
+                  method: "POST",
+                  body: formData,
+                });
+                const json = (await response.json()) as { ok: true };
+                if (json.ok) {
+                  setInvisible((invisible) => [...invisible, comment.id]);
+                  removeStorage(comment.id);
+                  refreshStorage();
+                }
+              }}
+            />
+          ) : (
+            <CommentComponent key={comment.id} comment={comment} />
+          ),
+        )
       )}
     </>
   );
