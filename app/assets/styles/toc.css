@@ -1,12 +1,56 @@
 nav.toc {
-  @apply sticky top-12 underline;
-  font-family: "Noto Serif SC", serif;
+  @apply absolute right-full hidden h-full w-72 xl:block;
+  animation: slide-in 1s;
 
   ol {
-    @apply ml-4;
+    @apply sticky top-24 ml-4 mr-0;
 
     li {
-      @apply list-decimal;
+      @apply list-none;
     }
+  }
+
+  & > ol {
+    counter-reset: section;
+
+    & > li {
+      counter-increment: section;
+
+      &::before {
+        content: counter(section, cjk-decimal) "、";
+      }
+
+      & > ol {
+        counter-reset: subsection;
+
+        & > li {
+          counter-increment: subsection;
+
+          &::before {
+            content: counter(section) "." counter(subsection) ". ";
+          }
+
+          & > ol {
+            counter-reset: subsubsection;
+
+            & > li {
+              counter-increment: subsubsection;
+
+              &::before {
+                content: counter(section) "." counter(subsection) "."
+                  counter(subsubsection) ". ";
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
   }
 }

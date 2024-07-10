@@ -36,13 +36,14 @@ export const Header = () => {
       <span>
         <Link href="/" class={`inline-flex items-center gap-2 ${underline}`}>
           <HomeIcon class="h-4 w-4" />
-          {header}
+          <span class="hidden md:inline-block">{header}</span>
+          <span class="inline-block md:hidden">首页</span>
         </Link>
       </span>
 
       <span class="inline-flex items-center gap-4">
         <span
-          class={`inline-flex cursor-pointer items-center gap-2 ${underline}`}
+          class={`cursor-pointer items-center gap-2 ${underline} hidden md:inline-flex`}
           onClick={() => {
             setId((id) =>
               id === null ? 0 : id === tracks.length - 1 ? null : id + 1,

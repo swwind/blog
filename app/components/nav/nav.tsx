@@ -1,21 +1,5 @@
 import { Link } from "@biliblitz/blitz";
-import { ComponentChildren, createContext } from "preact";
-import { Dispatch, StateUpdater, useContext, useEffect } from "preact/hooks";
 import { Toc } from "~/utils/toc.ts";
-
-type Setter<T> = Dispatch<StateUpdater<T>>;
-const NavContext = createContext<Setter<Toc>>(() => {});
-
-export function NavProvider(props: {
-  value: Setter<Toc>;
-  children?: ComponentChildren;
-}) {
-  return (
-    <NavContext.Provider value={props.value}>
-      {props.children}
-    </NavContext.Provider>
-  );
-}
 
 function NavToc(props: { toc: Toc }) {
   return (
@@ -43,12 +27,5 @@ export function Nav(props: NavProps) {
 }
 
 export function NavPortal(props: { toc: string }) {
-  const setter = useContext(NavContext)!;
-
-  useEffect(() => {
-    const toc = JSON.parse(props.toc) as Toc;
-    setter(toc);
-  }, [props.toc]);
-
-  return null;
+  return <Nav toc={JSON.parse(props.toc)}></Nav>;
 }
