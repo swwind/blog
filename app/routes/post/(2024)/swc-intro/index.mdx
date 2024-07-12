@@ -118,7 +118,7 @@ struct TransformVisitor {
 // 实现 Visit 特征
 impl Visit for TransformVisitor {
   noop_visit_type!();
-  
+
   fn visit_ident(&mut self, n: &Ident) {
     self.id.push(n.sym.to_string());
     // n.visit_children_with(self); // 如果要遍历子节点
@@ -652,7 +652,7 @@ await transform(code, {
   jsc: {
     experimental: {
       plugins: [
-        [plugin()]
+        plugin()
       ]
     }
   }
