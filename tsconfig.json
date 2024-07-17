@@ -15,8 +15,8 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./src/*"]
     }
   },
-  "include": ["app", "adapters", "vite.config.ts"]
+  "include": ["src", "adapters", "vite.config.ts"]
 }

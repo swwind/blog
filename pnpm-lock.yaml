@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@biliblitz/blitz':
-        specifier: ^0.1.4
-        version: 0.1.5(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)
+        specifier: ^0.2.0
+        version: 0.2.0(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)
       '@hono/node-server':
         specifier: ^1.10.1
         version: 1.11.0
@@ -37,8 +37,8 @@ importers:
         version: 6.4.2(preact@10.20.2)
     devDependencies:
       '@biliblitz/vite':
-        specifier: ^0.1.4
-        version: 0.1.5(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)(vite@5.2.8(@types/node@20.12.7))
+        specifier: ^0.2.0
+        version: 0.2.0(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)(vite@5.2.8(@types/node@20.12.7))
       '@mdx-js/preact':
         specifier: ^3.0.1
         version: 3.0.1(preact@10.20.2)
@@ -235,15 +235,15 @@ packages:
     resolution: {integrity: sha512-+j7a5c253RfKh8iABBhywc8NSfP5LURe7Uh4qpsh6jc+aLJguvmIUBdjSdEMQv2bENrCR5MfRdjGo7vzS/ob7w==}
     engines: {node: '>=6.9.0'}
 
-  '@biliblitz/blitz@0.1.5':
-    resolution: {integrity: sha512-+zrRFw+F3SZjGmOr1AlgS4P2mhc+TgQFaTT87aRJmzfdiXI0qEVW311n76FQIQB3CsGvPqkd2E7aCxx7pLxNig==}
+  '@biliblitz/blitz@0.2.0':
+    resolution: {integrity: sha512-bB9YrpV81g94jetz8FcCg7zPUXSFGp6oKHIFBhIi20PrMCoZyzmGlgmhwvtyp8SejqZyttbKSs8IsuuR4RTIwg==}
     peerDependencies:
       hono: ^4
       preact: ^10
       preact-render-to-string: ^6
 
-  '@biliblitz/vite@0.1.5':
-    resolution: {integrity: sha512-7TE9Qmj+hPcu0aDud78vnmJvn0EgXn4+DbjaSHaz/r2bJbG+4252SkJShRlR29PuPf1E4ttnxqjwojbIINjHAg==}
+  '@biliblitz/vite@0.2.0':
+    resolution: {integrity: sha512-hdEXHL2kQFrTcR0Vdbu6cCx1e/QlllRKXgsSgnPUQRfsFacqlqm7/FETnoajIndeB1LrQbI8tkCy6XLFON28uw==}
     peerDependencies:
       hono: ^4
       vite: '>=5'
@@ -390,6 +390,10 @@ packages:
     resolution: {integrity: sha512-TLIJq9TMtD1NEG1mVoqNUn1Ita0qSaB5XboZErjFBcO/GJYXwWY4dVdTi9G0lbxtu0x+hJXDItcLaFHb7rlFTw==}
     engines: {node: '>=18.14.1'}
 
+  '@hono/node-server@1.12.0':
+    resolution: {integrity: sha512-e6oHjNiErRxsZRZBmc2KucuvY3btlO/XPncIpP2X75bRdTilF9GLjm3NHvKKunpJbbJJj31/FoPTksTf8djAVw==}
+    engines: {node: '>=18.14.1'}
+
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
@@ -415,9 +419,6 @@ packages:
   '@jsdevtools/rehype-toc@3.0.2':
     resolution: {integrity: sha512-n5JEf16Wr4mdkRMZ8wMP/wN9/sHmTjRPbouXjJH371mZ2LEGDl72t8tEsMRNFerQN/QJtivOxqK1frdGa4QK5Q==}
     engines: {node: '>=10'}
-
-  '@jsr/swwind__treeshake-jsx-events@0.0.5':
-    resolution: {integrity: sha512-87SXTv3NIrOseuerqFVEJI2iikNvlO5byDKJOexItEeNLOX7lqNJwFhZtjsCyIIe+e3Fe9cb7/MYHey9qxpg1A==, tarball: https://npm.jsr.io/~/11/@jsr/swwind__treeshake-jsx-events/0.0.5.tgz}
 
   '@mdx-js/mdx@3.0.1':
     resolution: {integrity: sha512-eIQ4QTrOWyL3LWEe/bu6Taqzq2HQvHcyTMaOrI95P2/LmJE7AsfPfgJGuFLPVqBUE1BC1rik3VIhU+s9u72arA==}
@@ -553,11 +554,83 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@swwind/find-exports@1.0.2':
-    resolution: {integrity: sha512-Up+QsOlTL0lJGQp8AHLuuoGhmtvfK4N/uj3aidgIKWMTTiUKKuKRYAyeG6uuJgPgfAkrnmByUQ7lXfY3HaT2ew==}
+  '@swc/core-darwin-arm64@1.6.13':
+    resolution: {integrity: sha512-SOF4buAis72K22BGJ3N8y88mLNfxLNprTuJUpzikyMGrvkuBFNcxYtMhmomO0XHsgLDzOJ+hWzcgjRNzjMsUcQ==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
 
-  '@swwind/remove-exports@1.0.0':
-    resolution: {integrity: sha512-Cwa1Ldu+lSgnDitzJokKfnA6ekriSopza5kxv3h/egphacXTzm4fBnVkCVDL4mZY/oDc1Hyq+i8Mr+jZRSJJ7w==}
+  '@swc/core-darwin-x64@1.6.13':
+    resolution: {integrity: sha512-AW8akFSC+tmPE6YQQvK9S2A1B8pjnXEINg+gGgw0KRUUXunvu1/OEOeC5L2Co1wAwhD7bhnaefi06Qi9AiwOag==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@swc/core-linux-arm-gnueabihf@1.6.13':
+    resolution: {integrity: sha512-f4gxxvDXVUm2HLYXRd311mSrmbpQF2MZ4Ja6XCQz1hWAxXdhRl1gpnZ+LH/xIfGSwQChrtLLVrkxdYUCVuIjFg==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@swc/core-linux-arm64-gnu@1.6.13':
+    resolution: {integrity: sha512-Nf/eoW2CbG8s+9JoLtjl9FByBXyQ5cjdBsA4efO7Zw4p+YSuXDgc8HRPC+E2+ns0praDpKNZtLvDtmF2lL+2Gg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/core-linux-arm64-musl@1.6.13':
+    resolution: {integrity: sha512-2OysYSYtdw79prJYuKIiux/Gj0iaGEbpS2QZWCIY4X9sGoETJ5iMg+lY+YCrIxdkkNYd7OhIbXdYFyGs/w5LDg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/core-linux-x64-gnu@1.6.13':
+    resolution: {integrity: sha512-PkR4CZYJNk5hcd2+tMWBpnisnmYsUzazI1O5X7VkIGFcGePTqJ/bWlfUIVVExWxvAI33PQFzLbzmN5scyIUyGQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/core-linux-x64-musl@1.6.13':
+    resolution: {integrity: sha512-OdsY7wryTxCKwGQcwW9jwWg3cxaHBkTTHi91+5nm7hFPpmZMz1HivJrWAMwVE7iXFw+M4l6ugB/wCvpYrUAAjA==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/core-win32-arm64-msvc@1.6.13':
+    resolution: {integrity: sha512-ap6uNmYjwk9M/+bFEuWRNl3hq4VqgQ/Lk+ID/F5WGqczNr0L7vEf+pOsRAn0F6EV+o/nyb3ePt8rLhE/wjHpPg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@swc/core-win32-ia32-msvc@1.6.13':
+    resolution: {integrity: sha512-IJ8KH4yIUHTnS/U1jwQmtbfQals7zWPG0a9hbEfIr4zI0yKzjd83lmtS09lm2Q24QBWOCFGEEbuZxR4tIlvfzA==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+
+  '@swc/core-win32-x64-msvc@1.6.13':
+    resolution: {integrity: sha512-f6/sx6LMuEnbuxtiSL/EkR0Y6qUHFw1XVrh6rwzKXptTipUdOY+nXpKoh+1UsBm/r7H0/5DtOdrn3q5ZHbFZjQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@swc/core@1.6.13':
+    resolution: {integrity: sha512-eailUYex6fkfaQTev4Oa3mwn0/e3mQU4H8y1WPuImYQESOQDtVrowwUGDSc19evpBbHpKtwM+hw8nLlhIsF+Tw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@swc/helpers': '*'
+    peerDependenciesMeta:
+      '@swc/helpers':
+        optional: true
+
+  '@swc/counter@0.1.3':
+    resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
+
+  '@swc/types@0.1.9':
+    resolution: {integrity: sha512-qKnCno++jzcJ4lM4NTfYifm1EFSCeIfKiAHAfkENZAV5Kl9PjJIyd2yeeVv6c/2CckuLyv2NmRC5pv6pm2WQBg==}
+
+  '@swwind/remove-exports@2.1.3':
+    resolution: {integrity: sha512-suj6TWgBYJD5qqDwSnf/l4fC76p9+maUgsMV7W5/ygDDD4mxGsQ1dUs6yXalS3LsdNnCmd3XE6bgnDAtPOR/Uw==}
 
   '@types/acorn@4.0.6':
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
@@ -713,10 +786,6 @@ packages:
   chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
     engines: {node: '>=4'}
-
-  chalk@5.3.0:
-    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   character-entities-html4@2.1.0:
     resolution: {integrity: sha512-1v7fgQRj6hnSwFpq1Eu0ynr/CDEw0rXo2B61qXrLNdHZmPKgb7fqS1a2JwF0rISo9q77jDI8VMEHoApn8qDoZA==}
@@ -1770,6 +1839,9 @@ packages:
   vfile@6.0.1:
     resolution: {integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==}
 
+  vfile@6.0.2:
+    resolution: {integrity: sha512-zND7NlS8rJYb/sPqkb13ZvbbUoExdbi4w3SfRrMq6R3FvnLQmmfpajJNITuuYm6AZ5uao9vy4BAos3EXBPf2rg==}
+
   vite-tsconfig-paths@4.3.2:
     resolution: {integrity: sha512-0Vd/a6po6Q+86rPlntHye7F31zA2URZMbH8M3saAZ/xR9QoGN/L21bxEGfXdWmFdNkqPpRdxFT7nmNe12e9/uA==}
     peerDependencies:
@@ -1993,26 +2065,26 @@ snapshots:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  '@biliblitz/blitz@0.1.5(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)':
+  '@biliblitz/blitz@0.2.0(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)':
     dependencies:
       hono: 4.2.3
       preact: 10.20.2
       preact-render-to-string: 6.4.2(preact@10.20.2)
 
-  '@biliblitz/vite@0.1.5(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)(vite@5.2.8(@types/node@20.12.7))':
+  '@biliblitz/vite@0.2.0(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)(vite@5.2.8(@types/node@20.12.7))':
     dependencies:
-      '@biliblitz/blitz': 0.1.5(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)
-      '@hono/node-server': 1.11.0
+      '@biliblitz/blitz': 0.2.0(hono@4.2.3)(preact-render-to-string@6.4.2(preact@10.20.2))(preact@10.20.2)
+      '@hono/node-server': 1.12.0
       '@mdx-js/mdx': 3.0.1
-      '@swwind/find-exports': 1.0.2
-      '@swwind/remove-exports': 1.0.0
-      '@swwind/treeshake-jsx-events': '@jsr/swwind__treeshake-jsx-events@0.0.5'
-      chalk: 5.3.0
+      '@swc/core': 1.6.13
+      '@swwind/remove-exports': 2.1.3
       hono: 4.2.3
-      vfile: 6.0.1
+      kolorist: 1.8.0
+      vfile: 6.0.2
       vfile-matter: 5.0.0
       vite: 5.2.8(@types/node@20.12.7)
     transitivePeerDependencies:
+      - '@swc/helpers'
       - preact
       - preact-render-to-string
       - supports-color
@@ -2088,6 +2160,8 @@ snapshots:
 
   '@hono/node-server@1.11.0': {}
 
+  '@hono/node-server@1.12.0': {}
+
   '@isaacs/cliui@8.0.2':
     dependencies:
       string-width: 5.1.2
@@ -2116,8 +2190,6 @@ snapshots:
 
   '@jsdevtools/rehype-toc@3.0.2': {}
 
-  '@jsr/swwind__treeshake-jsx-events@0.0.5': {}
-
   '@mdx-js/mdx@3.0.1':
     dependencies:
       '@types/estree': 1.0.5
@@ -2142,7 +2214,7 @@ snapshots:
       unist-util-position-from-estree: 2.0.0
       unist-util-stringify-position: 4.0.0
       unist-util-visit: 5.0.0
-      vfile: 6.0.1
+      vfile: 6.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -2263,9 +2335,59 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.14.1':
     optional: true
 
-  '@swwind/find-exports@1.0.2': {}
+  '@swc/core-darwin-arm64@1.6.13':
+    optional: true
 
-  '@swwind/remove-exports@1.0.0': {}
+  '@swc/core-darwin-x64@1.6.13':
+    optional: true
+
+  '@swc/core-linux-arm-gnueabihf@1.6.13':
+    optional: true
+
+  '@swc/core-linux-arm64-gnu@1.6.13':
+    optional: true
+
+  '@swc/core-linux-arm64-musl@1.6.13':
+    optional: true
+
+  '@swc/core-linux-x64-gnu@1.6.13':
+    optional: true
+
+  '@swc/core-linux-x64-musl@1.6.13':
+    optional: true
+
+  '@swc/core-win32-arm64-msvc@1.6.13':
+    optional: true
+
+  '@swc/core-win32-ia32-msvc@1.6.13':
+    optional: true
+
+  '@swc/core-win32-x64-msvc@1.6.13':
+    optional: true
+
+  '@swc/core@1.6.13':
+    dependencies:
+      '@swc/counter': 0.1.3
+      '@swc/types': 0.1.9
+    optionalDependencies:
+      '@swc/core-darwin-arm64': 1.6.13
+      '@swc/core-darwin-x64': 1.6.13
+      '@swc/core-linux-arm-gnueabihf': 1.6.13
+      '@swc/core-linux-arm64-gnu': 1.6.13
+      '@swc/core-linux-arm64-musl': 1.6.13
+      '@swc/core-linux-x64-gnu': 1.6.13
+      '@swc/core-linux-x64-musl': 1.6.13
+      '@swc/core-win32-arm64-msvc': 1.6.13
+      '@swc/core-win32-ia32-msvc': 1.6.13
+      '@swc/core-win32-x64-msvc': 1.6.13
+
+  '@swc/counter@0.1.3': {}
+
+  '@swc/types@0.1.9':
+    dependencies:
+      '@swc/counter': 0.1.3
+
+  '@swwind/remove-exports@2.1.3': {}
 
   '@types/acorn@4.0.6':
     dependencies:
@@ -2400,8 +2522,6 @@ snapshots:
       ansi-styles: 3.2.1
       escape-string-regexp: 1.0.5
       supports-color: 5.5.0
-
-  chalk@5.3.0: {}
 
   character-entities-html4@2.1.0: {}
 
@@ -3042,7 +3162,7 @@ snapshots:
       trim-lines: 3.0.1
       unist-util-position: 5.0.0
       unist-util-visit: 5.0.0
-      vfile: 6.0.1
+      vfile: 6.0.2
 
   mdast-util-to-markdown@2.1.0:
     dependencies:
@@ -3585,7 +3705,7 @@ snapshots:
       '@types/mdast': 4.0.3
       mdast-util-to-hast: 13.1.0
       unified: 11.0.4
-      vfile: 6.0.1
+      vfile: 6.0.2
 
   remark-ruby@0.4.0(remark-parse@11.0.0):
     dependencies:
@@ -3857,7 +3977,7 @@ snapshots:
 
   vfile-matter@5.0.0:
     dependencies:
-      vfile: 6.0.1
+      vfile: 6.0.2
       yaml: 2.4.1
 
   vfile-message@3.1.4:
@@ -3878,6 +3998,12 @@ snapshots:
       vfile-message: 3.1.4
 
   vfile@6.0.1:
+    dependencies:
+      '@types/unist': 3.0.2
+      unist-util-stringify-position: 4.0.0
+      vfile-message: 4.0.2
+
+  vfile@6.0.2:
     dependencies:
       '@types/unist': 3.0.2
       unist-util-stringify-position: 4.0.0
