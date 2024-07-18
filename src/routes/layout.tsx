@@ -13,6 +13,16 @@ export const meta = meta$((_ctx, meta) => {
 });
 
 export default () => {
+  useEffect(() => {
+    try {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("bad browser");
+    } catch {
+      location.href = "https://www.youtube.com/watch?v=-RhAlhmNzm8";
+    }
+  }, []);
+
   return (
     <div class="mx-auto flex min-h-screen max-w-4xl flex-col transition-[translate] duration-1000 xl:translate-x-24">
       <Header />
