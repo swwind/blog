@@ -5,6 +5,7 @@ import { Footer } from "~/components/footer/footer.tsx";
 import { Header } from "~/components/header/header.tsx";
 import { Typography } from "~/components/typography/typography.tsx";
 import metadata from "../metadata.json";
+import { useEffect } from "preact/hooks";
 
 export const meta = meta$((_ctx, meta) => {
   meta.title = meta.title
