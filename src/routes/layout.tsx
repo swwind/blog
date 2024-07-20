@@ -13,14 +13,26 @@ export const meta = meta$((_ctx, meta) => {
     : metadata["site-name"];
 });
 
+const accessDenied = atob(
+  "PGgxPllvdXIgYWNjZXNzIHRvIHRoaXMgc2l0ZSBpcyBwcm9oaWJpdGVkIGR1ZSB0byBhIHN1c3BpY2lvdXMgYmVoYXZpb3VyLjwvaDE+",
+);
+const senpaiURL = atob(
+  "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj0tUmhBbGhtTnptOA==",
+);
+
 export default () => {
   useEffect(() => {
     try {
       const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      if (!ctx) throw new Error("bad browser");
+      const hasWebGL =
+        window.WebGLRenderingContext &&
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
+      if (!hasWebGL) throw new Error("bad browser");
     } catch {
-      location.href = "https://www.youtube.com/watch?v=-RhAlhmNzm8";
+      setTimeout(() => {
+        location.href = senpaiURL;
+      }, 5000);
+      document.write(accessDenied);
     }
   }, []);
 
