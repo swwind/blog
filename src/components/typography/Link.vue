@@ -14,10 +14,5 @@ const props = defineProps<{
   href: string;
 }>();
 
-const isExternal = computed(
-  () =>
-    props.href.startsWith("https://") ||
-    props.href.startsWith("http://") ||
-    props.href.startsWith("//"),
-);
+const isExternal = computed(() => /^(?:https?:)?\/\//.test(props.href));
 </script>

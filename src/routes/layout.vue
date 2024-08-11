@@ -1,12 +1,3 @@
-<script lang="ts">
-const accessDenied = atob(
-  "PGgxPllvdXIgYWNjZXNzIHRvIHRoaXMgc2l0ZSBpcyBwcm9oaWJpdGVkIGR1ZSB0byBhIHN1c3BpY2lvdXMgYmVoYXZpb3VyLjwvaDE+",
-);
-const senpaiURL = atob(
-  "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj0tUmhBbGhtTnptOA==",
-);
-</script>
-
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { useHead } from "@unhead/vue";
@@ -20,6 +11,13 @@ import Typography from "~/components/typography/Typography.vue";
 useHead({
   title: metadata["site-name"],
 });
+
+const accessDenied = atob(
+  "PGgxPllvdXIgYWNjZXNzIHRvIHRoaXMgc2l0ZSBpcyBwcm9oaWJpdGVkIGR1ZSB0byBhIHN1c3BpY2lvdXMgYmVoYXZpb3VyLjwvaDE+",
+);
+const senpaiURL = atob(
+  "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj0tUmhBbGhtTnptOA==",
+);
 
 onMounted(() => {
   try {

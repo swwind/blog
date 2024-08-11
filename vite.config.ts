@@ -13,7 +13,7 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import rehypeToc from "rehype-toc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { TocItem } from "~/utils/toc.ts";
+import type { TocItem } from "~/utils/toc.ts";
 
 const parseItem = (tree: any): TocItem => {
   const [a, ...os] = tree.children;
