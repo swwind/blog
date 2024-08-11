@@ -1,4 +1,4 @@
-import { staticAdapter } from "@biliblitz/vite/adapters/static";
+import { staticAdapter } from "@biliblitz/adapter-static";
 import { defineConfig, mergeConfig } from "vite";
 import baseConfig from "../../vite.config.ts";
 
@@ -8,6 +8,7 @@ export default mergeConfig(
     plugins: [
       staticAdapter({
         origin: "https://blog.sww.moe",
+        sitemap: true,
       }),
     ],
   }),

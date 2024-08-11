@@ -4,12 +4,12 @@ title: Cloudflare D1 使用记录
 
 # Cloudflare D1 使用记录
 
-import { Metadata } from "~/components/metadata/metadata.tsx";
+import Metadata from "~/components/metadata/Metadata.vue";
 
 <Metadata author="swwind" time="2024-7-14" />
 
 > 相关文档
-> 
+>
 > - [Cloudflare Workers KV 使用手册](https://developers.cloudflare.com/kv/)
 > - [Cloudflare D1 使用手册](https://developers.cloudflare.com/d1/)
 > - [Hono 使用手册](https://hono.dev/)
@@ -88,7 +88,7 @@ npx wrangler d1 execute my-database --remote --command='SELECT * FROM students'
 
 ```ts
 export type Env = {
-	DB: D1Database; // 这里的 "DB" 与之前的的 binding = "DB" 相同即可
+  DB: D1Database; // 这里的 "DB" 与之前的的 binding = "DB" 相同即可
 };
 ```
 
@@ -98,16 +98,17 @@ export type Env = {
 const app = new Hono<{ Bindings: Env }>();
 
 type Student = {
-  id: number,
-  name: string,
-}
+  id: number;
+  name: string;
+};
 
-app.get('/student/:name', async (c) => {
-  const student = await c.env.DB
-    .prepare('SELECT * FROM students WHERE name = ?')
-    .bind(c.req.param('name'))
+app.get("/student/:name", async (c) => {
+  const student = await c.env.DB.prepare(
+    "SELECT * FROM students WHERE name = ?",
+  )
+    .bind(c.req.param("name"))
     .first<Student>();
-  
+
   return c.json({ student });
 });
 
@@ -132,8 +133,8 @@ npx wrangler deploy
 
 ## 评论
 
-import { Comments } from "~/components/comments/comments.tsx";
-import { Reactions } from "~/components/comments/reactions.tsx";
+import Comments from "~/components/comments/Comments.vue";
+import Reactions from "~/components/comments/Reactions.vue";
 
 <Reactions path="cloudflare-d1" />
 

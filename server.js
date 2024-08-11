@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { serveStatic } from "@hono/node-server/serve-static";
 
-import server from "./dist/server/entry.server.js";
+import server from "./dist/nodejs/server.js";
 
 const app = new Hono();
 

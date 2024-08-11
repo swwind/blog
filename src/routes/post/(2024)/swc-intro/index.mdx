@@ -4,9 +4,9 @@ title: SWC 食用指南
 
 # SWC 食用指南
 
-import { Metadata } from "~/components/metadata/metadata.tsx";
-import { Comments } from "~/components/comments/comments.tsx";
-import { Reactions } from "~/components/comments/reactions.tsx";
+import Metadata from "~/components/metadata/Metadata.vue";
+import Comments from "~/components/comments/Comments.vue";
+import Reactions from "~/components/comments/Reactions.vue";
 
 <Metadata author="swwind" time="2024-7-8" />
 
@@ -284,7 +284,8 @@ console.log(code);
 ```js
 const a = func(114514);
 export const b = (0, func)(114514);
-export const c = 1, d = __my_transform(func(114514), null);
+export const c = 1,
+  d = __my_transform(func(114514), null);
 console.log("export const e = func(114514);");
 ```
 
@@ -572,12 +573,10 @@ strip = "symbols"
 await transform(code, {
   jsc: {
     experimental: {
-      plugins: [
-        ["my-transform-plugin", {}]
-      ]
-    }
-  }
-})
+      plugins: [["my-transform-plugin", {}]],
+    },
+  },
+});
 ```
 
 但是这套方案有个非常致命的问题，就是只能在 npm 包管理器下面工作。
@@ -608,7 +607,7 @@ module.exports = {
 // index.mjs
 import { fileURLToPath } from "node:url";
 export const wasm = fileURLToPath(
-  new URL("./my_transform_plugin.wasm", import.meta.url)
+  new URL("./my_transform_plugin.wasm", import.meta.url),
 );
 export default function (options) {
   return [wasm, options || {}];
@@ -622,7 +621,9 @@ export interface PluginOptions {
   matches?: string[];
 }
 export declare const wasm: string;
-declare function plugin(options?: PluginOptions | undefined): [string, PluginOptions];
+declare function plugin(
+  options?: PluginOptions | undefined,
+): [string, PluginOptions];
 export default plugin;
 ```
 
@@ -639,7 +640,7 @@ export default plugin;
       "import": "./index.mjs",
       "require": "./index.cjs"
     }
-  },
+  }
 }
 ```
 
@@ -651,12 +652,10 @@ import plugin from "my-transform-plugin";
 await transform(code, {
   jsc: {
     experimental: {
-      plugins: [
-        plugin()
-      ]
-    }
-  }
-})
+      plugins: [plugin()],
+    },
+  },
+});
 ```
 
 ## 告诫

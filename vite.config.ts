@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
-import { preact } from "@preact/preset-vite";
-import { blitz, blitzMdx } from "@biliblitz/vite";
-
+import { blitz } from "@biliblitz/vite";
+import vue from "@vitejs/plugin-vue";
+import { blitzMdx as mdx } from "@biliblitz/vite-plugin-mdx";
+import unheadAddon from "@unhead/addons/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 import remarkGfm from "remark-gfm";
@@ -33,9 +34,10 @@ export function parseToc(nav: any) {
 
 export default defineConfig({
   plugins: [
-    blitz(),
-    preact(),
-    blitzMdx({
+    vue(),
+    mdx({
+      jsxImportSource: "vue",
+      providerImportSource: "@mdx-js/vue",
       remarkPlugins: [remarkGfm, remarkMath, remarkRuby],
       rehypePlugins: [
         [rehypePrism, { ignoreMissing: true }],
@@ -59,9 +61,9 @@ export default defineConfig({
           },
         ],
       ],
-      jsxImportSource: "preact",
-      providerImportSource: "@mdx-js/preact",
     }),
+    unheadAddon(),
+    blitz(),
     tsconfigPaths(),
   ],
 });

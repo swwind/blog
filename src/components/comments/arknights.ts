@@ -1,3 +1,5 @@
+// I don't play arknights anymore
+
 import char_002_amiya from "~/assets/arknights/char_002_amiya.webp";
 import char_003_kalts from "~/assets/arknights/char_003_kalts.webp";
 import char_009_12fce from "~/assets/arknights/char_009_12fce.webp";
@@ -313,7 +315,6 @@ import char_501_durin from "~/assets/arknights/char_501_durin.webp";
 import char_502_nblade from "~/assets/arknights/char_502_nblade.webp";
 import char_503_rang from "~/assets/arknights/char_503_rang.webp";
 import char_512_aprot from "~/assets/arknights/char_512_aprot.webp";
-import { useMemo } from "preact/hooks";
 
 export const operators = [
   { src: char_285_medic2, name: "Lancet-2" },
@@ -632,24 +633,3 @@ export const operators = [
   { src: char_263_skadi, name: "斯卡蒂" },
   { src: char_4080_lin, name: "林" },
 ];
-
-type ArknightsAvatarProps = {
-  id: string;
-  class?: string;
-};
-
-export function ArknightsAvatar(props: ArknightsAvatarProps) {
-  const id = useMemo(() => {
-    let hash = 0;
-    const mod = operators.length;
-    for (let i = 0; i < props.id.length; ++i) {
-      hash = hash * 32 + props.id.charCodeAt(i);
-      hash = hash % mod;
-    }
-    return ((hash % mod) + mod) % mod;
-  }, [props.id]);
-
-  return (
-    <img src={operators[id].src} alt={operators[id].name} class={props.class} />
-  );
-}

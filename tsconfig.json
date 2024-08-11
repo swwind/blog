@@ -3,12 +3,10 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM", "WebWorker"],
     "noEmit": true,
     "strict": true,
     "allowJs": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
     "allowImportingTsExtensions": true,
     "types": ["node", "vite/client", "@biliblitz/blitz/env", "turnstile-types"],
     "skipDefaultLibCheck": true,
@@ -18,5 +16,11 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["src", "adapters", "vite.config.ts"]
+  "include": [
+    "src",
+    "adapters",
+    "vite.config.ts",
+    "server.js",
+    "server-static.js"
+  ]
 }
