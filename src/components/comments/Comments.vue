@@ -13,8 +13,10 @@ const toggle = () => (show.value = !show.value);
 
 const storage = ref<Map<string, string>>(new Map());
 onMounted(() => {
-  const keys = localStorage.getItem("sww.moe:keys");
-  if (keys) storage.value = new Map(JSON.parse(keys));
+  try {
+    const keys = localStorage.getItem("sww.moe:keys");
+    if (keys) storage.value = new Map(JSON.parse(keys));
+  } catch {}
 });
 watch(storage, (update) => {
   localStorage.setItem("sww.moe:keys", JSON.stringify([...update]));
@@ -53,19 +55,21 @@ const remove = async (id: string) => {
     </button>
   </p>
 
-  <comment-create
-    v-if="show"
-    :path="path"
-    @prepend="prepend"
-    @success="toggle"
-  />
+  <p>
+    <CommentCreate
+      v-if="show"
+      :path="path"
+      @prepend="prepend"
+      @success="toggle"
+    />
+  </p>
 
   <p v-if="loading" class="italic opacity-60">少女祈祷中...</p>
   <p v-if="!loading && !comments.length" class="italic opacity-60">
     暂时没有评论
   </p>
   <p v-if="!loading && comments.length > 0">
-    <comment-detail
+    <CommentDetail
       v-for="comment in comments"
       :key="comment.id"
       :comment="comment"

@@ -6,6 +6,7 @@ import {
   sitekey,
   type Comment,
 } from "./utils.ts";
+import VueTurnstile from "vue-turnstile";
 
 const props = defineProps<{
   path: string;
@@ -83,9 +84,13 @@ const finish = computed(() => token.value !== "");
       <div class="col-span-3">
         <div class="flex items-center justify-between">
           <div>
-            <img src="/momoi.webp" alt="waifu" />
+            <img src="/momoi.webp" alt="waifu" class="h-16 w-16" />
           </div>
-          <vue-turnstile :sitekey="sitekey" v-model="token" />
+          <vue-turnstile
+            :siteKey="sitekey"
+            v-model="token"
+            @error="console.log"
+          />
         </div>
       </div>
       <button
