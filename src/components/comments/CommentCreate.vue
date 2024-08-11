@@ -28,9 +28,21 @@ const saveMeta = () => {
 };
 onMounted(() => {
   const cache = localStorage.getItem("comments-metadata");
-  [name.value, pubkey.value] = cache
-    ? cache.split("\0")
-    : ["", weakRandomString()];
+  if (cache) {
+    if (cache.includes("\0")) {
+      [name.value, pubkey.value] = cache.split("\0");
+    } else {
+      try {
+        const json = JSON.parse(cache);
+        name.value = json.name;
+        pubkey.value = json.pubkey;
+      } catch {
+        pubkey.value = weakRandomString();
+      }
+    }
+  } else {
+    pubkey.value = weakRandomString();
+  }
 });
 
 // submits

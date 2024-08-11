@@ -17,7 +17,7 @@ nav.toc {
       counter-increment: section;
 
       &::before {
-        content: counter(section, cjk-decimal) "、";
+        content: counter(section) ". ";
       }
 
       & > ol {

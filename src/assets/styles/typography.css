@@ -12,9 +12,9 @@
   @apply mx-6 mb-2 mt-8 text-3xl font-bold;
   counter-increment: h2;
   counter-reset: h3 h4 h5 h6;
-  &::before {
+  /* &::before {
     content: counter(h2, cjk-decimal) "、";
-  }
+  } */
 }
 
 .typography h3 {

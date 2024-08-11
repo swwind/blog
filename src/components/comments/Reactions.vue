@@ -6,8 +6,8 @@
       :label="loading ? '…' : reactions[name] || 0"
       :reacted="reacted.includes(name)"
       :icon="icon"
-      @click="handleReaction(name)"
       :prevention="name === 'down'"
+      @click="handleReaction(name)"
     />
   </div>
 </template>
@@ -55,7 +55,7 @@ watch(reacted, (newReacted) => {
 
 const handleReaction = (name: string) => {
   if (!reacted.value.includes(name)) {
-    reacted.value.push(name);
+    reacted.value = [...reacted.value, name];
     reactions.value = {
       ...reactions.value,
       [name]: (reactions.value[name] ?? 0) + 1,
