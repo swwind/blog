@@ -27,7 +27,7 @@ pre[class*="language-"]:not(.language-math) {
   hyphens: none;
 }
 
-code.code-highlight {
+code.code-highlight:not(.language-math) {
   color: #ccc;
 }
 
