@@ -34,7 +34,7 @@
   "devDependencies": {
     "@biliblitz/adapter-nodejs": "^0.0.1",
     "@biliblitz/adapter-static": "^0.0.1",
-    "@biliblitz/vite": "^0.3.0",
+    "@biliblitz/vite": "^0.3.1",
     "@biliblitz/vite-plugin-mdx": "^0.0.1",
     "@types/blueimp-md5": "^2.18.2",
     "@types/katex": "^0.16.7",
