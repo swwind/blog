@@ -18,7 +18,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@biliblitz/blitz": "^0.3.0",
+    "@biliblitz/blitz": "^0.3.1",
     "@hono/node-server": "^1.11.0",
     "@mdx-js/vue": "^3.0.1",
     "@unhead/ssr": "^1.9.16",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@biliblitz/adapter-nodejs": "^0.0.1",
     "@biliblitz/adapter-static": "^0.0.1",
-    "@biliblitz/vite": "^0.3.1",
+    "@biliblitz/vite": "^0.3.2",
     "@biliblitz/vite-plugin-mdx": "^0.0.1",
     "@types/blueimp-md5": "^2.18.2",
     "@types/katex": "^0.16.7",
