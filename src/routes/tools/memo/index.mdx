@@ -70,3 +70,13 @@ ffmpeg \
 -c:v hevc_nvenc
 -c:v av1_nvenc
 ```
+
+## GitHub Action
+
+### 发布 npm publish
+
+1. 首先打开 npmjs.org，申请一个 access token
+2. 在 GitHub 上点仓库设置，选择 Environments，创建一个新的 NPM_TOKEN，在里面添加新的 Secret，名称为 NPM_TOKEN，值为上面获取的 access token
+3. 复制粘贴这份 [YAML](https://github.com/biliblitz/blitz/blob/master/.github/workflows/build.yml)
+
+

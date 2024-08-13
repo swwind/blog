@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { injectProgressBar } from "./controller";
+import { injectProgressBar } from "./controller.ts";
 
 const { state } = injectProgressBar();
 </script>
