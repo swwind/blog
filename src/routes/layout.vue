@@ -12,27 +12,27 @@ useHead({
   title: metadata["site-name"],
 });
 
-const accessDenied = atob(
-  "PGgxPllvdXIgYWNjZXNzIHRvIHRoaXMgc2l0ZSBpcyBwcm9oaWJpdGVkIGR1ZSB0byBhIHN1c3BpY2lvdXMgYmVoYXZpb3VyLjwvaDE+",
-);
-const senpaiURL = atob(
-  "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj0tUmhBbGhtTnptOA==",
-);
+// const accessDenied = atob(
+//   "PGgxPllvdXIgYWNjZXNzIHRvIHRoaXMgc2l0ZSBpcyBwcm9oaWJpdGVkIGR1ZSB0byBhIHN1c3BpY2lvdXMgYmVoYXZpb3VyLjwvaDE+",
+// );
+// const senpaiURL = atob(
+//   "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj0tUmhBbGhtTnptOA==",
+// );
 
-onMounted(() => {
-  try {
-    const canvas = document.createElement("canvas");
-    const hasWebGL =
-      window.WebGLRenderingContext &&
-      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
-    if (!hasWebGL) throw new Error("bad browser");
-  } catch {
-    setTimeout(() => {
-      location.href = senpaiURL;
-    }, 5000);
-    document.write(accessDenied);
-  }
-});
+// onMounted(() => {
+//   try {
+//     const canvas = document.createElement("canvas");
+//     const hasWebGL =
+//       window.WebGLRenderingContext &&
+//       (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
+//     if (!hasWebGL) throw new Error("bad browser");
+//   } catch {
+//     setTimeout(() => {
+//       location.href = senpaiURL;
+//     }, 5000);
+//     document.write(accessDenied);
+//   }
+// });
 </script>
 
 <template>
