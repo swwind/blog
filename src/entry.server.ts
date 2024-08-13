@@ -18,6 +18,7 @@ export default createServer(
     });
     const progressbar = createProgressBar();
     const blitz = createServerBlitz({ runtime, manifest });
+
     await router.replace(c.req.path);
     await router.isReady();
 

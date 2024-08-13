@@ -3,9 +3,9 @@ import { createHead } from "@unhead/vue";
 import { createRouter, createWebHistory } from "vue-router";
 import { createApp } from "vue";
 import { createBlitz } from "@biliblitz/blitz";
+import { createProgressBar } from "./components/progressbar/controller.ts";
 
 import Root from "./Root.vue";
-import { createProgressBar } from "./components/progressbar/controller.ts";
 
 const head = createHead();
 const router = createRouter({
@@ -18,9 +18,8 @@ const router = createRouter({
     return savedPosition || { top: 0 };
   },
 });
-const blitz = createBlitz({ manifest });
-
 const progressbar = createProgressBar();
+const blitz = createBlitz({ manifest });
 
 createApp(Root)
   .use(head)
