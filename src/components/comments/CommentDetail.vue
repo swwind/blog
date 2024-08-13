@@ -27,7 +27,7 @@ const info = computed(() => {
 </script>
 
 <template>
-  <div class="clear-both mx-6 my-4">
+  <div class="mx-6 my-4">
     <div>
       <b>{{ info.name }}#{{ info.hash }}</b>
       <span class="ml-3 text-sm">{{ info.time }}</span>

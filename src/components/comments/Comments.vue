@@ -55,20 +55,20 @@ const remove = async (id: string) => {
     </button>
   </p>
 
-  <p>
+  <div class="mx-6 my-4">
     <CommentCreate
       v-if="show"
       :path="path"
       @prepend="prepend"
       @success="toggle"
     />
-  </p>
+  </div>
 
   <p v-if="loading" class="italic opacity-60">少女祈祷中...</p>
   <p v-if="!loading && !comments.length" class="italic opacity-60">
     暂时没有评论
   </p>
-  <p v-if="!loading && comments.length > 0">
+  <div v-if="!loading && comments.length > 0">
     <CommentDetail
       v-for="comment in comments"
       :key="comment.id"
@@ -76,5 +76,5 @@ const remove = async (id: string) => {
       :deletable="storage.has(comment.id)"
       @delete="remove"
     />
-  </p>
+  </div>
 </template>
