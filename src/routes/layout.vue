@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+// import { onMounted } from "vue";
 import { useHead } from "@unhead/vue";
 import metadata from "../metadata.json";
 
