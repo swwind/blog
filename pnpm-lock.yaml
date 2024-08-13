@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@biliblitz/blitz':
-        specifier: ^0.3.1
-        version: 0.3.1(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
+        specifier: ^0.3.2
+        version: 0.3.2(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
       '@hono/node-server':
         specifier: ^1.11.0
         version: 1.11.0
@@ -53,7 +53,7 @@ importers:
         version: 0.0.1(hono@4.2.3)
       '@biliblitz/vite':
         specifier: ^0.3.2
-        version: 0.3.2(@biliblitz/blitz@0.3.1(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4)))
+        version: 0.3.2(@biliblitz/blitz@0.3.2(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4)))
       '@biliblitz/vite-plugin-mdx':
         specifier: ^0.0.1
         version: 0.0.1
@@ -171,8 +171,8 @@ packages:
     peerDependencies:
       hono: ^4
 
-  '@biliblitz/blitz@0.3.1':
-    resolution: {integrity: sha512-1Xh6NkJQr203565u2h6H261IxhitqnxS5x+vn44RLKduto+iILcmGPMOL0NZA8TzjRodrXZUMNEpXvvivNohMg==}
+  '@biliblitz/blitz@0.3.2':
+    resolution: {integrity: sha512-e755Ecg8wBlqe0A2Wi/mSOM/olgiaPuPqAE3E3RfKjtCa+CFab7UT3kNHDf7BEcziX9ydg0bze+YAIGh+8ZgXQ==}
     peerDependencies:
       '@unhead/ssr': ^1.9.16
       '@unhead/vue': ^1.9.16
@@ -1945,7 +1945,7 @@ snapshots:
       hono: 4.2.3
       kolorist: 1.8.0
 
-  '@biliblitz/blitz@0.3.1(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))':
+  '@biliblitz/blitz@0.3.2(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))':
     dependencies:
       '@unhead/ssr': 1.9.16
       '@unhead/vue': 1.9.16(vue@3.4.37(typescript@5.5.4))
@@ -1965,9 +1965,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@biliblitz/vite@0.3.2(@biliblitz/blitz@0.3.1(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4)))':
+  '@biliblitz/vite@0.3.2(@biliblitz/blitz@0.3.2(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4)))':
     dependencies:
-      '@biliblitz/blitz': 0.3.1(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
+      '@biliblitz/blitz': 0.3.2(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@5.5.4)))(hono@4.2.3)(vue-router@4.4.3(vue@3.4.37(typescript@5.5.4)))(vue@3.4.37(typescript@5.5.4))
       '@biliblitz/swc-plugin-remove-server-code': 0.1.0(@swc/core@1.7.10)
       '@hono/node-server': 1.12.0
       '@swc/core': 1.7.10

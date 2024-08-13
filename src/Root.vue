@@ -1,6 +1,7 @@
 <script setup>
 import { useBlitz } from "@biliblitz/blitz";
 import { useHead } from "@unhead/vue";
+import ProgressBar from "./components/progressbar/ProgressBar.vue";
 
 import "./global.css";
 
@@ -20,4 +21,5 @@ useBlitz();
 
 <template>
   <router-view />
+  <progress-bar />
 </template>
