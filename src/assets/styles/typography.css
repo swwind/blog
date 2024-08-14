@@ -65,7 +65,7 @@
 }
 
 .typography a[href] {
-  @apply border-b border-gray-800 dark:border-gray-200;
+  @apply underline;
 }
 
 .typography ul {

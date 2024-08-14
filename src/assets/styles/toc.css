@@ -1,49 +1,16 @@
 nav.toc {
-  @apply absolute right-full hidden h-full w-72 xl:block;
-  animation: slide-in 1s;
+  @apply absolute left-full hidden h-full w-72 xl:block;
+  animation: slide-in 1s forwards;
+
+  a[href] {
+    @apply no-underline;
+  }
 
   ol {
     @apply sticky top-24 ml-4 mr-0;
 
     li {
       @apply list-none;
-    }
-  }
-
-  & > ol {
-    counter-reset: section;
-
-    & > li {
-      counter-increment: section;
-
-      &::before {
-        content: counter(section) ". ";
-      }
-
-      & > ol {
-        counter-reset: subsection;
-
-        & > li {
-          counter-increment: subsection;
-
-          &::before {
-            content: counter(section) "." counter(subsection) ". ";
-          }
-
-          & > ol {
-            counter-reset: subsubsection;
-
-            & > li {
-              counter-increment: subsubsection;
-
-              &::before {
-                content: counter(section) "." counter(subsection) "."
-                  counter(subsubsection) ". ";
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

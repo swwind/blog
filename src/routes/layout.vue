@@ -14,7 +14,7 @@ useHead({
 
 <template>
   <div
-    class="mx-auto flex min-h-screen max-w-4xl flex-col transition-[translate] duration-1000 xl:translate-x-24"
+    class="mx-auto flex min-h-screen max-w-4xl flex-col transition-[translate] duration-1000"
   >
     <Header />
     <main class="flex-1">
