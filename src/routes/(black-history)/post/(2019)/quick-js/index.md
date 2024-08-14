@@ -4,12 +4,7 @@ title: QuickJS 尝鲜
 
 # QuickJS 尝鲜
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2019-7-17" tags="javascript,quickjs">
-</vue-metadata>
+<vue-metadata author="swwind" time="2019-7-17" tags="javascript,quickjs"></vue-metadata>
 
 QuickJS 是 Fabrice Bellard 大神于 2019 年 7 月 9 日突然发布的一个 js 引擎，据说堪比 V8。
 

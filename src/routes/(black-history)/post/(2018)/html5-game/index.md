@@ -4,12 +4,7 @@ title: HTML5 游戏初探
 
 # HTML5 游戏初探
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-8-1" tags="javascript">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-8-1" tags="javascript"></vue-metadata>
 
 尝试写一个类似 [diep.io](https://diep.io) 的 HTML5 多人在线游戏？
 

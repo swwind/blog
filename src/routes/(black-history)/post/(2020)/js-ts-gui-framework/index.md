@@ -4,12 +4,7 @@ title: js/ts 的桌面图形界面框架汇总
 
 # js/ts 的桌面图形界面框架汇总
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2020-7-26" tags="javascript">
-</vue-metadata>
+<vue-metadata author="swwind" time="2020-7-26" tags="javascript"></vue-metadata>
 
 随着 NodeJS 和 Deno 的逐渐普及，JavaScript 社区也在一直寻找着可以用的桌面 APP 解决方案。由于桌面 GUI 的框架大多是用 C/C++ 写的，NodeJS 和 Deno 不得不需要一些使用别的语言包装好的框架。Deno 相比于 Node 可以原生支持 Rust 编写插件，但是目前整个 Deno 社区还在开荒阶段，因此想要用 Rust 里的 GUI 框架也许还要等上几个月（或者几年？）。
 

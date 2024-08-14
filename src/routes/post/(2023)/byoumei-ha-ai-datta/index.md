@@ -4,12 +4,7 @@ title: 「病名は愛だった」歌詞翻訳
 
 # 「病名は愛だった」歌詞翻訳
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2023-8-31">
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-8-31"></vue-metadata>
 
 ## 全文
 

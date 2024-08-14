@@ -4,12 +4,7 @@ title: 在 Arch Linux 上用 Anbox 玩舟游
 
 # 在 Arch Linux 上用 Anbox 玩舟游
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2021-5-10" tags="anbox,arknights,archlinux">
-</vue-metadata>
+<vue-metadata author="swwind" time="2021-5-10" tags="anbox,arknights,archlinux"></vue-metadata>
 
 本文简单总结在 Arch Linux 上安装 Anbox 并用其来玩舟游的一些步骤。
 

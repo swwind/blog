@@ -4,12 +4,7 @@ title: 基于 WebAssembly 软解 HEVC 视频
 
 # 基于 WebAssembly 软解 HEVC 视频
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2023-4-3">
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-4-3"></vue-metadata>
 
 ~~我一定是疯了~~
 

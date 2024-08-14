@@ -4,12 +4,7 @@ title: 如何写一个简单的文字冒险游戏
 
 # 如何写一个简单的文字冒险游戏
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-3-28">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-3-28"></vue-metadata>
 
 最近很多人在问我这个问题。于是我就写篇教程冷静一下。
 

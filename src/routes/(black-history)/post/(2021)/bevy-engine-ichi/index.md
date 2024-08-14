@@ -4,12 +4,7 @@ title: Bevy 引擎游戏开发简介（上）
 
 # Bevy 引擎游戏开发简介（上）
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2021-10-13" tags="rust,bevy">
-</vue-metadata>
+<vue-metadata author="swwind" time="2021-10-13" tags="rust,bevy"></vue-metadata>
 
 Bevy Engine 是一个基于 ECS 构架的 Rust 游戏引擎，内置了大部分实用的特性，个人认为比定位相同的 Amethyist 引擎要更加易用一些。
 

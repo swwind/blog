@@ -4,12 +4,7 @@ title: 使用 WebSocket 和 ffmpeg 直播 canvas
 
 # 使用 WebSocket 和 ffmpeg 直播 canvas
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-8-23" tags="canvas,ffmpeg,websocket">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-8-23" tags="canvas,ffmpeg,websocket"></vue-metadata>
 
 最近一直在折腾 rtmp 直播的相关内容，想要用 electron 写一个直播的软件。
 

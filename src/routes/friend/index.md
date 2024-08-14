@@ -4,13 +4,7 @@ title: 友情链接
 
 # 友情链接
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue";
-import VueComments from "@/components/comments/Comments.vue";
-</script>
-
-<vue-metadata author="swwind" time="2023-3-4" outdate={false}>
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-3-4" :outdate="false"></vue-metadata>
 
 如果想要添加友链，您可以在网页的最下面留言。
 
@@ -29,5 +23,4 @@ import VueComments from "@/components/comments/Comments.vue";
 
 ## 留言
 
-<vue-comments path="friends">
-</vue-comments>
+<vue-comments path="friends"></vue-comments>

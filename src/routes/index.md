@@ -4,7 +4,7 @@ description: swwind 的博客，主要用于发布博客文章。
 ---
 
 <script setup>
-import Senpai from "@/components/easter-egg/Senpai.vue";
+import VueSenpai from "@/components/easter-egg/Senpai.vue";
 </script>
 
 <figure class="float-right">
@@ -16,9 +16,7 @@ import Senpai from "@/components/easter-egg/Senpai.vue";
 
 大家好，这里是 swwind 的博客，主要更新技术方面的文章。
 
-<Senpai>
-  本人 24 岁，是学生。
-</Senpai>
+<vue-senpai>本人 24 岁，是学生。</vue-senpai>
 
 ## 技术文章
 

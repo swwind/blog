@@ -4,14 +4,7 @@ title: SWC 食用指南
 
 # SWC 食用指南
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue";
-import VueComments from "@/components/comments/Comments.vue";
-import VueReactions from "@/components/comments/Reactions.vue";
-</script>
-
-<vue-metadata author="swwind" time="2024-7-8">
-</vue-metadata>
+<vue-metadata author="swwind" time="2024-7-8"></vue-metadata>
 
 [SWC][swc] 是一个由 Rust 语言编写的 JavaScript / TypeScript 源代码的解析、打包工具。功能上比较类似 Babel 项目，但是在性能上会比 Babel 快很多。
 
@@ -667,10 +660,8 @@ await transform(code, {
 
 ## 评论
 
-<vue-reactions path="swc-intro">
-</vue-reactions>
+<vue-reactions path="swc-intro"></vue-reactions>
 
-<vue-comments path="swc-intro">
-</vue-comments>
+<vue-comments path="swc-intro"></vue-comments>
 
 [swc]: https://swc.rs/

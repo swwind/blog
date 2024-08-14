@@ -4,12 +4,7 @@ title: 尊敬語・謙譲語・丁寧語のまとめ
 
 # 尊敬語・謙譲語・丁寧語のまとめ
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2023-11-24">
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-11-24"></vue-metadata>
 
 ## 敬语的分类
 

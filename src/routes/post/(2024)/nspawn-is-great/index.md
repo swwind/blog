@@ -4,14 +4,7 @@ title: 基于 systemd-nspawn 的轻量化容器搭建与网络配置
 
 # 基于 systemd-nspawn 的轻量化容器搭建与网络配置
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue";
-import VueComments from "@/components/comments/Comments.vue";
-import VueReactions from "@/components/comments/Reactions.vue";
-</script>
-
-<vue-metadata author="swwind" time="2024-4-16" updated="2024-4-29">
-</vue-metadata>
+<vue-metadata author="swwind" time="2024-4-16" updated="2024-4-29"></vue-metadata>
 
 有时候需要搞一个 Ubuntu 的环境来做一些实验，或者需要一个沙箱来跑毒瘤程序，相比于搬出 VirtualBox 等大家伙，使用基于 systemd-nspawn 的轻量化的容器在性能上会优秀不少。
 
@@ -264,10 +257,8 @@ sudo setcap 'cap_net_raw+p' /usr/bin/ping
 
 给文章一个评价吧！
 
-<vue-reactions path="nspawn-is-great">
-</vue-reactions>
+<vue-reactions path="nspawn-is-great"></vue-reactions>
 
 如果过程中有遇到任何问题，可以留言讨论。
 
-<vue-comments path="nspawn-is-great">
-</vue-comments>
+<vue-comments path="nspawn-is-great"></vue-comments>

@@ -4,12 +4,7 @@ title: 在 Arch Linux 上用 Waydroid 玩舟游
 
 # 在 Arch Linux 上用 Waydroid 玩舟游
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2022-6-7" tags="waydroid,arknights,archlinux">
-</vue-metadata>
+<vue-metadata author="swwind" time="2022-6-7" tags="waydroid,arknights,archlinux"></vue-metadata>
 
 隔壁的 Anbox 基本已经不维护了，咱还是换到 Waydroid 玩 Arknights 吧。
 

@@ -4,12 +4,7 @@ title: 2020 年度总结
 
 # 2020 年度总结
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2020-12-31">
-</vue-metadata>
+<vue-metadata author="swwind" time="2020-12-31"></vue-metadata>
 
 一转眼 2020 年就过去了，写一篇总结文章吧。
 

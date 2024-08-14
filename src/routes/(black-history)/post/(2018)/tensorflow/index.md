@@ -4,12 +4,7 @@ title: TensorFlow 学习笔记
 
 # TensorFlow 学习笔记
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-7-10" tags="tensorflow">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-7-10" tags="tensorflow"></vue-metadata>
 
 ~~失踪人口回归~~
 

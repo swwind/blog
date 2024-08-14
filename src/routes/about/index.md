@@ -4,14 +4,7 @@ title: 关于本站
 
 # 关于本站
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-import VueComments from "@/components/comments/Comments.vue";
-import VueReactions from "@/components/comments/Reactions.vue";
-</script>
-
-<vue-metadata author="swwind" time="2023-3-4" outdate={false}>
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-3-4" :outdate="false"></vue-metadata>
 
 本站建立于2023年3月4日，使用[某基于 Vue 的全栈框架][blitz]构建，并且托管于 Cloudflare Pages。
 
@@ -31,7 +24,6 @@ import VueReactions from "@/components/comments/Reactions.vue";
 
 ## 留言
 
-<vue-reactions path="about">
-</vue-reactions>
-<vue-comments path="about">
-</vue-comments>
+<vue-reactions path="about"></vue-reactions>
+
+<vue-comments path="about"></vue-comments>

@@ -4,12 +4,7 @@ title: bilibili 东南亚版本使用指南
 
 # bilibili 东南亚版本使用指南
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2022-2-20" tags="bilibili">
-</vue-metadata>
+<vue-metadata author="swwind" time="2022-2-20" tags="bilibili"></vue-metadata>
 
 本文简单讲解 bilibili 东南亚版本的情况，以及简单说明如何使用神秘手段访问其服务的方法。
 

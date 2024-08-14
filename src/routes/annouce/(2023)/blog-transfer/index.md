@@ -4,12 +4,7 @@ title: 博客迁移公告 2023
 
 # 博客迁移公告 2023
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2023-3-5">
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-3-5"></vue-metadata>
 
 博客现在从 Aliyun SG 迁移到了 Cloudflare Pages。
 

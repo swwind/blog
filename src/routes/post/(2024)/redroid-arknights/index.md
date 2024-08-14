@@ -4,14 +4,7 @@ title: 使用 redroid 玩耍 Arknights
 
 # 使用 redroid 玩耍 Arknights
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue";
-import VueComments from "@/components/comments/Comments.vue";
-import VueReactions from "@/components/comments/Reactions.vue";
-</script>
-
-<vue-metadata author="swwind" time="2024-1-8">
-</vue-metadata>
+<vue-metadata author="swwind" time="2024-1-8"></vue-metadata>
 
 至今为止我们已经尝试过 anbox, waydroid 等优秀的安卓模拟器了，但是实际上我还是感觉不太方便。之后我尝试了一下 redroid，并觉得这才是我希望的解决方案。
 
@@ -194,8 +187,6 @@ Good Luck & Have Fun!
 
 ## 评论
 
-<vue-reactions path="nspawn-is-great">
-</vue-reactions>
+<vue-reactions path="nspawn-is-great"></vue-reactions>
 
-<vue-comments path="redroid-arknights">
-</vue-comments>
+<vue-comments path="redroid-arknights"></vue-comments>

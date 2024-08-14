@@ -4,12 +4,7 @@ title: 数论学习入门 #1
 
 # 数论学习入门 #1
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-12-21" tags="数论">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-12-21" tags="数论"></vue-metadata>
 
 数论虽然在 NOIP 中不作深入的要求，但是在这之上的比赛就经常会有涉及到这类知识的算法题目。
 

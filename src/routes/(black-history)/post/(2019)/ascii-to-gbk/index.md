@@ -4,12 +4,7 @@ title: GBK 乱码问题
 
 # GBK 乱码问题
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2019-2-1">
-</vue-metadata>
+<vue-metadata author="swwind" time="2019-2-1"></vue-metadata>
 
 最近在网上下载了一个压缩包，据说密码写在压缩包注释中。
 

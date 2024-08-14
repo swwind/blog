@@ -4,12 +4,7 @@ title: 给 localhost 颁发一份证书
 
 # 给 localhost 颁发一份证书
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2019-4-6">
-</vue-metadata>
+<vue-metadata author="swwind" time="2019-4-6"></vue-metadata>
 
 ~~我们可以直接使用 `openssl`。~~
 

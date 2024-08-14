@@ -4,15 +4,7 @@ title: "Codeforces Round #439 (Div. 2) 题解"
 
 # Codeforces Round #439 (Div. 2) 题解
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata
-  author="swwind"
-  time="2017-10-11"
-  tags="codeforces,javascript,python"
-/>
+<vue-metadata author="swwind" time="2017-10-11" tags="codeforces,javascript,python"></vue-metedata>
 
 # 前言
 

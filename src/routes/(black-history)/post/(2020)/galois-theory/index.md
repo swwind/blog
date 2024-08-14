@@ -4,12 +4,7 @@ title: 【口胡】五次方程为何没有求根公式
 
 # 【口胡】五次方程为何没有求根公式
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2020-8-19" tags="群论">
-</vue-metadata>
+<vue-metadata author="swwind" time="2020-8-19" tags="群论"></vue-metadata>
 
 为什么五次方程没有求根公式呢？本文将口胡伽罗瓦理论来证明五次及以上的方程没有求根公式。
 

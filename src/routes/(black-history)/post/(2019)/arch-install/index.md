@@ -4,12 +4,7 @@ title: Arch Linux 的安装和开发环境的配置
 
 # Arch Linux 的安装和开发环境的配置
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2019-1-17" tags="archlinux">
-</vue-metadata>
+<vue-metadata author="swwind" time="2019-1-17" tags="archlinux"></vue-metadata>
 
 Arch Linux 是我目前觉得最好用的 linux 操作系统。本文讲一讲 Arch Linux 的安装过程和一些坑。
 

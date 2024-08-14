@@ -4,12 +4,7 @@ title: BT 下载指南
 
 # BT 下载指南
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2019-10-12" tags="bt">
-</vue-metadata>
+<vue-metadata author="swwind" time="2019-10-12" tags="bt"></vue-metadata>
 
 记录一下本人在使用 BT 下载时候遇到过的坑。
 

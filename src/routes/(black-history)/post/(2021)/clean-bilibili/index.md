@@ -4,12 +4,7 @@ title: 净化 b 站环境一键脚本
 
 # 净化 b 站环境一键脚本
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2021-4-4" tags="javascript">
-</vue-metadata>
+<vue-metadata author="swwind" time="2021-4-4" tags="javascript"></vue-metadata>
 
 > b 站以陈睿的一句“b 站未来有可能会倒闭，但绝对不会变质”为嚆矢。滥觞于 ACG 的期望正失去它们的借鉴意义。但面对看似无垠的未来天空，我想循卡尔维诺“树上的男爵”的生活好过过早地振翮。
 >

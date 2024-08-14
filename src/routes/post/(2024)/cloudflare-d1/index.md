@@ -4,14 +4,7 @@ title: Cloudflare D1 使用记录
 
 # Cloudflare D1 使用记录
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue";
-import VueComments from "@/components/comments/Comments.vue";
-import VueReactions from "@/components/comments/Reactions.vue";
-</script>
-
-<vue-metadata author="swwind" time="2024-7-14">
-</vue-metadata>
+<vue-metadata author="swwind" time="2024-7-14"></vue-metadata>
 
 > 相关文档
 >
@@ -138,8 +131,6 @@ npx wrangler deploy
 
 ## 评论
 
-<vue-reactions path="cloudflare-d1">
-</vue-reactions>
+<vue-reactions path="cloudflare-d1"></vue-reactions>
 
-<vue-comments path="cloudflare-d1">
-</vue-comments>
+<vue-comments path="cloudflare-d1"></vue-comments>

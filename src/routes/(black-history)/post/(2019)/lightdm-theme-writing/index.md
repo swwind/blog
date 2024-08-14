@@ -4,12 +4,7 @@ title: 自己写一个 lightdm 主题
 
 # 自己写一个 lightdm 主题
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2019-2-8" tags="lightdm">
-</vue-metadata>
+<vue-metadata author="swwind" time="2019-2-8" tags="lightdm"></vue-metadata>
 
 lightdm 是一个非常好用的 desktop manager，其中有一个插件 lightdm-webkit2-greeter 使得你可以用 HTML 自定义登录界面。
 

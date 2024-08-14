@@ -4,12 +4,7 @@ title: 古日语学习笔记
 
 # 古日语学习笔记
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2023-6-15">
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-6-15"></vue-metadata>
 
 ~~文言文都学不好的我去看什么古日语~~
 

@@ -4,12 +4,7 @@ title: 从 mp3 文件中加载专辑封面
 
 # 从 mp3 文件中加载专辑封面
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-4-5">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-4-5"></vue-metadata>
 
 偶然翻出了以前在网上搜到的加载封面的脚本，今天就来分析一下。
 

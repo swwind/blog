@@ -4,12 +4,7 @@ title: 使用 Qwik City 快速搭建一个博客
 
 # 使用 Qwik City 快速搭建一个博客
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2023-3-5">
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-3-5"></vue-metadata>
 
 [Qwik](https://qwik.builder.io) 是最近刚刚开始流行的新型前端框架，而 Qwik City 则是其对应的全栈框架。全栈框架的概念基本对标 Remix + React，只是在某些方面私认为做的比 Remix 要好，比如一个页面可以写多个 `loader$` 和 `action$`，就可以不用在 Remix 的 `action` 里面套一大堆的 `switch` 和 `case` 语句来区分是做什么的了。
 

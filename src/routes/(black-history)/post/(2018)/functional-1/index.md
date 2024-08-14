@@ -4,12 +4,7 @@ title: 函数式编程学习笔记
 
 # 函数式编程学习笔记
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-10-9" tags="函数式,haskell">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-10-9" tags="函数式,haskell"></vue-metadata>
 
 ## 前言
 

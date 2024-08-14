@@ -4,12 +4,7 @@ title: Arch Linux i3wm 的安装与配置
 
 # Arch Linux i3wm 的安装与配置
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2020-7-30" tags="archlinux,lightdm">
-</vue-metadata>
+<vue-metadata author="swwind" time="2020-7-30" tags="archlinux,lightdm"></vue-metadata>
 
 i3wm 是经典的平铺 wm，用惯了的话操作起来还是很上手的。
 

@@ -4,12 +4,7 @@ title: NOIP2017游记
 
 # NOIP2017 游记
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2017-11-11">
-</vue-metadata>
+<vue-metadata author="swwind" time="2017-11-11"></vue-metadata>
 
 第一次考提高组。
 

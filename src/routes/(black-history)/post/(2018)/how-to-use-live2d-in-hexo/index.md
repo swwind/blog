@@ -4,12 +4,7 @@ title: 在 hexo 博客中使用 live2d
 
 # 在 hexo 博客中使用 live2d
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-3-16" tags="hexo,live2d">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-3-16" tags="hexo,live2d"></vue-metadata>
 
 你肯定已经在许多博客里看到过 live2d 的技术了吧。
 

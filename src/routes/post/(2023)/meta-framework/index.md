@@ -4,12 +4,7 @@ title: 基于 Deno 的全栈框架 Slow 简介
 
 # 基于 Deno 的全栈框架 Slow 简介
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2023-6-16">
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-6-16"></vue-metadata>
 
 Slow 是一款全新的全栈框架，主要基于 Deno 运行时。
 

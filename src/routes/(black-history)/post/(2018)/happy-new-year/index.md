@@ -4,12 +4,7 @@ title: Happy New Year
 
 # Happy New Year
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-1-1">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-1-1"></vue-metadata>
 
 祝大家新年快乐！
 

@@ -4,12 +4,7 @@ title: ZJOI2018 Day1 游记
 
 # ZJOI2018 Day1 游记
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-3-18">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-3-18"></vue-metadata>
 
 ## Day 0
 

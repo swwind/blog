@@ -4,12 +4,7 @@ title: 翻转字符串！
 
 # 翻转字符串！
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2018-4-11" tags="jQuery,React,Vue">
-</vue-metadata>
+<vue-metadata author="swwind" time="2018-4-11" tags="jQuery,React,Vue"></vue-metadata>
 
 ~~突然想水博客~~
 

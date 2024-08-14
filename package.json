@@ -26,6 +26,7 @@
     "hono": "^4.2.3",
     "katex": "^0.16.10",
     "lucide-vue-next": "^0.427.0",
+    "rehype-remove-comments": "^6.0.0",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3",
     "vue-turnstile": "^1.0.10"
@@ -36,6 +37,7 @@
     "@biliblitz/vite": "^0.3.2",
     "@biliblitz/vite-plugin-markdown": "^0.0.2",
     "@types/blueimp-md5": "^2.18.2",
+    "@types/hast": "^3.0.4",
     "@types/katex": "^0.16.7",
     "@types/node": "^20.12.7",
     "@types/ua-parser-js": "^0.7.39",
@@ -57,6 +59,8 @@
     "turnstile-types": "^1.2.0",
     "typescript": "^5.5.4",
     "ua-parser-js": "^1.0.37",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0",
     "vite": "^5.4.0",
     "vite-tsconfig-paths": "^5.0.1",
     "vue-tsc": "^2.0.29"

@@ -4,12 +4,7 @@ title: 日本语 N1 学习笔记
 
 # 日本语 N1 学习笔记
 
-<script setup>
-import VueMetadata from "@/components/metadata/Metadata.vue"
-</script>
-
-<vue-metadata author="swwind" time="2023-9-17">
-</vue-metadata>
+<vue-metadata author="swwind" time="2023-9-17"></vue-metadata>
 
 ## 問題
 
