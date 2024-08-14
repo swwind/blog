@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useHead } from "@unhead/vue";
-import { encodeGBK } from "~/utils/gbk.ts";
+import { encodeGBK } from "@/utils/gbk.ts";
 
 useHead({
   title: "锟斤拷生成器",

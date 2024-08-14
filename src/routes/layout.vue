@@ -3,10 +3,10 @@
 import { useHead } from "@unhead/vue";
 import metadata from "../metadata.json";
 
-import Christmas from "~/components/easter-egg/Christmas.vue";
-import Footer from "~/components/footer/Footer.vue";
-import Header from "~/components/header/Header.vue";
-import Typography from "~/components/typography/Typography.vue";
+import Christmas from "@/components/easter-egg/Christmas.vue";
+import Footer from "@/components/footer/Footer.vue";
+import Header from "@/components/header/Header.vue";
+import Typography from "@/components/typography/Typography.vue";
 
 useHead({
   title: metadata["site-name"],

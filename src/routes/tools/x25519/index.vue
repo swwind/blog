@@ -48,7 +48,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useHead } from "@unhead/vue";
-import { arrayBufferToBase64 } from "~/utils/crypto.ts";
+import { arrayBufferToBase64 } from "@/utils/crypto.ts";
 
 useHead({
   title: "生成炫酷的 ECDH 密钥对",

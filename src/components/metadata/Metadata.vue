@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { toYangliCalendar } from "~/utils/chinese-calendar.ts";
+import { toYangliCalendar } from "@/utils/chinese-calendar.ts";
 
 const props = defineProps<{
   author: string;

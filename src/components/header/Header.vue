@@ -43,12 +43,12 @@
 
 <script setup lang="ts">
 import { ref, watch, computed } from "vue";
-import { header } from "~/metadata.json";
+import { header } from "@/metadata.json";
 
 import { BookIcon, HomeIcon, LinkIcon, MusicIcon } from "lucide-vue-next";
 
-import arknights from "~/assets/audio/arknights.mp3";
-import spacewalk from "~/assets/audio/space_walk.mp3";
+import arknights from "@/assets/audio/arknights.mp3";
+import spacewalk from "@/assets/audio/space_walk.mp3";
 
 const underline = "border-b-[1px] border-transparent hover:border-slate-200";
 
@@ -76,7 +76,6 @@ watch(id, (newId) => {
 });
 
 const toggleTrack = () => {
-  console.log("2333", id.value);
   id.value =
     id.value === null
       ? 0

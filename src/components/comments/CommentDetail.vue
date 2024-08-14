@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import { type Comment, toVersionString, generateUserHash } from "./utils.ts";
 import { UAParser } from "ua-parser-js";
-import { formatDate } from "~/utils/chinese-calendar.ts";
+import { formatDate } from "@/utils/chinese-calendar.ts";
 
 const props = defineProps<{
   comment: Comment;

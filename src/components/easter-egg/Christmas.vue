@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
-import snowflakeURL from "~/assets/snowflake.svg";
+import snowflakeURL from "@/assets/snowflake.svg";
 
 function generateSnow() {
   return {
