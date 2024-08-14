@@ -45,16 +45,16 @@ h3,
 h4,
 h5,
 h6 {
-  a[aria-hidden] {
-    @apply relative opacity-0;
+  a[aria-hidden].router-link-active {
+    @apply no-underline opacity-0;
     transition: opacity 0.3s;
 
     .icon.icon-link {
-      @apply absolute left-0 px-2;
+      @apply no-underline;
 
       &::after {
         content: "#";
-        @apply h-full text-slate-500;
+        @apply mx-2 h-full text-slate-500;
       }
     }
   }

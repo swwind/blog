@@ -271,3 +271,7 @@ void main() {
 我部署了一个[在线的小网页](https://swwind.github.io/ffmpeg-hevc-wasm/)来查看软解的效果。
 
 实际体验发现，Firefox 解码上面的第一个视频遇到了严重的性能瓶颈，目标帧率是 24fps，而实际上只能达到 12fps 的平均水平。与此同时，Chrome 却可以轻松越过这个瓶颈。导致上述问题的原因未知。
+
+## 评论
+
+<vue-reactions path="hevc-wasm"></vue-reactions>

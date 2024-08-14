@@ -8,7 +8,6 @@ import { createProgressBar } from "./components/progressbar/controller.ts";
 import Root from "./Root.vue";
 import Link from "./components/typography/Link.vue";
 import Metadata from "./components/metadata/Metadata.vue";
-import Comments from "./components/comments/Comments.vue";
 import Reactions from "./components/comments/Reactions.vue";
 
 const head = createHead();
@@ -32,6 +31,5 @@ createApp(Root)
   .use(blitz)
   .component("vue-link", Link)
   .component("vue-metadata", Metadata)
-  .component("vue-comments", Comments)
   .component("vue-reactions", Reactions)
   .mount("#app", true);

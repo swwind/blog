@@ -10,7 +10,6 @@ import { createProgressBar } from "./components/progressbar/controller.ts";
 import Root from "./Root.vue";
 import Link from "./components/typography/Link.vue";
 import Metadata from "./components/metadata/Metadata.vue";
-import Comments from "./components/comments/Comments.vue";
 import Reactions from "./components/comments/Reactions.vue";
 
 export default createServer(
@@ -34,7 +33,6 @@ export default createServer(
 
     app.component("vue-link", Link);
     app.component("vue-metadata", Metadata);
-    app.component("vue-comments", Comments);
     app.component("vue-reactions", Reactions);
 
     const ctx = {};

@@ -1,20 +1,41 @@
 <template>
-  <div class="mx-6 my-3 flex gap-2">
-    <ReactionButton
-      v-for="{ name, icon } in reactionTypes"
+  <div class="mx-6 my-3 flex gap-2 text-sm">
+    <button
+      v-for="{ name, icon } in reactedTypes"
       :key="name"
-      :label="loading ? '…' : reactions[name] || 0"
-      :reacted="reacted.includes(name)"
-      :icon="icon"
-      :prevention="name === 'down'"
+      class="flex items-center gap-2 rounded-full px-3 py-1"
+      :class="
+        reacted.includes(name)
+          ? 'bg-slate-800 text-slate-100 dark:bg-slate-600 dark:text-slate-200'
+          : 'border border-slate-600'
+      "
       @click="handleReaction(name)"
-    />
+    >
+      <span>{{ icon }}</span>
+      <span>{{ loading ? "…" : reactions[name] || 0 }}</span>
+    </button>
+
+    <div
+      v-if="unreactedTypes.length > 0"
+      class="group flex items-center gap-2 rounded-full border border-slate-600 px-3 py-1"
+    >
+      <span class="group-hover:hidden">➕</span>
+      <button
+        v-for="{ name, icon } in unreactedTypes"
+        :key="name"
+        class="hidden group-hover:block"
+        @click="handleReaction(name)"
+      >
+        {{ icon }}
+      </button>
+    </div>
   </div>
+
+  <Comments :path="path" />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
-import ReactionButton from "./ReactionButton.vue";
+import { ref, onMounted, watch, computed } from "vue";
 import {
   addReaction,
   getReactions,
@@ -22,6 +43,7 @@ import {
   writeLocalReactions,
   type ReactionRecord,
 } from "./utils.ts";
+import Comments from "./Comments.vue";
 
 const props = defineProps<{
   path: string;
@@ -32,7 +54,19 @@ const reactionTypes = [
   { name: "down", icon: "👎" },
   { name: "clown", icon: "🤡" },
   { name: "grinning", icon: "😅" },
+  { name: "heart", icon: "❤️" },
+  { name: "fire", icon: "🔥" },
+  { name: "laugh", icon: "😂" },
+  { name: "wow", icon: "😮" },
+  { name: "cry", icon: "😢" },
+  { name: "angry", icon: "😡" },
+  { name: "party", icon: "🎉" },
+  { name: "thinking", icon: "🤔" },
+  { name: "sunglasses", icon: "😎" },
 ];
+
+const selected = "";
+const unselected = "";
 
 const loading = ref(true);
 const reacted = ref<string[]>([]);
@@ -63,8 +97,11 @@ const handleReaction = (name: string) => {
     addReaction(props.path, name);
   }
 };
-</script>
 
-<style scoped>
-/* Add your custom styles here */
-</style>
+const reactedTypes = computed(() =>
+  reactionTypes.filter((x) => reactions.value[x.name] > 0),
+);
+const unreactedTypes = computed(() =>
+  reactionTypes.filter((x) => !reactions.value[x.name]),
+);
+</script>

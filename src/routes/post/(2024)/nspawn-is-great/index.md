@@ -255,10 +255,6 @@ sudo setcap 'cap_net_raw+p' /usr/bin/ping
 
 ## 留言
 
-给文章一个评价吧！
+给文章一个评价吧！如果过程中有遇到任何问题，可以留言讨论。
 
 <vue-reactions path="nspawn-is-great"></vue-reactions>
-
-如果过程中有遇到任何问题，可以留言讨论。
-
-<vue-comments path="nspawn-is-great"></vue-comments>

@@ -38,5 +38,3 @@ Vue 优雅的接口设计，可以让开发者专注于业务逻辑，而不是�
 ## 评论
 
 <vue-reactions path="hug-to-vue"></vue-reactions>
-
-<vue-comments path="hug-to-vue"></vue-comments>

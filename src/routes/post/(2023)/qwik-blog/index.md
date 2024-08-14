@@ -95,3 +95,7 @@ This is my first page.
 发布则非常简单，到 Cloudflare Pages 控制台上面新建一个项目，然后链接到 GitHub 的仓库，采用预设 Qwik，构建填写 `yarn build`，发布目录填写 `dist` 就好了。
 
 之后每次提交到 GitHub 上面之后 Cloudflare Pages 就会自动构建和部署。
+
+## 评论
+
+<vue-reactions path="qwik-blog"></vue-reactions>

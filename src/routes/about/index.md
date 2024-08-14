@@ -25,5 +25,3 @@ title: 关于本站
 ## 留言
 
 <vue-reactions path="about"></vue-reactions>
-
-<vue-comments path="about"></vue-comments>

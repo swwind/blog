@@ -187,6 +187,4 @@ Good Luck & Have Fun!
 
 ## 评论
 
-<vue-reactions path="nspawn-is-great"></vue-reactions>
-
-<vue-comments path="redroid-arknights"></vue-comments>
+<vue-reactions path="redroid-arknights"></vue-reactions>

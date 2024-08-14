@@ -10,4 +10,4 @@ title: 博客评论功能公测通知
 
 ## 评论
 
-<vue-comments path="blog-comments"></vue-comments>
+<vue-reactions path="blog-comments"></vue-reactions>

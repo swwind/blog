@@ -23,3 +23,7 @@ Cloudflare Pages 的免费边缘计算还是很香的，比起自己维护一台
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
   />
 </p>
+
+## 评论
+
+<vue-reactions path="blog-transfer"></vue-reactions>

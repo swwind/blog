@@ -662,6 +662,4 @@ await transform(code, {
 
 <vue-reactions path="swc-intro"></vue-reactions>
 
-<vue-comments path="swc-intro"></vue-comments>
-
 [swc]: https://swc.rs/

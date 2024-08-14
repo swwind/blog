@@ -23,4 +23,4 @@ title: 友情链接
 
 ## 留言
 
-<vue-comments path="friends"></vue-comments>
+<vue-reactions path="friends"></vue-reactions>

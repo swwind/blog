@@ -132,5 +132,3 @@ npx wrangler deploy
 ## 评论
 
 <vue-reactions path="cloudflare-d1"></vue-reactions>
-
-<vue-comments path="cloudflare-d1"></vue-comments>
