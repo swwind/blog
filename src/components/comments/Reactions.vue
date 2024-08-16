@@ -65,9 +65,6 @@ const reactionTypes = [
   { name: "sunglasses", icon: "😎" },
 ];
 
-const selected = "";
-const unselected = "";
-
 const loading = ref(true);
 const reacted = ref<string[]>([]);
 const reactions = ref<ReactionRecord>({});

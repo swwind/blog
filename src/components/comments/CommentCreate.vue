@@ -77,7 +77,6 @@ const finish = computed(() => token.value !== "");
 <template>
   <form method="POST" @submit="submit">
     <input type="hidden" name="pubkey" :value="pubkey" />
-    <input type="hidden" name="cf-turnstile-response" :value="token" />
     <div class="grid grid-cols-3 gap-2">
       <input
         type="text"
