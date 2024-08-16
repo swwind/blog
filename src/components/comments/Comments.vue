@@ -18,9 +18,12 @@ onMounted(() => {
     if (keys) storage.value = new Map(JSON.parse(keys));
   } catch {}
 });
-watch(storage, (update) => {
-  localStorage.setItem("sww.moe:keys", JSON.stringify([...update]));
-});
+watch(
+  () => [...storage.value.entries()],
+  (update) => {
+    localStorage.setItem("sww.moe:keys", JSON.stringify(update));
+  },
+);
 
 const loading = ref(true);
 const comments = ref<Comment[]>([]);

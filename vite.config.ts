@@ -38,4 +38,9 @@ export default defineConfig({
     blitz(),
     tsconfigPaths({ loose: true }),
   ],
+  server: {
+    proxy: {
+      "/api/": "http://localhost:8788/",
+    },
+  },
 });

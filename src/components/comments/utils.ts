@@ -12,10 +12,6 @@ export type Comment = {
   hash: string;
 };
 
-export const origin = isDev
-  ? "http://localhost:8787"
-  : manifest["comment-api-origin"];
-
 export const sitekey = isDev
   ? "1x00000000000000000000AA"
   : manifest["cf-sitekey"];
@@ -51,7 +47,7 @@ export function weakRandomString() {
 }
 
 export async function fetchComments(path: string) {
-  const response = await fetch(`${origin}/comments?path=${path}`);
+  const response = await fetch(`/api/comments?path=${path}`);
   return (await response.json()) as {
     count: number;
     path: string;
@@ -59,8 +55,8 @@ export async function fetchComments(path: string) {
   };
 }
 
-export async function createComment(formData: FormData) {
-  const response = await fetch(`${origin}/comment`, {
+export async function createComment(path: string, formData: FormData) {
+  const response = await fetch(`/api/comments?path=${path}&_action=create`, {
     method: "POST",
     body: formData,
   });
@@ -90,10 +86,9 @@ export function toVersionString(something: {
 
 export async function removeComment(path: string, uuid: string, key: string) {
   const formData = new FormData();
-  formData.append("path", path);
   formData.append("uuid", uuid);
   formData.append("key", key);
-  const response = await fetch(`${origin}/delete`, {
+  const response = await fetch(`/api/comments?path=${path}&_action=remove`, {
     method: "POST",
     body: formData,
   });
@@ -101,8 +96,11 @@ export async function removeComment(path: string, uuid: string, key: string) {
 }
 
 export async function addReaction(path: string, name: string) {
-  const response = await fetch(origin + `/reactions/${path}/${name}`, {
+  const formData = new FormData();
+  formData.append("name", name);
+  const response = await fetch(`/api/reactions?path=${path}`, {
     method: "POST",
+    body: formData,
   });
   return (await response.json()) as { updated: number };
 }
@@ -110,7 +108,7 @@ export async function addReaction(path: string, name: string) {
 export type ReactionRecord = Record<string, number>;
 
 export async function getReactions(path: string) {
-  const response = await fetch(`${origin}/reactions/${path}`);
+  const response = await fetch(`/api/reactions?path=${path}`);
   return (await response.json()) as ReactionRecord;
 }
 

@@ -38,7 +38,7 @@ const info = computed(() => {
         v-if="deletable"
         @click="emits('delete', comment.id)"
       >
-        删除
+        {{ "删除" }}
       </span>
     </div>
 

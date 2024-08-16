@@ -56,7 +56,7 @@ const submit = (event: Event) => {
   );
   submitting.value = true;
 
-  createComment(formData).then((res) => {
+  createComment(props.path, formData).then((res) => {
     submitting.value = false;
 
     if (res.ok) {
@@ -76,9 +76,8 @@ const finish = computed(() => token.value !== "");
 
 <template>
   <form method="POST" @submit="submit">
-    <input type="hidden" name="path" :value="path" />
     <input type="hidden" name="pubkey" :value="pubkey" />
-    <input type="hidden" name="cf-turnstile-token" :value="token" />
+    <input type="hidden" name="cf-turnstile-response" :value="token" />
     <div class="grid grid-cols-3 gap-2">
       <input
         type="text"
@@ -108,6 +107,7 @@ const finish = computed(() => token.value !== "");
       <button
         :disabled="submitting || !finish"
         class="col-span-3 border-2 border-slate-800 disabled:pointer-events-none disabled:opacity-60 dark:border-slate-100"
+        type="submit"
       >
         {{
           finish ? (submitting ? "提交中..." : "提交评论") : "等待验证通过..."
