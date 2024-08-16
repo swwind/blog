@@ -17,3 +17,8 @@ PNPM_VERSION = "9.5.0"
 binding = "d1"
 database_name = "comments"
 database_id = "29e2905d-a6e3-427f-aef1-d5cfbe522ba4"
+
+[[env.production.d1_databases]]
+binding = "d1"
+database_name = "comments"
+database_id = "29e2905d-a6e3-427f-aef1-d5cfbe522ba4"
