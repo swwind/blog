@@ -42,12 +42,15 @@ title: 黑历史目录
 - [使用 WebSocket 和 ffmpeg 直播 canvas](/post/canvas-live/) - 2018年8月23日
 - [HTML5 游戏初探](/post/html5-game/) - 2018年8月1日
 - [TensorFlow 学习笔记](/post/tensorflow/) - 2018年7月10日
+- [问卷测试](/post/quiz-test/) - 2018年6月6日
+- [【重要通知】博客域名更换](/post/domain-change/) - 2018年6月6日
 - [ZJOI day2 游记](/post/zjoi-day2/) - 2018年4月24日
 - [翻转字符串！](/post/reverse-sentense/) - 2018年4月11日
 - [从 mp3 文件中加载专辑封面](/post/load-cover-from-mp3-file/) - 2018年4月5日
 - [如何写一个简单的文字冒险游戏](/post/write-a-simple-acg-game/) - 2018年3月28日
 - [ZJOI2018 Day1 游记](/post/zjoi2018-day1/) - 2018年3月18日
 - [在 hexo 博客中使用 live2d](/post/how-to-use-live2d-in-hexo/) - 2018年3月16日
+- [向下兼容是一种怎么样的体验](/post/how-it-feel-backward-compatibility/) - 2018年3月1日
 - [寒假总结](/post/winter-holiday-summary/) - 2018年2月18日
 - [Happy New Year](/post/happy-new-year/) - 2018年1月1日
 

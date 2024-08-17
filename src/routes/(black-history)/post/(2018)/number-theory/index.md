@@ -1,5 +1,5 @@
 ---
-title: 数论学习入门 #1
+title: "数论学习入门 #1"
 ---
 
 # 数论学习入门 #1
@@ -126,7 +126,7 @@ $$
 - $id_k(n)=n^k$
 - $l(n)=id_0(n)=1$
 - $id(n)=id_1(n)=n$
-- $\varepsilon(n)=\begin{cases}1,&n=1\\\\0,&n>1\end{cases}$
+- $\varepsilon(n)=\begin{cases}1,&n=1\\0,&n>1\end{cases}$
 
 ## 欧拉函数
 
@@ -182,8 +182,8 @@ $$
 
 $$
 \mu(n) = \begin{cases}
-1, & n = 1 \\\\
-(-1) ^ k, & \forall a_i=1 \\\\
+1, & n = 1 \\
+(-1) ^ k, & \forall a_i=1 \\
 0, & \exists a_i \gt 1
 \end{cases}
 $$
