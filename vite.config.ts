@@ -36,15 +36,14 @@ export default defineConfig({
       ],
       scriptSetup(frontmatter) {
         return `
-          import { useHead as _useHead } from "@unhead/vue";
+          import { useHead as _useHead, useServerHead as _useServerHead } from "@unhead/vue";
           import _metadata from "@/metadata.json";
           const _sitename = _metadata["site-name"];
           const _title = ${frontmatter.index ? `title` : `title + " | " + _sitename`};
           const _desc = description || _metadata["site-description"];
-          _useHead({
-            title: _title,
+          _useHead({ title: _title, meta: [{ name: "description", content: _desc }] });
+          _useServerHead({
             meta: [
-              { name: "description", content: _desc },
               { property: "og:title", content: _title },
               { property: "og:description", content: _desc },
               { property: "og:site_name", content: _sitename },
