@@ -4,6 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import { markdown } from "@biliblitz/vite-plugin-markdown";
 import unheadAddon from "@unhead/addons/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import vueDevTools from "vite-plugin-vue-devtools";
 
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -24,7 +25,7 @@ export default defineConfig({
       rehypePlugins: [
         rehypeRemoveParagraph,
         [rehypePrism, { ignoreMissing: true }],
-        rehypeKatex,
+        [rehypeKatex, { strict: "ignore" }],
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "append" }],
         // @ts-ignore
@@ -37,6 +38,7 @@ export default defineConfig({
     unheadAddon(),
     blitz(),
     tsconfigPaths({ loose: true }),
+    vueDevTools(),
   ],
   server: {
     proxy: {

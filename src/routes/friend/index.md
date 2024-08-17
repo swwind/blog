@@ -16,7 +16,7 @@ title: 友情链接
 - [attack204](https://blog.attack204.com/)
 - [pomoke](https://typeof.pw/)
 
-以下友链托管于 CSDN，请自行复制链接打开
+以下友链托管于 CSDN，请自行复制链接打开。
 
 - zhouyuyang233 (巨佬) - `https://blog.csdn.net/zhouyuyang233/`
 - largecube - `https://blog.csdn.net/largecub233/`

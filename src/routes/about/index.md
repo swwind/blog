@@ -1,16 +1,21 @@
 ---
-title: 关于本站
+title: 关于
 ---
+
+# 关于我
+
+咱只是一个随处可见的苦逼大学生罢了。
 
 # 关于本站
 
 <vue-metadata author="swwind" time="2023-3-4" :outdate="false"></vue-metadata>
 
+本站第一篇 Hello World 发布于
 本站建立于2023年3月4日，使用[某基于 Vue 的全栈框架][blitz]构建，并且托管于 Cloudflare Pages。
 
 博客主要写一些技术类文章，目前主要围绕折腾操作系统和 Web 技术。偶尔会有一些过去写的发电文章，如果看到了请不要感到奇怪。
 
-博客的评论系统托管于 Cloudflare Workers，流量没了就访问不了了，但是应该不是太大的问题。
+博客的评论系统托管于 Cloudflare Pages Function，免费次数用完了就访问不了了，但是应该不是太大的问题，除非有人闲着给我一天刷了几万次。
 
 网站样式大部分抄袭 Telegraph，如果您觉得太丑陋了，那有可能确实很丑陋，但我也懒得改。
 

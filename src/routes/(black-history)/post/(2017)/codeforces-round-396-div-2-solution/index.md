@@ -6,26 +6,26 @@ title: "Codeforces Round #396 (Div. 2) 题解"
 
 <vue-metadata author="swwind" time="2017-10-12" tags="javascript,python,java,codeforces"></vue-metadata>
 
-# 前言
+## 前言
 
 继续颓废写 Codeforces 的题解。
 马上就要初赛了却越来越颓废了。
 
 ![face1](/assets/face1.jpg)![face2](/assets/face2.jpg)
 
-# A. Mahmoud and Longest Uncommon Subsequence
+## A. Mahmoud and Longest Uncommon Subsequence
 
-## 题意概述
+### 题意概述
 
 要你求两个串的最长不公共子序列
 
-## 思路
+### 思路
 
 A 题不要想太多。
 如果 `a == b` 直接输出 `-1` 。
 否则输出 `max(a.length, b.length)` 。
 
-## 代码
+### 代码
 
 **JavaScript**
 
@@ -38,13 +38,13 @@ A 题不要想太多。
 })();
 ```
 
-# B. Mahmoud and a Triangle
+## B. Mahmoud and a Triangle
 
-## 题意概述
+### 题意概述
 
 给你 $n$ 个数，问你能不能找到三个数使其能组成一个三角形。
 
-## 思路
+### 思路
 
 $O(n^3)$ 的暴力显然是行不通的。
 可以想到，先排序一发，要找到三个数一定是连续的三个数。
@@ -54,7 +54,7 @@ $O(n^3)$ 的暴力显然是行不通的。
 >
 > —— zyy & szb
 
-## 代码
+### 代码
 
 **JavaScript**
 
@@ -80,9 +80,9 @@ $O(n^3)$ 的暴力显然是行不通的。
 javascript 的 sort 有毒的啊。。。
 连 number 都是按字典序排的啊。。。
 
-# C. Mahmoud and a Message
+## C. Mahmoud and a Message
 
-## 题意概述
+### 题意概述
 
 给你一个字符串 $s$ 和一个数组 $a$，要你把 $s$ 切开来。
 $a_i$ 表示第 $i$ 个字母所在的片段的长度不能大于 $a_i$。
@@ -92,7 +92,7 @@ $a_i$ 表示第 $i$ 个字母所在的片段的长度不能大于 $a_i$。
 - 切的最长的一段有多长
 - 最少切成几份
 
-## 思路
+### 思路
 
 动态规划。
 `f[i]` 表示方案数。
@@ -101,7 +101,7 @@ $a_i$ 表示第 $i$ 个字母所在的片段的长度不能大于 $a_i$。
 然后 xjb 转移一下就好了。
 ~~我最喜欢吃 htr 了~~
 
-## 代码
+### 代码
 
 **C++**
 
@@ -143,21 +143,21 @@ int main(int argc, char const *argv[]) {
 }
 ```
 
-# D. Mahmoud and a Dictionary
+## D. Mahmoud and a Dictionary
 
-## 题意概述
+### 题意概述
 
 恶魔妈妈摸妹妹......
 就是每次告诉你一对近义词或者反义词，如果与之前冲突输出 `NO`，否则输出 `YES`。
 然后最后再问你一些词，是近义词输出 `1`，反义词输出 `2`，不确定输出 `3`。
 
-## 思路
+### 思路
 
 显然并查集。
 每个字符串拆成两个就行了。
 具体看代码。
 
-## 代码
+### 代码
 
 **C++**
 
@@ -217,19 +217,19 @@ int main(int argc, char const *argv[]) {
 }
 ```
 
-# E. Mahmoud and a xor trip
+## E. Mahmoud and a xor trip
 
-## 题意概述
+### 题意概述
 
 给你一棵树，每个点有一个权值。
 定义两个点之间的路径长度为所有经过的点的权值的异或和。
 询问所有点对之间的长度和。
 
-## 思路
+### 思路
 
 按位拆分，然后稍微 dp 一下就行了。
 
-## 代码
+### 代码
 
 **C++**
 
@@ -286,7 +286,7 @@ int main(int argc, char const *argv[]) {
 }
 ```
 
-# 总结
+## 总结
 
 这场还算简单，没有不可做题。
 

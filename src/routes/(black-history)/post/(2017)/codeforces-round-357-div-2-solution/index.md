@@ -6,26 +6,26 @@ title: "Codeforces Round #357 (Div. 2) 题解"
 
 <vue-metadata author="swwind" time="2017-10-10" tags="javascript,python,java,codeforces"></vue-metadata>
 
-# 前言
+## 前言
 
 今天吃着空，和同学打了一场 Codeforces。
 然后我吃着更空，还想写一写题解。
 ~~毕竟好久没更题解了~~
 
-# A. A Good Contest
+## A. A Good Contest
 
-## 题意概述
+### 题意概述
 
 给你 $n$ 个人打某场 Codeforces 前后 Rating 的变化，问你是否有原来就是红名的 dalao 涨分了。
 红名的 Rating 大于等于 2400 。
 
-## 思路
+### 思路
 
 小学题
 
-## 代码
+### 代码
 
-### C++
+#### C++
 
 ```cpp
 #include <bits/stdc++.h>
@@ -52,7 +52,7 @@ int main(int argc, char const *argv[]) {
 }
 ```
 
-### Java
+#### Java
 
 ```java
 import java.io.*;
@@ -78,7 +78,7 @@ public class Main {
 }
 ```
 
-### JavaScript
+#### JavaScript
 
 ```javascript
 (function () {
@@ -95,7 +95,7 @@ public class Main {
 })();
 ```
 
-### Python 3
+#### Python 3
 
 ```python
 n = int(input())
@@ -111,7 +111,7 @@ while i <= n:
 print('NO')
 ```
 
-### 速度比较
+#### 速度比较
 
 **由于本人没有多次试验取平均值，所以试验结果并不可靠，不过可以凑活着比一下**
 
@@ -128,19 +128,19 @@ Python 3 则介于两者中间。
 
 总结完毕，我们来看下一题。
 
-# B. Economy Game
+## B. Economy Game
 
-## 题意概述
+### 题意概述
 
 给你一个数 $n$，询问是否有一个三元组 $(a, b, c)$ 满足 $1234567*a + 123456*b + 1234*c = n$。
 
-## 思路
+### 思路
 
 暴力枚举即可。
 
-## 代码
+### 代码
 
-### C++
+#### C++
 
 ```cpp
 #include <bits/stdc++.h>
@@ -165,7 +165,7 @@ int main(int argc, char const *argv[]) {
 }
 ```
 
-### Java
+#### Java
 
 ```java
 import java.io.*;
@@ -186,7 +186,7 @@ public class Main {
 }
 ```
 
-### JavaScript
+#### JavaScript
 
 ```javascript
 (function () {
@@ -198,7 +198,7 @@ public class Main {
 })();
 ```
 
-### Python 3
+#### Python 3
 
 ```python
 n = int(input())
@@ -214,7 +214,7 @@ while a <= n:
 print('NO')
 ```
 
-### 比较
+#### 比较
 
 速度
 
@@ -230,13 +230,13 @@ C++ 的优势逐渐显现了出来。
 
 这题就这样解决了，再来看下一题。
 
-# C. Heap Operations
+## C. Heap Operations
 
-## 题意概述
+### 题意概述
 
 有一个小根堆，给你$n$个操作，要你在中间插入几个操作，使得所有的 `getMin` 操作都正确并且所有的 `removeMin` 操作都不会出错（比如给一个空集执行 `removeMin` ）。
 
-## 思路
+### 思路
 
 贪心。
 
@@ -246,9 +246,9 @@ C++ 的优势逐渐显现了出来。
 
 手写一个堆是不存在的。
 
-## 代码
+### 代码
 
-### C++
+#### C++
 
 ```cpp
 #include <bits/stdc++.h>
@@ -305,7 +305,7 @@ int main(int argc, char const *argv[]) {
 }
 ```
 
-### Java
+#### Java
 
 Java 光荣的 TLE 了。
 我实在卡不了常数了。
@@ -373,17 +373,17 @@ public class Main {
 }
 ```
 
-### JavaScript
+#### JavaScript
 
 JavaScript 不存在 PriorityQueue。
 所以代码也是不存在的。
 
-### Python 3
+#### Python 3
 
 我不会用 heapq 亦或者 PriorityQueue。
 所以就放过我吧 (っ TωT)っ
 
-### 比较
+#### 比较
 
 | Language   |     Time |
 | ---------- | -------: |
@@ -396,13 +396,13 @@ JavaScript 不存在 PriorityQueue。
 
 ~~Java 开和 C++ 一样的时限是要闹怎样啊。。。~~
 
-# D. Gifts by the List
+## D. Gifts by the List
 
-## 题意概述
+### 题意概述
 
 有$n$个人和$m$个父子关系，每个人都有想把礼物送给$a_i$的欲望，但是他必须把礼物送给你给出的一张名单中自上而下第一个是他的祖先的人。如果这个人不是他想送出礼物的人，他就会变得很不开心。问你有没有一个能让所有人开心的名单。没有输出 `-1` 。
 
-## 思路
+### 思路
 
 先 %%% lbc dalao 给我提供了思路。
 
@@ -411,7 +411,7 @@ JavaScript 不存在 PriorityQueue。
 每个人只有把礼物送给他自己或者他爸爸或者他爸爸送给的人才能保证不冲突。
 这样连边然后拓扑排序一波就搞定了。
 
-## 代码
+### 代码
 
 ```cpp
 #include <bits/stdc++.h>
@@ -486,6 +486,6 @@ int main(int argc, char const *argv[]) {
 
 因此代码速度的比较也是不存在的。
 
-# E. Runaway to a Shadow
+## E. Runaway to a Shadow
 
 计算几何？<span class="meiryo">さようなら。</span>

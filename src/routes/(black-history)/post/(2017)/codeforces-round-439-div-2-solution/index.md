@@ -6,28 +6,28 @@ title: "Codeforces Round #439 (Div. 2) 题解"
 
 <vue-metadata author="swwind" time="2017-10-11" tags="codeforces,javascript,python"></vue-metedata>
 
-# 前言
+## 前言
 
 吃着空写写水题题解。
 大佬就不要看了。
 
 P.S. 我发现同样一份代码打四遍是在浪费时间，所以这次每题只放一份代码。
 
-# A. The Artful Expedient
+## A. The Artful Expedient
 
-## 题意概述
+### 题意概述
 
 给你两个数组，问你所有满足 `x[i] ^ y[j] == x[k]` 或者 `x[i] ^ y[j] == y[k]` 的数对$(i, j)$的数量的奇偶性。
 
 奇数输出`Koyomi`，偶数输出`Karen`。
 
-## 思路
+### 思路
 
 emmmmmm......
 其实只要能找到一个$(i, j)$，那么$(i, k)$或者$(k, j)$也是满足条件的。
 所以一定是偶数。直接输出`Karen`就行了。
 
-## 代码
+### 代码
 
 **php**
 
@@ -35,18 +35,18 @@ emmmmmm......
 Karen
 ```
 
-# B. The Eternal Immortality
+## B. The Eternal Immortality
 
-## 题意概述
+### 题意概述
 
 求 $\Pi^b_{i=a}\pmod{10}$
 
-## 思路
+### 思路
 
 暴力求。
 当答案是 $0$ 之后就直接跳出好了。
 
-## 代码
+### 代码
 
 **python**
 
@@ -62,22 +62,22 @@ while a <= b :
 print(c)
 ```
 
-# C. The Intriguing Obsession
+## C. The Intriguing Obsession
 
-## 题意概述
+### 题意概述
 
 有三种颜色的岛。
 每种颜色的岛之间要么没有路，要么最短路大于等于 $3$。
 输出方案数，对 $998,244,353$ 取模。
 
-## 思路
+### 思路
 
 考虑每两种岛之间连边。
 根据题目条件，每个岛要么连一条向另一种颜色的边，要么不连。
 这就是一个组合数问题了。
 然后总方案数就是三种颜色的岛两两计算的乘积了。
 
-## 代码
+### 代码
 
 **python**
 
@@ -100,23 +100,23 @@ ans = calc(a, b) * calc(b, c) * calc(a, c) % p
 print(ans)
 ```
 
-# ~~D. The Overdosing Ubiquity~~
+## ~~D. The Overdosing Ubiquity~~
 
 不会
 
-# E. The Untended Antiquity
+## E. The Untended Antiquity
 
-## 题意概述
+### 题意概述
 
 平面内，每次让你删除一个矩形或者添加一个矩形，或者询问两个点 $(x_1, y_1), (x_2, y_2)$ 能否不跨越矩形的边到达。
 
 **保证矩形不会重叠**
 
-## 思路
+### 思路
 
 直接上二维树状数组，要有信仰。
 
-## 代码
+### 代码
 
 **JavaScript**
 
@@ -169,7 +169,7 @@ print(ans)
 })();
 ```
 
-# 总结
+## 总结
 
 AB 送分，C 题有一定的思维难度，D 题不会，E 题没读清题面导致傻掉。
 
