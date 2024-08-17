@@ -35,7 +35,7 @@
     "@biliblitz/adapter-nodejs": "^0.0.1",
     "@biliblitz/adapter-static": "^0.0.1",
     "@biliblitz/vite": "^0.3.2",
-    "@biliblitz/vite-plugin-markdown": "^0.0.2",
+    "@biliblitz/vite-plugin-markdown": "^0.0.5",
     "@cloudflare/workers-types": "^4.20240815.0",
     "@types/blueimp-md5": "^2.18.2",
     "@types/hast": "^3.0.4",

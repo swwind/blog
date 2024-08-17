@@ -1,4 +1,5 @@
 ---
+index: true
 title: swwind 的博客
 description: swwind 的博客，主要用于发布博客文章。
 ---

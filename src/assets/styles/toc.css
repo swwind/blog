@@ -7,7 +7,7 @@ nav.toc {
   }
 
   ol {
-    @apply sticky top-24 ml-4 mr-0;
+    @apply sticky top-12 ml-4 mr-0;
 
     li {
       @apply list-none;

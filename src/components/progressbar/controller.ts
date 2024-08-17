@@ -35,7 +35,7 @@ export function createProgressBar(): Plugin {
         throw new Error("router not found");
       }
 
-      router.beforeResolve((to, from) => {
+      router.beforeEach((to, from) => {
         if (
           to.path != from.path ||
           stringifyQuery(to.query) != stringifyQuery(from.query)

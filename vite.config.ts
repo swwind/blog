@@ -5,6 +5,7 @@ import { markdown } from "@biliblitz/vite-plugin-markdown";
 import unheadAddon from "@unhead/addons/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import vueDevTools from "vite-plugin-vue-devtools";
+import metadata from "./src/metadata.json";
 
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -29,10 +30,30 @@ export default defineConfig({
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "append" }],
         // @ts-ignore
-        [rehypeToc, { headings: ["h2", "h3", "h4"] }],
+        [rehypeToc, { headings: ["h1", "h2", "h3", "h4"] }],
         rehypeRemoveComments,
         [rehypeReplaceElement, { map: { a: "vue-link" } }],
       ],
+      scriptSetup(frontmatter) {
+        return `
+          import { useHead as _useHead } from "@unhead/vue";
+          import _metadata from "@/metadata.json";
+          const _sitename = _metadata["site-name"];
+          const _title = ${frontmatter.index ? `title` : `title + " | " + _sitename`};
+          const _desc = description || _metadata["site-description"];
+          _useHead({
+            title: _title,
+            meta: [
+              { name: "description", content: _desc },
+              { property: "og:title", content: _title },
+              { property: "og:description", content: _desc },
+              { property: "og:site_name", content: _sitename },
+              { property: "og:locale", content: "zh_CN" },
+              { property: "og:type", content: "website" },
+            ],
+          });
+        `;
+      },
     }),
     vue({ include: [/\.vue$/, /\.md$/] }),
     unheadAddon(),
