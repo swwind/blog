@@ -1,7 +1,5 @@
 <template>
-  <div class="relative">
-    <article class="typography">
-      <slot />
-    </article>
-  </div>
+  <article class="typography">
+    <slot />
+  </article>
 </template>

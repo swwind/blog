@@ -136,7 +136,7 @@
 }
 
 .typography code:not(pre code) {
-  @apply px-1;
+  @apply rounded-sm bg-sky-100 px-1 py-0.5 font-mono text-base text-sky-800 dark:bg-slate-700 dark:text-sky-200;
 }
 
 .typography b {

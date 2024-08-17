@@ -1,7 +1,7 @@
 <template>
   <p>
     <span
-      class="cursor-not-allowed"
+      class="cursor-not-allowed underline"
       @click="shoutOut"
       :style="{ cursor: `url(${poop}) 12 12, pointer` }"
     >
