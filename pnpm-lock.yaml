@@ -32,9 +32,6 @@ importers:
       lucide-vue-next:
         specifier: ^0.427.0
         version: 0.427.0(vue@3.4.37(typescript@5.5.4))
-      rehype-remove-comments:
-        specifier: ^6.0.0
-        version: 6.0.0
       vue:
         specifier: ^3.4.37
         version: 3.4.37(typescript@5.5.4)
@@ -102,6 +99,9 @@ importers:
       rehype-prism-plus:
         specifier: ^2.0.0
         version: 2.0.0
+      rehype-remove-comments:
+        specifier: ^6.0.0
+        version: 6.0.0
       rehype-slug:
         specifier: ^6.0.0
         version: 6.0.0

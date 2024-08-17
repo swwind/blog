@@ -27,7 +27,6 @@
     "hono": "^4.2.3",
     "katex": "^0.16.10",
     "lucide-vue-next": "^0.427.0",
-    "rehype-remove-comments": "^6.0.0",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3",
     "vue-turnstile": "^1.0.10"
@@ -52,6 +51,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-katex": "^7.0.0",
     "rehype-prism-plus": "^2.0.0",
+    "rehype-remove-comments": "^6.0.0",
     "rehype-slug": "^6.0.0",
     "rehype-toc": "npm:@jsdevtools/rehype-toc@^3.0.2",
     "remark-gfm": "^4.0.0",

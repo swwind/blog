@@ -43,4 +43,7 @@ export default defineConfig({
       "/api/": "http://localhost:8788/",
     },
   },
+  optimizeDeps: {
+    include: ["lucide-vue-next", "vue-turnstile"],
+  },
 });
