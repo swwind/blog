@@ -36,21 +36,24 @@ export default defineConfig({
       ],
       scriptSetup(frontmatter) {
         return `
-          import { useHead as _useHead, useServerHead as _useServerHead } from "@unhead/vue";
+          import { useHead, useServerHead } from "@unhead/vue";
+          import { isSSR as _isSSR } from "@biliblitz/blitz/utils";
           import _metadata from "@/metadata.json";
           const _sitename = _metadata["site-name"];
           const _title = ${frontmatter.index ? `title` : `title + " | " + _sitename`};
           const _desc = description || _metadata["site-description"];
-          _useHead({ title: _title, meta: [{ name: "description", content: _desc }] });
-          _useServerHead({
-            meta: [
-              { property: "og:title", content: _title },
-              { property: "og:description", content: _desc },
-              { property: "og:site_name", content: _sitename },
-              { property: "og:locale", content: "zh_CN" },
-              { property: "og:type", content: "website" },
-            ],
-          });
+          useHead({ title: _title, meta: [{ name: "description", content: _desc }] });
+          if (_isSSR) {
+            useServerHead({
+              meta: [
+                { property: "og:title", content: _title },
+                { property: "og:description", content: _desc },
+                { property: "og:site_name", content: _sitename },
+                { property: "og:locale", content: "zh_CN" },
+                { property: "og:type", content: "website" },
+              ],
+            });
+          }
         `;
       },
     }),
