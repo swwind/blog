@@ -4,7 +4,7 @@ title: 友情链接
 
 # 友情链接
 
-<vue-metadata author="swwind" time="2023-3-4" :outdate="false"></vue-metadata>
+<vue-metadata author="swwind" time="2023-3-4"></vue-metadata>
 
 如果想要添加友链，您可以在网页的最下面留言。
 

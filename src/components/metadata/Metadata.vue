@@ -7,7 +7,7 @@
       <span v-for="tag in tagList" :key="tag">#{{ tag }}</span>
     </div>
 
-    <template v-if="outdate !== false && yearsOld > 0">
+    <template v-if="outdate && yearsOld > 0">
       <hr />
       <p>
         <b>
@@ -41,17 +41,17 @@ const props = defineProps<{
 }>();
 
 const time = computed(() => new Date(props.time));
-const updated = computed(() =>
-  props.updated ? new Date(props.updated) : new Date(props.time),
-);
 const yearsOld = computed(() =>
   Math.floor(
-    (Date.now() - updated.value.getTime()) / (365 * 24 * 60 * 60 * 1000),
+    (Date.now() - new Date(props.updated || props.time).getTime()) /
+      (365 * 24 * 60 * 60 * 1000),
   ),
 );
 
 const yangliTime = computed(() => toYangliCalendar(time.value));
-const yangliUpdated = computed(() => toYangliCalendar(updated.value));
+const yangliUpdated = computed(
+  () => props.updated && toYangliCalendar(new Date(props.updated)),
+);
 
 const tagList = computed(() => props.tags?.split(",") || []);
 </script>

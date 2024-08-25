@@ -4,7 +4,7 @@ title: Curve25519/X25519 原理与实现
 
 # Curve25519/X25519 原理与实现
 
-<vue-metadata author="swwind" time="2022-12-20" tags="Crypto" :outdate="false"></vue-metadata>
+<vue-metadata author="swwind" time="2022-12-20" tags="Crypto"></vue-metadata>
 
 研究 WireGuard 的时候突然好奇公钥和私钥的一堆字符串里面保存的究竟是什么东西，于是稍微研究了一下 X25519 和 ECDH 相关的内容。写一篇文章总结一下这套东西究竟是什么，以及用了什么奇技淫巧生成的公钥和私钥，希望对各位学习密码学 ECDH 相关内容有所帮助。
 

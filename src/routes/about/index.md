@@ -4,7 +4,7 @@ title: 关于
 
 # 关于
 
-<vue-metadata author="swwind" time="2023-3-4" :outdate="false"></vue-metadata>
+<vue-metadata author="swwind" time="2023-3-4" updated="2024-8-25"></vue-metadata>
 
 ## 关于我
 
