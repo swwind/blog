@@ -30,7 +30,7 @@ export default defineConfig({
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "append" }],
         // @ts-ignore
-        [rehypeToc, { headings: ["h1", "h2", "h3", "h4"] }],
+        [rehypeToc, { headings: ["h2", "h3", "h4"] }],
         rehypeRemoveComments,
         [rehypeReplaceElement, { map: { a: "vue-link" } }],
       ],
