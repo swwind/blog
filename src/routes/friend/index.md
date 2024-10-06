@@ -15,6 +15,8 @@ title: 友情链接
 - [shajjl](https://shajjl.github.io/)
 - [attack204](https://blog.attack204.com/)
 - [pomoke](https://typeof.pw/)
+- [rockm3](https://blog.rockm3.net/)
+- [tianze](https://tianz.us.kg/)
 
 以下友链托管于 CSDN，请自行复制链接打开。
 
