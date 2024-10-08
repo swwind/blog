@@ -21,6 +21,7 @@
   "dependencies": {
     "@biliblitz/blitz": "^0.3.2",
     "@hono/node-server": "^1.11.0",
+    "@std/encoding": "npm:@jsr/std__encoding@^1.0.5",
     "@unhead/ssr": "^1.9.16",
     "@unhead/vue": "^1.9.16",
     "blueimp-md5": "^2.19.0",
@@ -45,6 +46,7 @@
     "@unhead/addons": "^1.9.16",
     "@vitejs/plugin-vue": "^5.1.2",
     "autoprefixer": "^10.4.19",
+    "jsr": "^0.13.2",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.13",

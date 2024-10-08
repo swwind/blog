@@ -1,112 +1,142 @@
 <template>
   <div>
-    <h1>生成炫酷的 ECDH 密钥对</h1>
+    <h1>性感荷官在线 ECDH</h1>
 
     <p class="flex flex-wrap gap-4">
-      <span>公钥开头字符</span>
-      <input type="text" class="w-64 font-mono" v-model="start" />
-    </p>
-    <p class="flex flex-wrap gap-4">
-      <span>公钥包含字符</span>
-      <input type="text" class="w-64 font-mono" v-model="include" />
-    </p>
-    <p class="flex flex-wrap gap-4">
-      <span>公钥结束字符</span>
-      <input type="text" class="w-64 font-mono" v-model="end" />
-    </p>
-    <p class="flex flex-wrap gap-4">
-      <span>曲线</span>
-      <select v-model="curve">
-        <option value="P-256">P-256</option>
-        <option value="P-384">P-384</option>
-        <option value="P-521">P-521</option>
-      </select>
-    </p>
-
-    <p class="flex flex-wrap items-center gap-4">
-      <button
-        class="border px-4 py-1"
-        @click="generateKeys"
-        :disabled="isGenerating"
-      >
+      <span>我的公钥</span>
+      <input
+        type="text"
+        class="w-64 font-mono"
+        disabled
+        v-model="alicePubkey"
+      />
+      <button class="cursor-pointer underline" @click="generateKeypair">
         生成
       </button>
-      <span>{{ logs }}</span>
+      <button class="cursor-pointer underline" @click="copyPubkey">
+        {{ copySuccess ? "已复制" : "复制" }}
+      </button>
     </p>
 
     <p class="flex flex-wrap gap-4">
-      <span>公钥</span>
-      <span class="break-all font-mono">{{ pubKey }}</span>
+      <span>对面的公钥</span>
+      <input type="text" class="w-64 font-mono" v-model="bobPubkey" />
     </p>
+
     <p class="flex flex-wrap gap-4">
-      <span>私钥</span>
-      <span class="break-all font-mono">{{ privKey }}</span>
+      <span>ECDH 结果</span>
+      <input type="text" class="w-64 font-mono" disabled v-model="key" />
+      <button class="cursor-pointer underline" @click="x25519">计算</button>
+      <span class="text-red-500">{{ ecdherr }}</span>
+    </p>
+
+    <p class="flex flex-col gap-2">
+      <span>明文</span>
+      <textarea class="block min-h-32 w-full" v-model="message" />
+      <span class="inline-flex gap-4">
+        <button class="cursor-pointer underline" @click="encrypt">
+          ⬇加密
+        </button>
+        <button class="cursor-pointer underline" @click="decrypt">
+          ⬆解密
+        </button>
+        <span class="text-red-500">{{ cerr }}</span>
+      </span>
+      <textarea class="block min-h-32 w-full" v-model="cipher" />
+      <span>密文</span>
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useHead } from "@unhead/vue";
-import { arrayBufferToBase64 } from "@/utils/crypto.ts";
+import { ecdh, genkey, pubkey } from "@/utils/x25519.ts";
+import { chacha20_encrypt } from "@/utils/chacha20";
+import { decodeBase64, encodeBase64 } from "@std/encoding";
 
 useHead({
-  title: "生成炫酷的 ECDH 密钥对",
+  title: "性感荷官在线 ECDH",
 });
 
-const start = ref("");
-const include = ref("");
-const end = ref("");
-const curve = ref("P-256");
-const pubKey = ref("");
-const privKey = ref("");
-const logs = ref("");
-const isGenerating = ref(false);
+const aliceSeckey = ref("");
+const alicePubkey = ref("");
+const bobPubkey = ref("");
+const key = ref("");
+const copySuccess = ref(false);
 
-async function generateKeys() {
-  isGenerating.value = true;
+const message = ref("");
+const cipher = ref("");
 
-  async function generateKeyPair() {
-    const keyPair = await crypto.subtle.generateKey(
-      { name: "ECDH", namedCurve: curve.value },
-      true,
-      ["deriveBits"],
-    );
+const cerr = ref("");
+const ecdherr = ref("");
 
-    const publicKeyBuffer = await crypto.subtle.exportKey(
-      "spki",
-      keyPair.publicKey,
-    );
-    const privateKeyBuffer = await crypto.subtle.exportKey(
-      "pkcs8",
-      keyPair.privateKey,
-    );
-
-    const publicKey = await arrayBufferToBase64(publicKeyBuffer);
-    const privateKey = await arrayBufferToBase64(privateKeyBuffer);
-
-    return { publicKey, privateKey };
-  }
-
-  let total = 0;
-  while (true) {
-    const { publicKey, privateKey } = await generateKeyPair();
-
-    if (
-      !publicKey.startsWith(start.value) ||
-      !publicKey.endsWith(end.value) ||
-      !publicKey.includes(include.value)
-    ) {
-      total++;
-      logs.value = `Try: #${total}`;
-      continue;
-    }
-
-    pubKey.value = publicKey;
-    privKey.value = privateKey;
-    break;
-  }
-
-  isGenerating.value = false;
+function generateKeypair() {
+  const sec = genkey();
+  const pub = pubkey(sec);
+  aliceSeckey.value = sec;
+  alicePubkey.value = pub;
+  copySuccess.value = false;
 }
+
+function x25519() {
+  if (!aliceSeckey.value) {
+    ecdherr.value = "缺少私钥";
+    return;
+  }
+  if (!bobPubkey.value) {
+    ecdherr.value = "缺少公钥";
+    return;
+  }
+  if (!/^[a-zA-Z0-9\+\/]{43}\=$/.test(bobPubkey.value)) {
+    ecdherr.value = "公钥不合法";
+    return;
+  }
+  key.value = ecdh(aliceSeckey.value, bobPubkey.value);
+  ecdherr.value = "";
+}
+
+function copyPubkey() {
+  navigator.clipboard.writeText(alicePubkey.value).then(() => {
+    copySuccess.value = true;
+  });
+}
+
+function encrypt() {
+  if (!key.value) {
+    cerr.value = "请先完成 ECDH";
+    return;
+  }
+  if (!message.value) {
+    cerr.value = "请输入明文";
+    return;
+  }
+  const keybuf = decodeBase64(key.value);
+  const nonce = decodeBase64("c3d3aW5kJ3NibG9n");
+  const plain = new TextEncoder().encode(message.value);
+  const c = chacha20_encrypt(keybuf, nonce, plain);
+  cipher.value = encodeBase64(c);
+  cerr.value = "加密完成";
+}
+
+function decrypt() {
+  if (!key.value) {
+    cerr.value = "请先完成 ECDH";
+    return;
+  }
+  if (!cipher.value) {
+    cerr.value = "请输入密文";
+    return;
+  }
+  const keybuf = decodeBase64(key.value);
+  const nonce = decodeBase64("c3d3aW5kJ3NibG9n");
+  const c = decodeBase64(cipher.value);
+  const plain = chacha20_encrypt(keybuf, nonce, c);
+  message.value = new TextDecoder().decode(plain);
+  cerr.value = "解密完成";
+}
+
+onMounted(() => {
+  generateKeypair();
+});
 </script>
