@@ -45,6 +45,8 @@
       <textarea class="block min-h-32 w-full" v-model="cipher" />
       <span>密文</span>
     </p>
+
+    <p>本工具基于 X25519 算法交换密钥，基于 ChaCha20 算法进行加密。</p>
   </div>
 </template>
 
