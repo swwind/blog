@@ -57,6 +57,7 @@ import { decodeBase64, encodeBase64 } from "@std/encoding";
 
 useHead({
   title: "性感荷官在线 ECDH",
+  meta: [{ property: "og:title", content: "性感荷官在线 ECDH" }],
 });
 
 const aliceSeckey = ref("");
