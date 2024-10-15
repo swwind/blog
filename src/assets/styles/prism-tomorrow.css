@@ -8,7 +8,8 @@ code[class*="language-"]:not(.language-math),
 pre[class*="language-"]:not(.language-math) {
   color: #ccc;
   background: none;
-  font-family: "Fira Code", monospace;
+  /* font-family: "Fira Code", monospace; */
+  font-family: monospace;
   font-size: 1em;
   text-align: left;
   white-space: pre;

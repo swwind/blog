@@ -17,13 +17,11 @@
 
     <div
       v-if="unreactedTypes.length > 0"
-      class="group flex items-center gap-2 rounded-full border border-slate-600 px-3 py-1"
+      class="flex items-center gap-2 rounded-full border border-slate-600 px-3 py-1"
     >
-      <span class="group-hover:hidden">➕</span>
       <button
         v-for="{ name, icon } in unreactedTypes"
         :key="name"
-        class="hidden group-hover:block"
         @click="handleReaction(name)"
       >
         {{ icon }}
@@ -96,7 +94,9 @@ const handleReaction = (name: string) => {
 };
 
 const reactedTypes = computed(() =>
-  reactionTypes.filter((x) => reactions.value[x.name] > 0),
+  reactionTypes
+    .filter((x) => reactions.value[x.name] > 0)
+    .sort((a, b) => reactions.value[b.name] - reactions.value[a.name]),
 );
 const unreactedTypes = computed(() =>
   reactionTypes.filter((x) => !reactions.value[x.name]),
