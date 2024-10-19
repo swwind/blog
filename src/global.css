@@ -12,6 +12,16 @@ body {
   @apply bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:[color-scheme:dark];
 }
 
+@media only screen and (prefers-color-scheme: dark) and (min-width: 1024px) {
+  body {
+    background-size: 20%;
+    background-image: url(./assets/guaiguaizhanhao.png);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-attachment: fixed;
+  }
+}
+
 ::selection {
   @apply bg-slate-300 dark:bg-slate-600;
 }
