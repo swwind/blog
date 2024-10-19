@@ -13,7 +13,7 @@ body {
 }
 
 @media only screen and (prefers-color-scheme: dark) and (min-width: 1024px) {
-  body {
+  body.aniki {
     background-size: 20%;
     background-image: url(./assets/guaiguaizhanhao.png);
     background-repeat: no-repeat;

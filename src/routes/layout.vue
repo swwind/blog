@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { useHead } from "@unhead/vue";
 import metadata from "../metadata.json";
 
@@ -9,6 +10,14 @@ import Typography from "@/components/typography/Typography.vue";
 
 useHead({
   title: metadata["site-name"],
+});
+
+// === 彩蛋 ===
+onMounted(() => {
+  const today = new Date();
+  if (today.getMonth() === 11 && today.getDate() === 31) {
+    document.body.classList.add("aniki");
+  }
 });
 </script>
 
