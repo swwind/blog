@@ -6,6 +6,8 @@ import ProgressBar from "./components/progressbar/ProgressBar.vue";
 import "./global.css";
 import { isDev, isSSR } from "@biliblitz/blitz/utils";
 
+import tracking from "./utils/tracking.js?url";
+
 useHead({
   meta: [
     { charset: "utf-8" },
@@ -18,6 +20,18 @@ useHead({
 });
 
 useBlitz();
+
+if (!isDev && isSSR) {
+  useHead({
+    script: [
+      {
+        defer: true,
+        "data-secret": '{"token":"fcfe972463c2499b96a7377883dcf6fa"}',
+        src: tracking,
+      },
+    ],
+  });
+}
 </script>
 
 <template>
