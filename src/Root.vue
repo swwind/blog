@@ -4,6 +4,7 @@ import { useHead } from "@unhead/vue";
 import ProgressBar from "./components/progressbar/ProgressBar.vue";
 
 import "./global.css";
+import { isDev, isSSR } from "@biliblitz/blitz/utils";
 
 useHead({
   meta: [
@@ -15,6 +16,18 @@ useHead({
     { rel: "shortcut icon", href: "/momoi.webp" },
   ],
 });
+
+if (!isDev && isSSR) {
+  useHead({
+    script: [
+      {
+        defer: true,
+        src: "https://static.cloudflareinsights.com/beacon.min.js",
+        "data-cf-beacon": '{"token": "57439b4043fd4e1e9d05b344fa6adf84"}',
+      },
+    ],
+  });
+}
 
 useBlitz();
 </script>
