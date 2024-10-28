@@ -17,18 +17,6 @@ useHead({
   ],
 });
 
-if (!isDev && isSSR) {
-  useHead({
-    script: [
-      {
-        defer: true,
-        src: "https://static.cloudflareinsights.com/beacon.min.js",
-        "data-cf-beacon": '{"token": "57439b4043fd4e1e9d05b344fa6adf84"}',
-      },
-    ],
-  });
-}
-
 useBlitz();
 </script>
 
