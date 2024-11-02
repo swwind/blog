@@ -21,7 +21,7 @@ useHead({
 
 useBlitz();
 
-if (!isDev && isSSR) {
+if (!import.meta.env.DEV && isSSR) {
   useHead({
     script: [
       {
