@@ -4,7 +4,7 @@ import { useHead } from "@unhead/vue";
 import ProgressBar from "./components/progressbar/ProgressBar.vue";
 
 import "./global.css";
-import { isDev, isSSR } from "@biliblitz/blitz/utils";
+import { isSSR } from "@biliblitz/blitz/utils";
 
 import tracking from "./utils/tracking.js?url";
 
