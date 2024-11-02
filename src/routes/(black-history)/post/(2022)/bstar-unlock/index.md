@@ -4,7 +4,15 @@ title: bilibili 东南亚版本使用指南
 
 # bilibili 东南亚版本使用指南
 
-<vue-metadata author="swwind" time="2022-2-20" tags="bilibili"></vue-metadata>
+<vue-metadata author="swwind" time="2022-2-20" tags="bilibili" updated="2024-10-30"></vue-metadata>
+
+---
+
+**注意：本文内容已经严重过时，过时内容包括：谷歌已经缩紧了账号注册流程，目前基本不能跳过绑定手机号；在网页中开大会员的功能已经开放（需要使用 PayPal）等。（2024/10/30）**
+
+**注意：目前本人不建议如此曲线救国，而且该站简体中文字幕良莠不齐，不如看看远处的巴哈姆特动画疯。**
+
+---
 
 本文简单讲解 bilibili 东南亚版本的情况，以及简单说明如何使用神秘手段访问其服务的方法。
 
