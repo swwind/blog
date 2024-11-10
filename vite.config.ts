@@ -5,12 +5,11 @@ import { markdown } from "@biliblitz/vite-plugin-markdown";
 import unheadAddon from "@unhead/addons/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import vueDevTools from "vite-plugin-vue-devtools";
-import metadata from "./src/metadata.json";
 
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkRuby from "remark-ruby";
-import rehypeKatex from "rehype-katex";
+import rehypeKatex from "./vite/rehype-katex-vue.ts";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import rehypeToc from "rehype-toc";
@@ -26,7 +25,7 @@ export default defineConfig({
       rehypePlugins: [
         rehypeRemoveParagraph,
         [rehypePrism, { ignoreMissing: true }],
-        [rehypeKatex, { strict: "ignore" }],
+        rehypeKatex,
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "append" }],
         // @ts-ignore

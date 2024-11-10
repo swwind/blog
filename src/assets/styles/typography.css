@@ -135,7 +135,7 @@
   width: calc(100% - 3rem);
 }
 
-.typography code:not(pre code) {
+.typography code:not(pre code):not(.language-math) {
   @apply rounded-sm bg-sky-100 px-1 py-0.5 font-mono text-base text-sky-800 dark:bg-slate-700 dark:text-sky-200;
 }
 

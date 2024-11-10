@@ -9,6 +9,7 @@ import Root from "./Root.vue";
 import Link from "./components/typography/Link.vue";
 import Metadata from "./components/metadata/Metadata.vue";
 import Reactions from "./components/comments/Reactions.vue";
+import Katex from "./components/katex.vue";
 
 const head = createHead();
 const router = createRouter({
@@ -30,6 +31,7 @@ createApp(Root)
   .use(progressbar)
   .use(blitz)
   .component("vue-link", Link)
+  .component("vue-katex", Katex)
   .component("vue-metadata", Metadata)
   .component("vue-reactions", Reactions)
   .mount("#app", true);
