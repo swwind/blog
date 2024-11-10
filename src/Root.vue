@@ -6,8 +6,6 @@ import ProgressBar from "./components/progressbar/ProgressBar.vue";
 import "./global.css";
 import { isSSR } from "@biliblitz/blitz/utils";
 
-import tracking from "./utils/tracking.js?url";
-
 useHead({
   meta: [
     { charset: "utf-8" },
@@ -26,8 +24,8 @@ if (!import.meta.env.DEV && isSSR) {
     script: [
       {
         defer: true,
-        "data-secret": '{"token":"fcfe972463c2499b96a7377883dcf6fa"}',
-        src: tracking,
+        "data-cf-beacon": '{"token": "4408419e77824ae681bd7f1138843558"}',
+        src: "https://static.cloudflareinsights.com/beacon.min.js",
       },
     ],
   });
