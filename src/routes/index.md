@@ -25,6 +25,7 @@ import VueSenpai from "@/components/easter-egg/Senpai.vue";
 
 **2024年**
 
+- [Pandoc 使用速查](/post/pandoc-memo/) - 2024年11月10日
 - [抛弃 Preact，拥抱 Vue](/annouce/hug-to-vue/) - 2024年8月11日
 - [Cloudflare D1 使用记录](/post/cloudflare-d1/) - 2024年7月14日
 - [SWC 食用指南](/post/swc-intro/) - 2024年7月8日
