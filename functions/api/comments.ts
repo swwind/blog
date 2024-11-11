@@ -92,7 +92,7 @@ async function verifyKey(key: string, hash: string | null) {
   return hash && (await sha512(key)) === hash;
 }
 
-const server = "https://ntfy.envs.net/";
+const server = "https://ntfy.sww.moe/";
 
 async function sendNotification(
   topic: string,
