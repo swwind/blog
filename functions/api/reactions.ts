@@ -64,8 +64,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
   await sendNotification(
     ctx.env.REACTION_TOPIC,
-    `新的按赞 ${path}`,
-    `来自 ${ip}：${name}`,
+    `新的 ${name} 按赞 ${path}`,
+    `来自 ${ip}`,
     2,
   );
 
