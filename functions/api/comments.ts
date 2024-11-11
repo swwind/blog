@@ -1,4 +1,5 @@
 import type { Env } from "@biliblitz/blitz/server";
+import { sendNotification } from "../ntfy.ts";
 
 type Comment = {
   id: string;
@@ -90,24 +91,6 @@ async function randomKey() {
 
 async function verifyKey(key: string, hash: string | null) {
   return hash && (await sha512(key)) === hash;
-}
-
-const server = "https://ntfy.sww.moe/";
-
-async function sendNotification(
-  topic: string,
-  title: string,
-  message: string,
-  priority = 3,
-) {
-  // skip DEV
-  if (!topic) return;
-
-  await fetch(server, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ topic, title, message, priority }),
-  });
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {

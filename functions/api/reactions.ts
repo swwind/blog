@@ -1,4 +1,5 @@
 import type { Env } from "@biliblitz/blitz/server";
+import { sendNotification } from "../ntfy.ts";
 
 type Reactions = {
   path: string;
@@ -58,6 +59,15 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const reactions = await getReactions(ctx.env.d1, path);
   const updated = (reactions[name] = (reactions[name] ?? 0) + 1);
   await saveReactions(ctx.env.d1, path, reactions);
+
+  const ip = ctx.request.headers.get("CF-Connecting-IP");
+
+  await sendNotification(
+    ctx.env.REACTION_TOPIC,
+    `新的按赞 ${path}`,
+    `来自 ${ip}：${name}`,
+    2,
+  );
 
   return Response.json({ updated });
 };
