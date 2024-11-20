@@ -126,7 +126,7 @@ done
 iptables -t mangle -A CLASH_LAN -p tcp -j TPROXY --on-ip 127.0.0.1 --on-port 7893
 iptables -t mangle -A CLASH_LAN -p udp -j TPROXY --on-ip 127.0.0.1 --on-port 7893
 # 添加劫持到 PREROUTING 链上
-iptables -t mangle -A PREROUTING -j CLASH6_LAN
+iptables -t mangle -A PREROUTING -j CLASH_LAN
 ```
 
 对于 IPv6 如下。
