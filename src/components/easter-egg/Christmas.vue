@@ -27,7 +27,7 @@ onMounted(() => {
   const today = new Date();
   const month = today.getMonth() + 1;
   const day = today.getDate();
-  if (month == 11 && 24 <= day && day <= 25) {
+  if (month == 12 && 24 <= day && day <= 25) {
     console.log("Merry Chistmas!!");
   } else {
     // skip easter egg
