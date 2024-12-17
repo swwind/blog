@@ -25,11 +25,9 @@ const ctrl = new AbortController();
 
 onMounted(() => {
   const today = new Date();
-  if (
-    today.getMonth() == 11 &&
-    24 <= today.getDate() &&
-    today.getDate() <= 25
-  ) {
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+  if (month == 11 && 24 <= day && day <= 25) {
     console.log("Merry Chistmas!!");
   } else {
     // skip easter egg
