@@ -11,7 +11,7 @@
         v-model="alicePubkey"
       />
       <button class="cursor-pointer underline" @click="generateKeypair">
-        生成
+        换一个
       </button>
       <button class="cursor-pointer underline" @click="copyPubkey">
         {{ copySuccess ? "已复制" : "复制" }}
@@ -26,7 +26,7 @@
     <p class="flex flex-wrap gap-4">
       <span>ECDH 结果</span>
       <input type="text" class="w-64 font-mono" disabled v-model="key" />
-      <button class="cursor-pointer underline" @click="x25519">计算</button>
+      <button class="cursor-pointer underline" @click="ecdh">计算</button>
       <span class="text-red-500">{{ ecdherr }}</span>
     </p>
 
@@ -53,9 +53,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useHead } from "@unhead/vue";
-import { ecdh, genkey, pubkey } from "@/utils/x25519.ts";
-import { chacha20_encrypt } from "@/utils/chacha20";
+import { ecdh as x25519, genkey, pubkey } from "@/utils/crypto/x25519.ts";
+import { encrypt as chacha20 } from "@/utils/crypto/chacha20.ts";
 import { decodeBase64, encodeBase64 } from "@std/encoding";
+import { sha256, verify } from "@/utils/crypto/sha256";
 
 useHead({
   title: "性感荷官在线 ECDH",
@@ -82,7 +83,7 @@ function generateKeypair() {
   copySuccess.value = false;
 }
 
-function x25519() {
+function ecdh() {
   if (!aliceSeckey.value) {
     ecdherr.value = "缺少私钥";
     return;
@@ -95,7 +96,7 @@ function x25519() {
     ecdherr.value = "公钥不合法";
     return;
   }
-  key.value = ecdh(aliceSeckey.value, bobPubkey.value);
+  key.value = x25519(aliceSeckey.value, bobPubkey.value);
   ecdherr.value = "";
 }
 
@@ -105,7 +106,7 @@ function copyPubkey() {
   });
 }
 
-function encrypt() {
+async function encrypt() {
   if (!key.value) {
     cerr.value = "请先完成 ECDH";
     return;
@@ -117,12 +118,19 @@ function encrypt() {
   const keybuf = decodeBase64(key.value);
   const nonce = decodeBase64("c3d3aW5kJ3NibG9n");
   const plain = new TextEncoder().encode(message.value);
-  const c = chacha20_encrypt(keybuf, nonce, plain);
+  const mac = await sha256(plain);
+  const msg = new Uint8Array(plain.length + mac.length);
+  msg.set(plain);
+  msg.set(mac, plain.length);
+  // console.log("encoding", encodeBase64(msg));
+  // console.log("message=", encodeBase64(plain));
+  // console.log("sha256 =", encodeBase64(mac));
+  const c = chacha20(keybuf, nonce, msg);
   cipher.value = encodeBase64(c);
   cerr.value = "加密完成";
 }
 
-function decrypt() {
+async function decrypt() {
   if (!key.value) {
     cerr.value = "请先完成 ECDH";
     return;
@@ -134,8 +142,17 @@ function decrypt() {
   const keybuf = decodeBase64(key.value);
   const nonce = decodeBase64("c3d3aW5kJ3NibG9n");
   const c = decodeBase64(cipher.value);
-  const plain = chacha20_encrypt(keybuf, nonce, c);
-  message.value = new TextDecoder().decode(plain);
+  const plain = chacha20(keybuf, nonce, c);
+  // console.log("decoding", encodeBase64(plain), plain.length);
+  const msg = plain.subarray(0, plain.length - 32);
+  const mac = plain.subarray(plain.length - 32);
+  // console.log("message=", encodeBase64(msg));
+  // console.log("sha256 =", encodeBase64(mac));
+  if (!(await verify(msg, mac))) {
+    cerr.value = "解密失败，密钥错误";
+    return;
+  }
+  message.value = new TextDecoder().decode(msg);
   cerr.value = "解密完成";
 }
 
