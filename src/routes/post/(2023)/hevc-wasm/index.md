@@ -272,6 +272,8 @@ void main() {
 
 实际体验发现，Firefox 解码上面的第一个视频遇到了严重的性能瓶颈，目标帧率是 24fps，而实际上只能达到 12fps 的平均水平。与此同时，Chrome 却可以轻松越过这个瓶颈。导致上述问题的原因未知。
 
+> 下文：[再看软解 HEVC：开启 SIMD 优化，加快帧渲染](/post/hevc-wasm-2/)
+
 ## 评论
 
 <vue-reactions path="hevc-wasm"></vue-reactions>

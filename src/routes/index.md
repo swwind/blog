@@ -25,6 +25,7 @@ import VueSenpai from "@/components/easter-egg/Senpai.vue";
 
 **2024年**
 
+- [再看软解 HEVC：开启 SIMD 优化，加快帧渲染](/post/hevc-wasm-2/) - 2024年12月27日
 - [Arch Linux 上部署 Deno 项目的方案](/post/deploy-deno/) - 2024年12月15日
 - [Linux 下使用 Tproxy 指南](/post/how-to-use-tproxy-linux/) - 2024年11月19日
 - [Pandoc 使用速查](/post/pandoc-memo/) - 2024年11月10日
