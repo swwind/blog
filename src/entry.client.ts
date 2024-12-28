@@ -35,8 +35,6 @@ const app = createSSRApp(Root)
   .component("vue-metadata", Metadata)
   .component("vue-reactions", Reactions);
 
-await router.isReady();
-
-app.mount("#app", true);
-
-console.log("Loaded");
+router.isReady().then(() => {
+  app.mount("#app", true);
+});
