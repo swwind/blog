@@ -10,6 +10,7 @@ export type ProgressBar = {
 };
 
 export function createProgressBar(): Plugin {
+  let initial = true;
   return {
     install(app) {
       const state = ref<"init" | "show" | "finish">("init");
@@ -36,11 +37,16 @@ export function createProgressBar(): Plugin {
       }
 
       router.beforeEach((to, from) => {
+        if (initial) {
+          initial = false;
+          return;
+        }
         if (
           to.path != from.path ||
           stringifyQuery(to.query) != stringifyQuery(from.query)
-        )
+        ) {
           ctrl.start();
+        }
       });
       router.afterEach(() => {
         if (ctrl.state.value === "show") ctrl.end();

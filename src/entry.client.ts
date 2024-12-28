@@ -25,9 +25,7 @@ const router = createRouter({
 const progressbar = createProgressBar();
 const blitz = createBlitz({ manifest });
 
-await router.isReady();
-
-createSSRApp(Root)
+const app = createSSRApp(Root)
   .use(head)
   .use(router)
   .use(progressbar)
@@ -35,5 +33,10 @@ createSSRApp(Root)
   .component("vue-link", Link)
   .component("vue-katex", Katex)
   .component("vue-metadata", Metadata)
-  .component("vue-reactions", Reactions)
-  .mount("#app", true);
+  .component("vue-reactions", Reactions);
+
+await router.isReady();
+
+app.mount("#app", true);
+
+console.log("Loaded");
