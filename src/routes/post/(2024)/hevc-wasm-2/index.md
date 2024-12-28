@@ -65,7 +65,7 @@ const videoFrame = new VideoFrame(yuvData, {
   codedWidth: width,
   codedHeight: height,
   timestamp: id * (1_000 / fps),
-  format: 'I420',
+  format: "I420",
 });
 
 ctx.drawImage(videoFrame, 0, 0);
@@ -82,4 +82,3 @@ ctx.drawImage(videoFrame, 0, 0);
 ## 评论
 
 <vue-reactions path="hevc-wasm-2"></vue-reactions>
-

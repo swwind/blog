@@ -57,12 +57,7 @@ function chacha20StateFromKey(
   const key32 = new Uint32Array(key.buffer); // length = 8
   const nonce32 = new Uint32Array(nonce.buffer); // length = 3
 
-  return new Uint32Array([
-    ...chacha20KeyExpand,
-    ...key32,
-    counter,
-    ...nonce32,
-  ]);
+  return new Uint32Array([...chacha20KeyExpand, ...key32, counter, ...nonce32]);
 }
 
 function chacha20(

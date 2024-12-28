@@ -8,7 +8,13 @@
     "strict": true,
     "allowJs": true,
     "allowImportingTsExtensions": true,
-    "types": ["node", "vite/client", "@biliblitz/blitz/env", "turnstile-types", "@cloudflare/workers-types"],
+    "types": [
+      "node",
+      "vite/client",
+      "@biliblitz/blitz/env",
+      "turnstile-types",
+      "@cloudflare/workers-types"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "verbatimModuleSyntax": true,

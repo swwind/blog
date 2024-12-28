@@ -1,7 +1,7 @@
 import { manifest } from "blitz:manifest/client";
 import { createHead } from "@unhead/vue";
 import { createRouter, createWebHistory } from "vue-router";
-import { createApp } from "vue";
+import { createSSRApp } from "vue";
 import { createBlitz } from "@biliblitz/blitz";
 import { createProgressBar } from "./components/progressbar/controller.ts";
 
@@ -25,7 +25,9 @@ const router = createRouter({
 const progressbar = createProgressBar();
 const blitz = createBlitz({ manifest });
 
-createApp(Root)
+await router.isReady();
+
+createSSRApp(Root)
   .use(head)
   .use(router)
   .use(progressbar)

@@ -1,5 +1,6 @@
 .typography {
-  font-family: "Noto Serif CJK SC", "Noto Serif SC", serif;
+  font-family: "Noto Serif CJK SC", "HarmonyOS Sans SC", "Noto Sans CJK SC",
+    "Noto Sans SC", "Noto Serif SC", sans-serif;
   @apply relative text-lg;
   counter-reset: h2 h3 h4 h5 h6;
 }
