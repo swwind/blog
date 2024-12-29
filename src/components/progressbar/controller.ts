@@ -1,5 +1,5 @@
 import { inject, ref, type Plugin, type Ref } from "vue";
-import { stringifyQuery } from "vue-router";
+import { START_LOCATION, stringifyQuery } from "vue-router";
 
 const PROGRESSBAR = Symbol("progress-bar");
 
@@ -10,7 +10,6 @@ export type ProgressBar = {
 };
 
 export function createProgressBar(): Plugin {
-  let initial = true;
   return {
     install(app) {
       const state = ref<"init" | "show" | "finish">("init");
@@ -37,10 +36,11 @@ export function createProgressBar(): Plugin {
       }
 
       router.beforeEach((to, from) => {
-        if (initial) {
-          initial = false;
+        // skip initial
+        if (from === START_LOCATION) {
           return;
         }
+
         if (
           to.path != from.path ||
           stringifyQuery(to.query) != stringifyQuery(from.query)
