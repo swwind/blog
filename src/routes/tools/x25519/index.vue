@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>性感荷官在线 ECDH</h1>
+    <h1>性感荷官在线加密</h1>
 
     <p class="flex flex-wrap gap-4">
       <span>我的公钥</span>
@@ -46,7 +46,10 @@
       <span>密文</span>
     </p>
 
-    <p>本工具基于 X25519 算法交换密钥，基于 ChaCha20 算法进行加密。</p>
+    <p>
+      本工具基于 X25519 算法交换密钥，基于 ChaCha20
+      算法进行加密。可以保证隐私数据在不可靠信道中的安全传输（例如通过某信发送密码等敏感数据）。
+    </p>
   </div>
 </template>
 
@@ -59,8 +62,8 @@ import { decodeBase64, encodeBase64 } from "@std/encoding";
 import { sha256, verify } from "@/utils/crypto/sha256";
 
 useHead({
-  title: "性感荷官在线 ECDH",
-  meta: [{ property: "og:title", content: "性感荷官在线 ECDH" }],
+  title: "性感荷官在线加密",
+  meta: [{ property: "og:title", content: "性感荷官在线加密" }],
 });
 
 const aliceSeckey = ref("");

@@ -23,6 +23,14 @@
       </span>
 
       <router-link
+        to="/tools/"
+        :class="`inline-flex items-center gap-2 ${underline}`"
+      >
+        <WrenchIcon class="h-4 w-4" />
+        工具
+      </router-link>
+
+      <router-link
         to="/about/"
         :class="`inline-flex items-center gap-2 ${underline}`"
       >
@@ -45,7 +53,13 @@
 import { ref, watch, computed } from "vue";
 import { header } from "@/metadata.json";
 
-import { BookIcon, HomeIcon, LinkIcon, MusicIcon } from "lucide-vue-next";
+import {
+  BookIcon,
+  HomeIcon,
+  LinkIcon,
+  MusicIcon,
+  WrenchIcon,
+} from "lucide-vue-next";
 
 import arknights from "@/assets/audio/arknights.mp3";
 import spacewalk from "@/assets/audio/space_walk.mp3";
