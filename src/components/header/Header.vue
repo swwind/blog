@@ -63,14 +63,14 @@ import {
 
 import arknights from "@/assets/audio/arknights.mp3";
 import spacewalk from "@/assets/audio/space_walk.mp3";
-import oniichan from "@/assets/audio/oniichan.mp3";
+// import oniichan from "@/assets/audio/oniichan.mp3";
 
 const underline = "border-b-[1px] border-transparent hover:border-slate-200";
 
 const tracks = [
   { src: arknights, name: "Arknights" },
   { src: spacewalk, name: "太空漫步" },
-  { src: oniichan, name: "哦哈哟～欧尼酱～" },
+// { src: oniichan, name: "哦哈哟～欧尼酱～" },
 ];
 
 const audioRef = ref<HTMLAudioElement | null>(null);
