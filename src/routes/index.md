@@ -23,6 +23,10 @@ import VueSenpai from "@/components/easter-egg/Senpai.vue";
 
 文章按照发表顺序排序
 
+**2025年**
+
+- [【灌水】Linux 软路由：PPPoE 拨号与网络配置](/post/soft-router-network/) - 2025年6月14日
+
 **2024年**
 
 - [【灌水】再看软解 HEVC：开启 SIMD 优化，加快帧渲染](/post/hevc-wasm-2/) - 2024年12月27日

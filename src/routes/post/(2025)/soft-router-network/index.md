@@ -4,11 +4,11 @@ title: Linux 软路由：PPPoE 拨号与网络配置
 
 # Linux 软路由：PPPoE 拨号与网络配置
 
-<vue-metadata author="swwind" time="2025-6-13"></vue-metadata>
+<vue-metadata author="swwind" time="2025-6-14"></vue-metadata>
 
 ## 前言
 
-从家里开数据中心的群友那里{搞}^(白嫖)来了一台 NanoPi R4S，准备用来替换原来的小米路由器，作为家庭网络的入口。
+从家里开数据中心的群友那里{搞}^(白嫖)来了一台 NanoPi R4S，准备用来替换原来的小米路由器，这样我就可以将原来放在小主机上的网络服务全部迁移到路由器上了，可以减少一部分通信量。
 
 <figure>
 <img alt="群友水平" src="./data-center.jpg" />
@@ -19,7 +19,6 @@ title: Linux 软路由：PPPoE 拨号与网络配置
 
 1. 从上游 PPPoE 拨号访问互联网（宽带上网）；
 2. 对内网设备提供基本的 DHCP 和 DNS 等服务；
-3. 运行例如 wireguard、mihomo 等相关对内/对外网络服务。
 
 诚然，这些事情可以直接刷一个 OpenWRT 来直接手动配置，但是我并不想把这台设备只当一个路由器来用，所以我计划安装更加一般的 Linux 发行版，以便充分榨干这个设备可以提供的计算资源。
 
@@ -93,7 +92,7 @@ sudo dd if=Armbian_xxxx.img of=/dev/sdX bs=1M
 
 ### 安装依赖
 
-趁我们现在还有公网访问，先装一个 `ppp`。
+趁我们现在还有公网访问，先装一个 ppp。
 
 ```sh
 sudo apt install ppp
@@ -136,9 +135,23 @@ EmitDNS=yes
 
 重新 ssh 到服务器，开始接下来的配置。
 
+### 开启路由转发
+
+由于我们要把设备当路由器使，需要手动打开数据包转发的功能。
+
+```sh
+# /etc/sysctl.d/10-forward.conf
+net.ipv4.conf.all.forwarding=1
+net.ipv4.conf.default.forwarding=1
+net.ipv6.conf.all.forwarding=1
+net.ipv6.conf.default.forwarding=1
+```
+
+这个配置文件会开机自动应用，也可以使用 `sudo sysctl --system` 来手动应用。
+
 ### 配置 pppd
 
-此前我们安装了 ppp 包，但是其中并不包含 systemd service 文件，因此我们从 Arch 系的包里面偷一个过来：
+此前我们安装了 ppp 包，但是其中并不包含 systemd service 文件，因此我们从 Arch 系的包里面偷一个过来（有修改）：
 
 ```toml
 # /usr/lib/systemd/system/pppd@.service
