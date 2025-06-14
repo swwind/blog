@@ -120,13 +120,17 @@ Name=lan0
 [Network]
 Address=192.168.1.1/24
 DHCPServer=yes
-Address=fdaa:bbbb:cccc::1/64
 IPv6SendRA=yes
 
 [DHCPServer]
 PoolOffset=16
 PoolSize=128
 EmitDNS=yes
+
+[IPv6Prefix]
+Prefix=fdaa:bbbb:cccc::/64
+Assign=yes
+Token=::1
 ```
 
 之后可以重启软路由，拔掉 WAN 口上的网线，直接将电脑连到软路由的 LAN 口上。
@@ -247,7 +251,6 @@ Name=lan0
 [Network]
 Address=192.168.1.1/24
 DHCPServer=yes
-Address=fdaa:bbbb:cccc::1/64
 DHCPPrefixDelegation=yes
 IPv6SendRA=yes
 IPv6AcceptRA=no
@@ -256,6 +259,11 @@ IPv6AcceptRA=no
 PoolOffset=16
 PoolSize=128
 EmitDNS=yes
+
+[IPv6Prefix]
+Prefix=fdaa:bbbb:cccc::/64
+Assign=yes
+Token=::1
 
 [DHCPPrefixDelegation]
 UplinkInterface=ppp0
