@@ -210,7 +210,7 @@ sudo systemctl enable pppd@wan0.service
 ```toml
 # /etc/systemd/network/20-wan0.network
 [Match]
-Name=end0
+Name=wan0
 
 [Network]
 ```
