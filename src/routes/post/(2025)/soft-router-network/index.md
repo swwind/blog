@@ -50,7 +50,7 @@ title: Linux 软路由：PPPoE 拨号与网络配置
 - `192.168.1.1/24`
 - `fdaa:bbbb:cccc::1/64`
 
-其中 ipv4 通过 NAT 访问外网，ipv6 直接使用分配的公网地址上网，内网地址仅用于内网设备直接通信。
+其中 ipv4 通过 NAT 访问外网，ipv6 直接使用分配的公网地址上网，内网地址仅用于内网设备直接通信（~~可以不用但不能没有~~）。
 
 ### 防火墙
 
@@ -144,7 +144,7 @@ EmitDNS=yes
 # /usr/lib/systemd/system/pppd@.service
 [Unit]
 Description=PPP link to %I
-Before=network.target
+After=systemd-networkd.service
 
 [Service]
 Type=notify
@@ -201,6 +201,8 @@ Name=end0
 
 [Network]
 ```
+
+这也就是为什么我们要指定 `pppd@wan0.service` 在 `systemd-networkd.service` 之后运行的原因。
 
 ### 配置 DHCPv6 PD
 
@@ -328,24 +330,29 @@ table ip nat {
 }
 ```
 
-之后使用 `sudo nft -f /etc/nftables.conf` 应用配置。
+之后使用 `sudo nft -f /etc/nftables.conf` 应用配置。如果访问没有问题，那么说明一切正常。
 
-如果访问没有问题，那么就可以启用 `nftables.service` 来使其开机自启。
+考虑如何使其开机自动启动。显然，在 `pppd@wan0.service` 完成拨号之前，`ppp0` 接口是不存在的，因此直接开机自启 `nftables.service` 会直接报错。
 
-但是有一个小问题，nftables 启动的时候可能 `ppp0` 还不存在，因此规则可能应用失败。我们需要设置启动顺序，强制 `nftables.service` 在 `pppd@wan0.service` 之后启动即可。
+我们采用 ppp 提供的钩子，编辑 `/etc/ppp/ip-up.d/1-nftables`
+
+```bash
+#!/bin/bash
+
+nft -f /etc/nftables.conf
+```
+
+添加可执行文件权限
 
 ```sh
-sudo env EDITOR=vim systemctl edit nftables.service
+sudo chmod +x /etc/ppp/ip-up.d/1-nftables
 ```
 
-```toml
-[Unit]
-After=pppd@wan0.service
-```
-
-最后可以反复重启测试，确认网络栈没有问题之后就可以放心安装其他软件了。
+这样 ppp 完成拨号之后会自动调用该脚本，从而启动防火墙了。
 
 ## 其他工作
+
+完成以上配置之后可以反复重启测试，确认网络栈没有问题之后就可以放心安装其他软件了。
 
 其他工作，例如配置 DDNS 等，以后有机会了再说吧。
 
