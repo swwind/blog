@@ -25,6 +25,7 @@ import VueSenpai from "@/components/easter-egg/Senpai.vue";
 
 **2025年**
 
+- [【灌水】基于 nspawn 容器化开发环境](/post/container-dev/) - 2025年6月30日
 - [【灌水】Linux 软路由：PPPoE 拨号与网络配置](/post/soft-router-network/) - 2025年6月14日
 
 **2024年**
