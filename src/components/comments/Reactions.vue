@@ -83,6 +83,10 @@ watch(reacted, (newReacted) => {
 });
 
 const handleReaction = (name: string) => {
+  if (name === "down") {
+    return alert("你居然敢给我点踩？");
+  }
+
   if (!reacted.value.includes(name)) {
     reacted.value = [...reacted.value, name];
     reactions.value = {
