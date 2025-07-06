@@ -252,6 +252,7 @@ Name=lan0
 Address=192.168.1.1/24
 DHCPServer=yes
 DHCPPrefixDelegation=yes
+IPMasquerade=ipv4
 IPv6SendRA=yes
 IPv6AcceptRA=no
 
@@ -274,25 +275,24 @@ Token=::1
 
 编辑完成之后直接重启 `systemd-networkd.service`，等待若干秒应该可以看到 `lan0` 获得了整块的公网 ipv6 地址。
 
-至此基础网络配置完成，如下图所示，此时路由器应该可以同时使用 ipv4 和 ipv6 访问互联网。
+至此基础网络配置完成，如下图所示，此时路由器和内网应该可以同时使用 ipv4 和 ipv6 访问互联网。
 
 <figure>
 <img alt="网络配置结果" src="./result.png" />
 <figcaption>图 2. 网络配置结果</figcaption>
 </figure>
 
-注意到目前的配置都没有添加 ipv4 的 NAT 步骤，因此子网内设备可能还不能通过 ipv4 访问互联网（ipv6 应该已经可以了）。
-
 ### 防火墙
 
-我们希望通过 nftables 统一管理所有网络规则，同时在这里设置 ipv4 的 NAT 规则。
+我们希望通过 nftables 统一管理所有网络规则。
 
 基于上面的需求，我们可以编辑 `/etc/nftables.conf`
 
 ```toml
 #!/usr/sbin/nft -f
 
-flush ruleset
+# 只刷新我们的规则，防止和 networkd 的 NAT 规则打起来
+flush table inet filter
 
 # 定义接口变量
 define LAN_IF = "lan0"
@@ -338,15 +338,6 @@ table inet filter {
 
     chain output {
         type filter hook output priority 0; policy accept;
-    }
-}
-
-table ip nat {
-    chain postrouting {
-        type nat hook postrouting priority 100; policy accept;
-
-        # LAN MASQUERADE
-        oif $WAN_IF ip saddr 192.168.1.0/24 masquerade
     }
 }
 ```
