@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>性感荷官在线加密</h1>
+    <h1>ECDH 工具箱</h1>
 
     <p class="flex flex-wrap gap-4">
       <span>我的公钥</span>
