@@ -51,6 +51,8 @@
         锟拷码：以 GBK 的方式读取 UTF-8 编码的字符串，再以 UTF-8 的方式重新读取
       </li>
     </ul>
+
+    <vue-reactions path="kunjinkao"></vue-reactions>
   </div>
 </template>
 
