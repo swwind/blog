@@ -3,37 +3,37 @@
     <h2>锟斤拷生成器</h2>
 
     <p class="flex flex-wrap items-baseline gap-4">
-      <span>原　文</span>
+      <span class="font-bold">原　文</span>
       <input type="text" class="w-64 font-mono" v-model="input" />
     </p>
 
     <p class="flex flex-wrap items-baseline gap-4">
-      <span>古文码</span>
+      <span class="font-bold">古文码</span>
       <span>{{ guwenma }}</span>
     </p>
 
     <p class="flex flex-wrap items-baseline gap-4">
-      <span>口字码</span>
+      <span class="font-bold">口字码</span>
       <span>{{ kouzima }}</span>
     </p>
 
     <p class="flex flex-wrap items-baseline gap-4">
-      <span>符号码</span>
+      <span class="font-bold">符号码</span>
       <span>{{ fuhaoma }}</span>
     </p>
 
     <p class="flex flex-wrap items-baseline gap-4">
-      <span>拼音码</span>
+      <span class="font-bold">拼音码</span>
       <span>{{ pinyinma }}</span>
     </p>
 
     <p class="flex flex-wrap items-baseline gap-4">
-      <span>问句码</span>
+      <span class="font-bold">问句码</span>
       <span>{{ wenjuma }}</span>
     </p>
 
     <p class="flex flex-wrap items-baseline gap-4">
-      <span>锟拷码</span>
+      <span class="font-bold">锟拷码</span>
       <span>{{ kunkaoma }}</span>
     </p>
 
@@ -52,7 +52,8 @@
       </li>
     </ul>
 
-    <vue-reactions path="kunjinkao"></vue-reactions>
+    <h3>反馈</h3>
+    <vue-reactions path="kunjinkao" disable-comments></vue-reactions>
   </div>
 </template>
 

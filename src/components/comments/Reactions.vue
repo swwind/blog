@@ -29,7 +29,8 @@
     </div>
   </div>
 
-  <Comments :path="path" />
+  <Comments v-if="props.disableComments !== true" :path="path" />
+  <p v-else>评论区已关闭</p>
 </template>
 
 <script setup lang="ts">
@@ -45,6 +46,7 @@ import Comments from "./Comments.vue";
 
 const props = defineProps<{
   path: string;
+  disableComments?: boolean;
 }>();
 
 const reactionTypes = [
