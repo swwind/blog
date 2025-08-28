@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>ECDH 工具箱</h1>
+    <h1>X25519 计算工具</h1>
 
     <p class="flex flex-wrap gap-4">
       <span>我的公钥</span>
@@ -62,8 +62,8 @@ import { decodeBase64, encodeBase64 } from "@std/encoding";
 import { sha256, verify } from "@/utils/crypto/sha256";
 
 useHead({
-  title: "性感荷官在线加密",
-  meta: [{ property: "og:title", content: "性感荷官在线加密" }],
+  title: "X25519 计算工具",
+  meta: [{ property: "og:title", content: "X25519 计算工具" }],
 });
 
 const aliceSeckey = ref("");
