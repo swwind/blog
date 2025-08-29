@@ -33,6 +33,13 @@ const info = computed(() => {
       <span class="ml-3 text-sm">{{ info.time }}</span>
       <span class="ml-3 text-sm" v-if="info.browser">{{ info.browser }}</span>
       <span class="ml-3 text-sm" v-if="info.os">{{ info.os }}</span>
+      <a
+        class="ml-3 cursor-pointer text-sm underline"
+        href="https://ntfy.sww.moe/blog"
+        v-if="deletable"
+      >
+        订阅回复
+      </a>
       <span
         class="ml-3 cursor-pointer text-sm underline"
         v-if="deletable"
@@ -43,7 +50,9 @@ const info = computed(() => {
     </div>
 
     <div class="m-4">
-      <span v-if="info.content">{{ info.content }}</span>
+      <span v-if="info.content" class="whitespace-pre-line">{{
+        info.content
+      }}</span>
       <span v-else class="italic">
         他居然钻了空子发了一条空评论！但是事实上他还是什么也做不到，他只是想向世人炫耀自己的技术水平罢了。多么悲哀！
       </span>
