@@ -38,7 +38,7 @@ const info = computed(() => {
         href="https://ntfy.sww.moe/blog"
         v-if="deletable"
       >
-        订阅回复
+        {{ "订阅回复" }}
       </a>
       <span
         class="ml-3 cursor-pointer text-sm underline"
