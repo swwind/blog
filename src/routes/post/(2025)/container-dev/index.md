@@ -123,15 +123,29 @@ Host dev
 
 如果你要说你用的是开源的版本，然后没有 Remote SSH 插件可以用，你可能要换成某些开源替代品。
 
+## X11 Forward
+
+是的，如果我们想要让容器里面的桌面应用能显示出来，只需要配置好 X11 Forward 就可以了。
+
+其实也很简单，只要在容器里面编辑 `/etc/ssh/sshd_config`，打开下面几行内容
+
+```ini
+X11Forwarding yes
+X11DisplayOffset 10
+X11UseLocalhost yes
+```
+
+然后运行 `systemctl restart sshd.service` 重启服务。
+
+之后使用 `ssh -Y dev` 进入容器，就可以运行 X11 的桌面应用程序了。
+
 ## 最后
 
 至此，我们基于 systemd 全家桶的工具构建了简单高效的容器化开发环境，虽然整套都还是无头服务器版本，但我觉得目前来讲基本够用了。
 
-如果你喜欢更加复杂的带头的仰卧起坐，可以参考：
+参考：
 
 - [使用 systemd-nspawn 容器化 Android Studio](https://liolok.com/zhs/containerize-android-studio-with-systemd-nspawn/)
-
-~~不过一般来说我就不建议折腾这么复杂了。~~
 
 ## 评论
 
