@@ -118,7 +118,7 @@ NamespacePath = /run/netns/ns1
 
 ## 启动容器
 
-### Boot 模式
+**Boot 模式**
 
 如果用的是 Boot 模式，那么可以通过下面的指令来开启
 
@@ -133,16 +133,15 @@ sudo machinectl start dev
 ```sh
 sudo machinectl shell dev
 # or with specific user
-sudo machinectl shell user@dev
+sudo machinectl shell john@dev
 ```
 
-### 非 Boot 模式
+**非 Boot 模式**
 
-直接用在 `.bashrc` 中编辑的函数进入即可，可以添加 `--user` 参数来表明希望运行程序的用户。
+直接用我们编辑的函数进入即可，可以添加 `--user` 参数来表明希望运行程序的用户。
 
 ```sh
-dev bash
-dev --user user bash
+dev --user john bash
 ```
 
 ## 显卡穿透
