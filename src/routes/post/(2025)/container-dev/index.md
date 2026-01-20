@@ -333,4 +333,4 @@ export PIPEWIRE_RUNTIME_DIR=/tmp
 
 ## 评论
 
-<vue-reactions path="dev"></vue-reactions>
+<vue-reactions path="container-dev"></vue-reactions>
