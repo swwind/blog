@@ -327,7 +327,7 @@ export PIPEWIRE_RUNTIME_DIR=/tmp
 
 致谢：
 
-- @pomoke @q234rty @rebmit233
+- @pomoke @q234rty @rebmit
 
 如果你还是没跑起来，那可能你系统情况太复杂了，我也帮不到你了。
 
