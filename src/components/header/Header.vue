@@ -17,7 +17,6 @@
         :class="underline"
         @click="toggleTrack"
       >
-        <audio loop ref="audioRef" hidden />
         <MusicIcon class="h-4 w-4" />
         背景音乐 - {{ trackName }}
       </span>
@@ -50,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from "vue";
+import { ref, watch, computed, withCtx } from "vue";
 import { header } from "@/metadata.json";
 
 import {
@@ -63,31 +62,45 @@ import {
 
 import arknights from "@/assets/audio/arknights.mp3";
 import spacewalk from "@/assets/audio/space_walk.mp3";
+import mSysVoidIntro from "@/assets/audio/m_sys_void_intro.mp3";
+import mSysVoidLoop from "@/assets/audio/m_sys_void_loop.mp3";
+import { createSeamlessPlayer } from "./audio.ts";
 // import oniichan from "@/assets/audio/oniichan.mp3";
 
 const underline = "border-b-[1px] border-transparent hover:border-slate-200";
 
 const tracks = [
-  { src: arknights, name: "Arknights" },
-  { src: spacewalk, name: "太空漫步" },
-// { src: oniichan, name: "哦哈哟～欧尼酱～" },
+  { intro: mSysVoidIntro, loop: mSysVoidLoop, name: "生命流" },
+  { intro: null, loop: arknights, name: "Arknights" },
+  { intro: null, loop: spacewalk, name: "太空漫步" },
+  // { src: oniichan, name: "哦哈哟～欧尼酱～" },
 ];
 
-const audioRef = ref<HTMLAudioElement | null>(null);
 const id = ref<number | null>(null);
 
 const track = computed(() => (id.value === null ? null : tracks[id.value]));
 const trackName = computed(() => track.value?.name || "关");
-const trackSrc = computed(() => track.value?.src || tracks[0].src);
 
-watch(id, (newId) => {
-  const audio = audioRef.value!;
+watch(track, (newTrack, oldTrack, cleanup) => {
+  if (newTrack !== null) {
+    if (newTrack.intro) {
+      const player = createSeamlessPlayer();
+      player.load(newTrack).then(() => {
+        player.play();
+      });
 
-  if (newId === null) {
-    audio.pause();
-  } else {
-    audio.src = trackSrc.value;
-    audio.oncanplay = () => audio.play();
+      cleanup(() => {
+        player.stop();
+      });
+    } else {
+      const loopAudio = new Audio(newTrack.loop);
+      loopAudio.loop = true;
+      loopAudio.play();
+
+      cleanup(() => {
+        loopAudio.pause();
+      });
+    }
   }
 });
 
