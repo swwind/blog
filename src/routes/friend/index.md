@@ -17,6 +17,7 @@ title: 友情链接
 - [pomoke](https://typeof.pw/)
 - [rockm3](https://blog.rockm3.net/)
 - [tianze](https://tianz.us.kg/)
+- [elecmonkey](https://www.elecmonkey.com/)
 
 以下友链托管于 CSDN，请自行复制链接打开。
 
