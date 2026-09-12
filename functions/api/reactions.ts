@@ -62,12 +62,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
   const ip = ctx.request.headers.get("CF-Connecting-IP");
 
-  await sendNotification(
-    ctx.env.REACTION_TOPIC,
-    `新的 ${name} 按赞 ${path}`,
-    `来自 ${ip}`,
-    2,
-  );
+  // await sendNotification(
+  //   ctx.env.REACTION_TOPIC,
+  //   `新的 ${name} 按赞 ${path}`,
+  //   `来自 ${ip}`,
+  //   2,
+  // );
 
   return Response.json({ updated });
 };
