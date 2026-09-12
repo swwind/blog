@@ -29,7 +29,7 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         run: |
-          pnpx wrangler pages deploy dist \
+          pnpm exec wrangler pages deploy dist \
             --project-name=blog \
             --branch=main \
             --commit-hash="${{ forgejo.sha }}"
