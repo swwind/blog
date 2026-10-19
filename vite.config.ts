@@ -1,9 +1,9 @@
 import { defineConfig } from "vite";
+import { fileURLToPath } from "node:url";
 import { blitz } from "@biliblitz/vite";
 import vue from "@vitejs/plugin-vue";
 import { markdown } from "@biliblitz/vite-plugin-markdown";
 import unheadAddon from "@unhead/addons/vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 import vueDevTools from "vite-plugin-vue-devtools";
 
 import remarkGfm from "remark-gfm";
@@ -59,9 +59,11 @@ export default defineConfig({
     vue({ include: [/\.vue$/, /\.md$/] }),
     unheadAddon(),
     blitz(),
-    tsconfigPaths({ loose: true }),
     vueDevTools(),
   ],
+  resolve: {
+    alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
+  },
   server: {
     proxy: {
       "/api/": "http://localhost:8788/",

@@ -1,3 +1,10 @@
+minimumReleaseAgeExclude:
+  - "@biliblitz/blitz@0.4.0"
+  - "@biliblitz/vite-plugin-markdown@0.4.0"
+  - "@biliblitz/vite@0.4.0"
+  - "@biliblitz/adapter-nodejs@0.4.0"
+  - "@biliblitz/adapter-static@0.4.0"
+
 allowBuilds:
   '@swc/core': true
   esbuild: true

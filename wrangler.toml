@@ -10,8 +10,8 @@ mode = "off"
 mode = "smart"
 
 [env.production.vars]
-NODE_VERSION = "20.11.0"
-PNPM_VERSION = "9.5.0"
+NODE_VERSION = "22.22.0"
+PNPM_VERSION = "12.3.4"
 
 [[d1_databases]]
 binding = "d1"
