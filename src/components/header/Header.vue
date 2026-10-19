@@ -58,7 +58,7 @@ import {
   LinkIcon,
   MusicIcon,
   WrenchIcon,
-} from "lucide-vue-next";
+} from "@lucide/vue";
 
 import arknights from "@/assets/audio/arknights.mp3";
 import spacewalk from "@/assets/audio/space_walk.mp3";

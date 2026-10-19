@@ -115,6 +115,9 @@ importers:
       '@hono/node-server':
         specifier: ^1.19.17
         version: 1.19.17(hono@4.13.13)
+      '@lucide/vue':
+        specifier: ^1.59.0
+        version: 1.59.0(vue@3.4.37(typescript@6.0.3))
       '@std/encoding':
         specifier: npm:@jsr/std__encoding@^1.0.5
         version: '@jsr/std__encoding@1.0.5'
@@ -133,9 +136,6 @@ importers:
       katex:
         specifier: ^0.16.10
         version: 0.16.10
-      lucide-vue-next:
-        specifier: ^0.427.0
-        version: 0.427.0(vue@3.4.37(typescript@6.0.3))
       shiki:
         specifier: ^4.5.0
         version: 4.5.0
@@ -853,6 +853,11 @@ packages:
 
   '@jsr/std__encoding@1.0.5':
     resolution: {integrity: sha512-blLadT0G3SiwsneatWsUwH5s+Sb+zSsQCgtHZlT+nQkoFci2OiErHx4XqdoFcwuz3IH6wOdPZqjhcSrbNS0jqA==, tarball: https://npm.jsr.io/~/11/@jsr/std__encoding/1.0.5.tgz}
+
+  '@lucide/vue@1.59.0':
+    resolution: {integrity: sha512-X7O3FCwECqmVV9h6l2dPxksuiJx9/gszRTj15aOKsxsfU4jr+p7vUVFILn7K38fG8wfSmsy8jPVS9muDdTt0MA==}
+    peerDependencies:
+      vue: '>=3.0.1'
 
   '@oxc-project/types@0.154.0':
     resolution: {integrity: sha512-KYOUGQFlLWR+s4QMV2Q9ko38TZm7EdO87Qm7rvZLqk/webse/cDjtyxKhg/47l0byCbs/k46LT8qc4PKjAikzA==}
@@ -1923,12 +1928,6 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
-
-  lucide-vue-next@0.427.0:
-    resolution: {integrity: sha512-zI1FhbfQ3Wl0SgPKnOWhTDC6yAC5TTjSC9FSZ61ULg3U36e+GVK+RT1qfkU9Q5BjeBuwmsHWKsXKptKMjUAwFA==}
-    deprecated: Package deprecated. Please use @lucide/vue instead.
-    peerDependencies:
-      vue: '>=3.0.1'
 
   magic-string-ast@0.6.2:
     resolution: {integrity: sha512-oN3Bcd7ZVt+0VGEs7402qR/tjgjbM7kPlH/z7ufJnzTLVBzXJITRHOJiwMmmYMgZfdoWQsfQcY+iKlxiBppnMA==}
@@ -3216,6 +3215,10 @@ snapshots:
 
   '@jsr/std__encoding@1.0.5': {}
 
+  '@lucide/vue@1.59.0(vue@3.4.37(typescript@6.0.3))':
+    dependencies:
+      vue: 3.4.37(typescript@6.0.3)
+
   '@oxc-project/types@0.154.0': {}
 
   '@polka/url@1.0.0-next.25': {}
@@ -4216,10 +4219,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  lucide-vue-next@0.427.0(vue@3.4.37(typescript@6.0.3)):
-    dependencies:
-      vue: 3.4.37(typescript@6.0.3)
 
   magic-string-ast@0.6.2:
     dependencies:
