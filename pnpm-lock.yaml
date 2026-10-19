@@ -113,8 +113,8 @@ importers:
         specifier: ^0.4.0
         version: 0.4.0(@unhead/ssr@1.9.16)(@unhead/vue@1.9.16(vue@3.4.37(typescript@6.0.3)))(hono@4.13.13)(vue-router@4.4.3(vue@3.4.37(typescript@6.0.3)))(vue@3.4.37(typescript@6.0.3))
       '@hono/node-server':
-        specifier: ^1.19.17
-        version: 1.19.17(hono@4.13.13)
+        specifier: ^2.1.5
+        version: 2.1.5(hono@4.13.13)
       '@lucide/vue':
         specifier: ^1.59.0
         version: 1.59.0(vue@3.4.37(typescript@6.0.3))
@@ -678,6 +678,12 @@ packages:
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
+
+  '@hono/node-server@2.1.5':
+    resolution: {integrity: sha512-MgP/I06GdvsilDspMk/qmRzpk8LOUStP6jFAbSRi40W09DhoyUn+Mj7eyKICPqeYKybOjVFLVIAQzvu1bfIa7Q==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      hono: ^4 || ^5.0.0-0
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -3040,6 +3046,10 @@ snapshots:
     optional: true
 
   '@hono/node-server@1.19.17(hono@4.13.13)':
+    dependencies:
+      hono: 4.13.13
+
+  '@hono/node-server@2.1.5(hono@4.13.13)':
     dependencies:
       hono: 4.13.13
 
