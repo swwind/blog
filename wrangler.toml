@@ -9,6 +9,16 @@ mode = "off"
 [env.production.placement]
 mode = "smart"
 
+# Pages build tool versions; keep NODE_VERSION aligned with .node-version.
+[vars]
+NODE_VERSION = "22.22.0"
+PNPM_VERSION = "12.3.4"
+
+# Environment variables are not inherited between Pages environments.
+[env.preview.vars]
+NODE_VERSION = "22.22.0"
+PNPM_VERSION = "12.3.4"
+
 [env.production.vars]
 NODE_VERSION = "22.22.0"
 PNPM_VERSION = "12.3.4"
