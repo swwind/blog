@@ -38,7 +38,7 @@
     "@biliblitz/adapter-static": "^0.4.0",
     "@biliblitz/vite": "^0.4.0",
     "@biliblitz/vite-plugin-markdown": "^0.4.0",
-    "@cloudflare/workers-types": "^4.20240815.0",
+    "@cloudflare/workers-types": "^5.20261019.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/blueimp-md5": "^2.18.2",
     "@types/hast": "^3.0.4",
@@ -68,7 +68,7 @@
     "vite": "^8.3.4",
     "vite-plugin-vue-devtools": "^8.2.1",
     "vue-tsc": "^3.3.13",
-    "wrangler": "^3.72.0"
+    "wrangler": "^4.151.2"
   },
   "engines": {
     "node": ">=22.13.0"
