@@ -10,6 +10,7 @@ import Link from "./components/typography/Link.vue";
 import Metadata from "./components/metadata/Metadata.vue";
 import Reactions from "./components/comments/Reactions.vue";
 import Katex from "./components/katex.vue";
+import Shiki from "./components/shiki.vue";
 
 const head = createHead();
 const router = createRouter({
@@ -31,6 +32,7 @@ const app = createSSRApp(Root)
   .use(progressbar)
   .use(blitz)
   .component("vue-link", Link)
+  .component("vue-shiki", Shiki)
   .component("vue-katex", Katex)
   .component("vue-metadata", Metadata)
   .component("vue-reactions", Reactions);

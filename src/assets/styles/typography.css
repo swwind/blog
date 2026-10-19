@@ -77,26 +77,16 @@
   @apply mx-12 mb-2 list-decimal [&>li]:mt-2;
 }
 
-/* rehype-prism-plus */
-
-.typography pre[class^="language-"],
+/* Plain code is rendered during SSR; Shiki adds tokens after mounting. */
 .typography pre:has(code:not(.language-math)) {
-  @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 py-4 dark:bg-slate-900;
+  @apply mx-6 mb-2 overflow-auto rounded-md bg-slate-800 px-4 py-4 text-slate-200 dark:bg-slate-900;
+  font-family: "FiraCode Nerd Font", "Fira Code", monospace;
+  font-size: 1em;
+  line-height: 1.5rem;
+  tab-size: 4;
 
   code {
-    @apply grid;
-  }
-
-  .code-line {
-    @apply block border-l-4 border-transparent px-4;
-
-    &.highlight-line {
-      @apply border-green-400 bg-green-400/25 dark:border-blue-400 dark:bg-blue-400/25;
-    }
-
-    &.line-number {
-      @apply before:inline-block before:w-8 before:pr-4 before:opacity-60 before:content-[attr(line)];
-    }
+    font-family: inherit;
   }
 }
 

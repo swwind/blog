@@ -10,7 +10,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkRuby from "remark-ruby";
 import rehypeKatex from "./vite/rehype-katex-vue.ts";
-import rehypePrism from "rehype-prism-plus";
+import rehypeShiki from "./vite/rehype-shiki-vue.ts";
 import rehypeSlug from "rehype-slug";
 import rehypeToc from "rehype-toc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -24,7 +24,7 @@ export default defineConfig({
       remarkPlugins: [remarkGfm, remarkMath, remarkRuby],
       rehypePlugins: [
         rehypeRemoveParagraph,
-        [rehypePrism, { ignoreMissing: true }],
+        rehypeShiki,
         rehypeKatex,
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "append" }],

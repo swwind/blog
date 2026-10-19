@@ -12,6 +12,7 @@ import Link from "./components/typography/Link.vue";
 import Metadata from "./components/metadata/Metadata.vue";
 import Reactions from "./components/comments/Reactions.vue";
 import Katex from "./components/katex.vue";
+import Shiki from "./components/shiki.vue";
 
 export default createServer(
   async (c, runtime) => {
@@ -34,6 +35,7 @@ export default createServer(
 
     app.component("vue-link", Link);
     app.component("vue-katex", Katex);
+    app.component("vue-shiki", Shiki);
     app.component("vue-metadata", Metadata);
     app.component("vue-reactions", Reactions);
 
