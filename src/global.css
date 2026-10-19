@@ -1,14 +1,31 @@
-@import "./assets/styles/google-fonts.css";
-@import "./assets/styles/typography.css";
-@import "./assets/styles/toc.css";
-@import "katex/dist/katex.min.css";
+@import "./assets/styles/google-fonts.css" layer(base);
+@import "./assets/styles/typography.css" layer(base);
+@import "./assets/styles/toc.css" layer(base);
+@import "katex/dist/katex.min.css" layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source "./**/*.{js,ts,jsx,tsx,md,mdx,vue}";
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 body {
-  @apply bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:[color-scheme:dark];
+  @apply bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:scheme-dark;
 }
 
 @media only screen and (prefers-color-scheme: dark) and (min-width: 1024px) {

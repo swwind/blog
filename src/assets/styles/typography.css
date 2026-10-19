@@ -1,16 +1,17 @@
 .typography {
-  font-family: "Noto Serif CJK SC", "HarmonyOS Sans SC", "Noto Sans CJK SC",
+  font-family:
+    "Noto Serif CJK SC", "HarmonyOS Sans SC", "Noto Sans CJK SC",
     "Noto Sans SC", "Noto Serif SC", sans-serif;
   @apply relative text-lg;
   counter-reset: h2 h3 h4 h5 h6;
 }
 
 .typography h1 {
-  @apply mx-6 mb-2 mt-12 text-4xl font-bold;
+  @apply mx-6 mt-12 mb-2 text-4xl font-bold;
 }
 
 .typography h2 {
-  @apply mx-6 mb-2 mt-8 text-3xl font-bold;
+  @apply mx-6 mt-8 mb-2 text-3xl font-bold;
   counter-increment: h2;
   counter-reset: h3 h4 h5 h6;
   /* &::before {
@@ -19,7 +20,7 @@
 }
 
 .typography h3 {
-  @apply mx-6 mb-2 mt-6 text-2xl font-bold;
+  @apply mx-6 mt-6 mb-2 text-2xl font-bold;
   counter-increment: h3;
   counter-reset: h4 h5 h6;
   /* &::before {
@@ -28,7 +29,7 @@
 }
 
 .typography h4 {
-  @apply mx-6 mb-2 mt-4 text-xl font-bold;
+  @apply mx-6 mt-4 mb-2 text-xl font-bold;
   counter-increment: h4;
   counter-reset: h5 h6;
   /* &::before {
@@ -127,7 +128,7 @@
 }
 
 .typography code:not(pre code):not(.language-math) {
-  @apply rounded-sm bg-sky-100 px-1 py-0.5 font-mono text-base text-sky-800 dark:bg-slate-700 dark:text-sky-200;
+  @apply rounded-xs bg-sky-100 px-1 py-0.5 font-mono text-base text-sky-800 dark:bg-slate-700 dark:text-sky-200;
 }
 
 .typography b {

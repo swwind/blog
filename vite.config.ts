@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { fileURLToPath } from "node:url";
 import { blitz } from "@biliblitz/vite";
 import vue from "@vitejs/plugin-vue";
+import tailwindcss from "@tailwindcss/vite";
 import { markdown } from "@biliblitz/vite-plugin-markdown";
 import unheadAddon from "@unhead/addons/vite";
 import vueDevTools from "vite-plugin-vue-devtools";
@@ -20,6 +21,7 @@ import { rehypeReplaceElement } from "./src/utils/rehype-replace-element.ts";
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     markdown({
       remarkPlugins: [remarkGfm, remarkMath, remarkRuby],
       rehypePlugins: [

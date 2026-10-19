@@ -9,8 +9,10 @@ const { state } = injectProgressBar();
 </script>
 
 <style scoped>
+@reference "../../global.css";
+
 .progress {
-  @apply pointer-events-none fixed left-0 top-0 h-0.5 overflow-visible bg-green-500;
+  @apply pointer-events-none fixed top-0 left-0 h-0.5 overflow-visible bg-green-500;
   transition-property: width, opacity;
   box-shadow: 0 0 25px #22c55e;
 

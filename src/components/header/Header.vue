@@ -67,7 +67,7 @@ import mSysVoidLoop from "@/assets/audio/m_sys_void_loop.mp3";
 import { createSeamlessPlayer } from "./audio.ts";
 // import oniichan from "@/assets/audio/oniichan.mp3";
 
-const underline = "border-b-[1px] border-transparent hover:border-slate-200";
+const underline = "border-b border-transparent hover:border-slate-200";
 
 const tracks = [
   { intro: mSysVoidIntro, loop: mSysVoidLoop, name: "生命流" },
